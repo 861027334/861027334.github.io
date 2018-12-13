@@ -2,17 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Title</title>
 </head>
+
+<body>
+
+	<input type="text" id="mInput">
+
+    <button onclick="showPage()">
+        打开应用宝
+    </button>
+
+    <button onclick="showPage2()">
+        打开输入框链接
+    </button>
+</body>
+
 <script>
     function  showPage() {
-        nativeInterface.openBrowser("http://www.baidu.com");
+        nativeInterface.openBrowser("market://details?id=com.cfae.cfaeapp");
+    }
+
+    function showPage2() {
+    	var mInput = document.getElementById('#mInput');
+
+    	nativeInterface.openBrowser(mInput.value);
     }
     
 </script>
-<body>
-    <button onclick="showPage()">
-        按钮
-    </button>
-</body>
+
 </html>
