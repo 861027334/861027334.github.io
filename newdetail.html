@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>产品详情</title>
+    <style>
+        html{
+            font-size: 8vw;
+        }
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        #header {
+            /*height: 9.35rem;*/
+            height: 7.116rem;
+            background: url("../../img/banner@3x.png") no-repeat;
+            background-size: 100%;
+            overflow: hidden;
+        }
+
+        #title {
+            margin-top: 1rem;
+            height: 0.8rem;
+            font-family: PingFangSC-Medium;
+            font-size: 0.566rem;
+            color: #FFFFFF;
+            text-align: center;
+        }
+
+        #cname {
+            margin: 0.716rem auto 0;
+            height: 1.5rem;
+            /*width: 6.4rem;*/
+            /*word-break:keep-all;*/
+            /*white-space: pre-line;*/
+            font-family: PingFangSC-Regular;
+            font-size: 0.533rem;
+            color: #FFFFFF;
+            text-align: center;
+        }
+
+        #projectCode {
+            height: 0.55rem;
+            opacity: 0.8;
+            font-family: PingFangSC-Regular;
+            font-size: 0.4rem;
+            color: #FFFFFF;
+            text-align: center;
+        }
+
+        #proSellPriceH {
+            margin-top: 1.15rem;
+            height: 1.4rem;
+            font-family: PingFangSC-Semibold;
+            font-size: 1rem;
+            color: #DDA944;
+            text-align: center;
+        }
+
+        #box {
+            height: 2.233rem;
+            display: flex;
+        }
+
+        .box {
+            flex-grow: 1;
+            width: 1rem;
+            height: 100%;
+        }
+        #box .split {
+            margin-top: 0.916rem;
+            width: 0.066rem;
+            height: 0.516rem;
+            background-color: #D6D6D6;
+            border-radius: 0.1rem;
+        }
+        .box-title{
+            margin-top: 0.433rem;
+            height: 0.5rem;
+            font-family: PingFangSC-Medium;
+            font-size: 0.366rem;
+            color: #BCBCBC;
+            text-align: center;
+        }
+        .box-content{
+            margin-top: 0.166rem;
+            height: 0.7rem;
+            font-family: PingFangSC-Medium;
+            font-size: 0.5rem;
+            color: #68A2D7;
+            text-align: center;
+        }
+
+        .split {
+            height: 0.333rem;
+            background-color: #f7f8fa;
+        }
+
+        #info {
+            padding: 0 0.5rem;
+            margin-bottom: 2.133rem;
+        }
+
+        .info-title {
+            padding-top: 0.5rem;
+            height: 0.7rem;
+            font-family: PingFangSC-Medium;
+            font-size: 0.5rem;
+            color: #202020;
+            text-align: left;
+        }
+
+        .info-content {
+            padding: 0.333rem 0;
+            height: 0.616rem;
+            border-bottom: 0.016rem solid #F0F0F0;
+            font-family: PingFangSC-Regular;
+            font-size: 0.433rem;
+            color: #7C7C7D;
+        }
+
+        .info-left {
+            display: inline-block;
+            width: 3.5rem;
+        }
+
+        .info-center {
+            display: inline-block;
+            width: 5rem;
+            margin-left: 0.083rem;
+        }
+
+        .info-right {
+            color: #9B9B9B;
+            float: right;
+        }
+
+        .info-phone {
+            float: right;
+        }
+
+        .info-right img{
+            width: 0.5rem;
+            height: 0.5rem;
+            vertical-align: middle;
+        }
+
+        .slide {
+            height: 2.416rem;
+        }
+
+        #slide-top {
+            height: 1.95rem;
+            position: relative;
+            margin: 0 -0.5rem;
+            /*overflow: hidden;*/
+        }
+
+        #dot {
+            position: absolute;
+            top: 0.166rem;
+            /*margin-top: 0.166rem;*/
+            width: 2.816rem;
+            height: 1.783rem;
+            text-align: center;
+        }
+
+        #nowData{
+            height: 0.7rem;
+            font-family: PingFangSC-Medium;
+            font-size: 0.5rem;
+            color: #DDA944;
+            text-align: center;
+        }
+
+        #pulley{
+            width: 1rem;
+            height: 1rem;
+        }
+
+        #thread {
+            position: absolute;
+            top: 1.383rem;
+            /*left: 50%;*/
+            /*transform: translateX(-50%);*/
+            left: 1.28rem;
+            height: 0.133rem;
+            background-color: #DDA944;
+            border-radius: 0.1rem;
+        }
+
+        #thread-background {
+            position: absolute;
+            top: 1.383rem;
+            left: 0;
+            right: 0;
+            margin: auto;
+            /*left: 50%;*/
+            /*transform: translateX(-50%);*/
+            width: 9.666rem;
+            height: 0.133rem;
+            background: #D8D8D8;
+            border-radius: 0.1rem;
+        }
+
+        #slide-date {
+            height: 0.466rem;
+            font-family: PingFangSC-Medium;
+            font-size: 0.333rem;
+            color: #4A4A4A;
+        }
+    </style>
+</head>
+<body>
+<div id="header">
+    <p id="title"></p>
+    <p id="cname">新国金</p>
+    <p id="projectCode">扫描二维码登录微信. 登录手机微信. 手机上安装并登录微信. 从“发现”，进入“扫一扫”，扫码登录微信网页版. </p>
+    <p id="proSellPriceH">1212（万元）</p>
+    <!--<div id="box">-->
+        <!--<div class="box">-->
+            <!--<p class="box-title">项目意向</p>-->
+            <!--<p class="box-content" id="proSellType"></p>-->
+        <!--</div>-->
+        <!--<div class="split"></div>-->
+        <!--<div class="box">-->
+            <!--<p class="box-title">转让比例</p>-->
+            <!--<p class="box-content" id="proSellPercentH"></p>-->
+        <!--</div>-->
+        <!--<div class="split"></div>-->
+        <!--<div class="box">-->
+            <!--<p class="box-title">经济性质</p>-->
+            <!--<p class="box-content" id="proEcoType"></p>-->
+        <!--</div>-->
+    <!--</div>-->
+</div>
+<div class="split"></div>
+
+<div id="info">
+    <dl>
+        <dt class="info-title">挂牌周期</dt>
+        <dd class="slide">
+            <div id="slide-top">
+                <div id="thread-background"></div>
+                <div id="thread"></div>
+                <div id="dot">
+                    <div id="nowData"></div>
+                    <img id="pulley" src="../../img/pulley@3x.png" alt="">
+                </div>
+            </div>
+            <div id="slide-date">
+                <span id="proPubTermBegin"></span>
+                <span id="proPubTermEnd" style="float: right;"></span>
+            </div>
+        </dd>
+    </dl>
+    <dl>
+        <dt class="info-title">项目其他信息</dt>
+        <dd class="info-content">
+            <span>所属行业</span>
+            <span class="info-right" id="proIndustry">12</span>
+        </dd>
+        <dd class="info-content">
+            <span>所在地区</span>
+            <span class="info-right" id="proZone">12</span>
+        </dd>
+        <dd class="info-content">
+            <span>企业类型</span>
+            <span class="info-right" id="proEntType">12</span>
+        </dd>
+    </dl>
+    <dl>
+        <dt class="info-title">联系方式</dt>
+        <dd class="info-content">
+            <span class="info-left">北金所联系人1</span>
+            <span class="info-center">
+                <span class="info-name" id="cbexMan">12</span>
+                <span class="info-phone" id="cbexTel">12</span>
+            </span>
+            <span class="info-right">
+                <a href="tel:" id="cbexPhone">
+                    <img src="../../img/phone@3x.png" alt="">
+                </a>
+            </span>
+        </dd>
+
+        <dd class="info-content">
+            <span class="info-left">传真</span>
+            <span class="info-right">
+                <span class="info-fax" id="cbexFax">12</span>
+            </span>
+        </dd>
+    </dl>
+</div>
+
+<script>
+    function dateFormat(time, format) {
+        var t = time;
+        var tf = function (i) {
+            return (i < 10 ? '0' : '') + i
+        };
+        return format.replace(/yyyy|MM|dd|HH|mm|ss/g, function (a) {
+            switch (a) {
+                case 'yyyy':
+                    return tf(t.getFullYear());
+                case 'MM':
+                    return tf(t.getMonth() + 1);
+                case 'mm':
+                    return tf(t.getMinutes());
+                case 'dd':
+                    return tf(t.getDate());
+                case 'HH':
+                    return tf(t.getHours());
+                case 'ss':
+                    return tf(t.getSeconds());
+            }
+        })
+    }
+
+    var width = 9.4;
+    var proPubTermBegin = '2018-11-11';
+    var proPubTermEnd = '2018-11-19';
+    var now = dateFormat(new Date(), 'yyyy-MM-dd');
+
+    $('#proPubTermBegin').text(proPubTermBegin);
+    $('#proPubTermEnd').text(proPubTermEnd);
+
+    var day = dateDiff(now, proPubTermEnd);
+    var day2 = dateDiff(proPubTermBegin, now);
+
+    if (day >= 0 && day2 >= 0) {
+
+        var count = dateDiff(proPubTermBegin, proPubTermEnd);
+        var coefficient = width / count;
+        var newWidth = day2 * coefficient;
+
+        $('#dot').css('left', newWidth + 'rem');
+        $('#thread').width(newWidth + 'rem');
+        $('#nowData').text(now);
+
+    } else if (day < 0) {
+        $('#dot').css('left', width + 'rem');
+        $('#thread').width(width + 'rem');
+        $('#nowData').text(proPubTermEnd);
+    } else if (day2 < 0) {
+        $('#dot').css('left', 0);
+        $('#nowData').text(proPubTermBegin);
+    }
+
+    function dateDiff(date1, date2) {
+        var d1 = new Date(date1);
+        var d2 = new Date(date2);
+        var days = d2.getTime() - d1.getTime();
+        return days / (1000 * 60 * 60 * 24);
+    }
+
+</script>
+
+</body>
+</html>
