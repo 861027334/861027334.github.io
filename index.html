@@ -361,22 +361,10 @@
     }
 
     //事件
-    window.onresize = function () {
-        if (lineChart) {
-            lineChart.resize();
-        }
-        if (picChart) {
-            picChart.resize();
-        }
-        if (barChart) {
-            barChart.resize();
-        }
-        if (mapChart) {
-            mapChart.resize();
-        }
-    };
-
     let charts = document.getElementsByClassName('chart');
+
+    window.onresize = function () {
+    };
 
     window.onload = function () {
         lazyLoad();
