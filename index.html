@@ -1,26 +1,416 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <title>Document</title>
+    <title>Title</title>
+    <style>
+        * {
+            /*padding: 0;*/
+            /*margin: 0;*/
+        }
+
+        body {
+            background-color: #424f63;
+        }
+
+        h3{
+            color: #ffffff;
+            margin: 0;
+        }
+        p {
+            color: #aaaaaa;
+            font-size: 12px;
+        }
+        .chart {
+            height: 400px;
+            border-top: 1px solid #ffffff;
+            border-bottom: 1px solid #ffffff;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
-<script src="js/jquery.js"></script>
+
+<h3>债权累计发行情况（只数）</h3>
+<p>债权累计发行只数上升趋势，但上升幅度在逐月减弱</p>
+<div id="lineChart" class="chart"></div>
+
+<h3>债权累计发行情况（只数）</h3>
+<p>债权累计发行只数上升趋势，但上升幅度在逐月减弱</p>
+<div id="picChart" class="chart"></div>
+
+<h3>债权累计发行情况（只数）</h3>
+<p>债权累计发行只数上升趋势，但上升幅度在逐月减弱</p>
+<div id="barChart" class="chart"></div>
+
+<h3>债权累计发行情况（只数）</h3>
+<p>债权累计发行只数上升趋势，但上升幅度在逐月减弱</p>
+<div id="mapChart" class="chart"></div>
+
+
+<script src="echarts.min.js"></script>
+<script src="china.js"></script>
 <script>
-    $.ajax({
-        url:'http://192.168.137.1:3000',
-        type:'POST',
-        success:function (data) {
-            document.write(data);
+
+    //折线图
+    let lineChart = null;
+
+    let lineOption = {
+        tooltip: {
+            trigger: 'axis', //触发类型
         },
-        error:function (err) {
-            document.write('错误');
+        grid: {
+            top:'10%',
+            bottom:'10%',
+        },
+        xAxis: {
+            type: 'category', //x轴类型
+            boundaryGap: false, //数值起始和结束两端空白策略
+            data: ['7月', '8月', '9月', '10月', '11月', '12月', '1月', '2月'],
+            axisLine: {
+                show: true,
+                lineStyle: {
+                    color: '#fff'
+                }
+            },
+            axisLabel: {
+                show: true,
+                color: '#fff'
+            }
+        },
+        yAxis: {
+            show: false,
+            type: 'value', //y轴类型
+        },
+        color:['#fff'],
+        series: [
+            {
+                name: '邮件营销',
+                type: 'line',
+                data: [918, 1100, 2314, 3120, 3222, 4531, 5555, 5664],
+                itemStyle: {
+                    normal: {
+                        label: {
+                            show: true,
+                            // position: 'bottom'
+                        }
+                    }
+                }
+            }
+        ]
+    };
+
+    //饼图
+    let picChart = null;
+
+    let picData = [
+        {name: 'AA-', value: 30},
+        {name: 'AA', value: 26},
+        {name: 'AA+', value: 17},
+        {name: 'AAA', value: 100},
+    ];
+
+    let picOption = {
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        color:['#eeddc3', '#d7bb94','#b08e68','#b88f51'],
+        series: [
+            {
+                name: '姓名',
+                type: 'pie',
+                selectedMode: 'single', //是否支持选中
+                data: picData,
+                label: {
+                    position: 'inside',
+                    formatter: "{b},{c}",
+                    color:'#000'
+                },
+                itemStyle:{
+                    borderWidth: 2,
+                    borderColor: '#fff'
+                }
+            }
+        ]
+    };
+
+    //柱状图
+    let barChart = null;
+
+    let barOption = {
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+            }
+        },
+        legend:{
+
+        },
+        grid: {
+            top:'10%',
+            bottom:'10%',
+        },
+        xAxis: {
+            type: 'category',
+            data: ['7月', '8月', '9月', '10月', '11月', '12月', '1月', '2月'],
+            axisLine: {
+                show: true,
+                lineStyle: {
+                    color: '#fff'
+                }
+            },
+            axisLabel: {
+                show: true,
+                color: '#fff'
+            }
+        },
+        yAxis: {
+            type: 'value',
+            axisLine: {
+                show: false,
+            },
+            axisTick: {
+                show: false
+            },
+            axisLabel: {
+                show:true,
+                color:'#fff'
+            }
+        },
+        color: ['#eeddc3', '#d7bb94', '#b08e68', '#b88f51'],
+        series: [
+            {
+                name: 'AAA',
+                type: 'bar',
+                stack: '搜索引擎',
+                data: [320, 332, 301, 320, 332, 301, 22, 22]
+            },
+            {
+                name: 'AA+',
+                type: 'bar',
+                stack: '搜索引擎',
+                data: [120, 132, 101, 120, 132, 101, 121, 222]
+            },
+            {
+                name: 'AA',
+                type: 'bar',
+                stack: '搜索引擎',
+                data: [220, 182, 191, 220, 182, 191, 12, 123]
+            },
+            {
+                name: 'AA-',
+                type: 'bar',
+                stack: '搜索引擎',
+                data: [220, 182, 191, 220, 182, 191, 88, 123]
+            }
+        ]
+    };
+
+    //地图
+    let mapChart = null;
+
+    let mapData = [
+        {name: '海门', value: 100},
+        {name: '鄂尔多斯', value: 120},
+        {name: '招远', value: 102},
+        {name: '舟山', value: 212},
+        {name: '齐齐哈尔', value: 300},
+        {name: '盐城', value: 100},
+        {name: '赤峰', value: 300},
+        {name: '青岛', value: 100},
+        {name: '乳山', value: 30}
+    ];
+
+    let geoCoordMap = {
+        '海门': [121.15, 31.89],
+        '鄂尔多斯': [109.781327, 39.608266],
+        '招远': [120.38, 37.35],
+        '舟山': [122.207216, 29.985295],
+        '齐齐哈尔': [123.97, 47.33],
+        '盐城': [120.13, 33.38],
+        '赤峰': [118.87, 42.28],
+        '青岛': [120.33, 36.07],
+        '乳山': [121.52, 36.89],
+    };
+
+    let mapOption = {
+        //提示框组件
+        tooltip : {
+            trigger: 'item'
+        },
+        //图例组件
+        visualMap: {
+            min: 0,
+            max: 300,
+            calculable: true,
+            inRange: {
+                color: ['#ABCDEF', '#99CC99']
+            },
+            textStyle: {
+                color: '#fff'
+            }
+        },
+        geo: {
+            map: 'china',
+            label: {
+                emphasis: {
+                    show: false
+                }
+            },
+            roam: false,
+            // 定义样式
+            itemStyle: {
+                // 普通状态下的样式
+                normal: {
+                    areaColor: '#ABCDEF99',
+                    borderColor: '#fff'
+                },
+                // 高亮状态下的样式,默认黄色
+                emphasis: {
+                    areaColor: '#2a333d'
+                }
+            }
+        },
+        series: [
+            {
+                name: 'pm2.5',            // series名称
+                type: 'scatter',          // series图表类型
+                coordinateSystem: 'geo',  // series坐标系类型
+                data: convertData(mapData),  // series数据内容
+                // data: mapData,  // series数据内容
+                //控制显示文本
+                label: {
+                    normal: {
+                        show: false
+                    },
+                    emphasis: {
+                        show: true
+                    }
+                },
+                //series样式
+                itemStyle: {
+                    normal: {
+                        color: '#ddb926'
+                    }
+                },
+                symbolSize: function (val) {//根据数值大小控制点的大小
+                    return val[2] / 10;
+                },
+            },
+            // {
+            //     name: 'Top 5',
+            //     type: 'effectScatter',
+            //     coordinateSystem: 'geo',
+            //     data: convertData(mapData.sort(function (a, b) {
+            //         return b.value - a.value;
+            //     }).slice(0, 5)),
+            //     symbolSize: function (val) {
+            //         return val[2] / 10;
+            //     },
+            //     showEffectOn: 'render',
+            //     rippleEffect: {
+            //         brushType: 'stroke'
+            //     },
+            //     hoverAnimation: true,
+            //     label: {
+            //         normal: {
+            //             formatter: '{b}',
+            //             position: 'right',
+            //             show: true
+            //         }
+            //     },
+            //     itemStyle: {
+            //         normal: {
+            //             color: '#99CC99',
+            //             shadowBlur: 10,
+            //             shadowColor: '#333'
+            //         }
+            //     },
+            //     zlevel: 1
+            // }
+        ]
+    };
+
+    function convertData(data) {
+        let res = [];
+        for (let i = 0; i < data.length; i++) {
+            let geoCoord = geoCoordMap[data[i].name];
+            if (geoCoord) {
+                res.push({
+                    name: data[i].name,
+                    value: geoCoord.concat(data[i].value)
+                });
+            }
         }
-    })
+        return res;
+    }
+
+    //事件
+    window.onresize = function () {
+        if (lineChart) {
+            lineChart.resize();
+        }
+        if (picChart) {
+            picChart.resize();
+        }
+        if (barChart) {
+            barChart.resize();
+        }
+        if (mapChart) {
+            mapChart.resize();
+        }
+    };
+
+    let charts = document.getElementsByClassName('chart');
+
+    window.onload = function () {
+        lazyLoad();
+    };
+
+    window.onscroll = function () {
+        lazyLoad();
+    };
+
+    function lazyLoad() {
+        let scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+        let winHeight = window.innerHeight;
+        for (let i = 0; i < charts.length; i++) {
+            if (charts[i].offsetTop + 100 < scrollTop + winHeight) {
+                switch (charts[i].id) {
+                    case 'lineChart':
+                        if (!lineChart) {
+                            lineChart = echarts.init(document.getElementById('lineChart'));
+                            lineChart.setOption(lineOption);
+                        }
+                        break;
+                    case 'picChart':
+                        if (!picChart) {
+                            picChart = echarts.init(document.getElementById('picChart'))
+                            picChart.setOption(picOption);
+                        }
+                        break;
+                    case 'barChart':
+                        if (!barChart) {
+                            barChart = echarts.init(document.getElementById('barChart'));
+                            barChart.setOption(barOption);
+                        }
+                        break;
+                    case 'mapChart':
+                        if (!mapChart) {
+                            mapChart = echarts.init(document.getElementById('mapChart'));
+                            mapChart.setOption(mapOption);
+                        }
+                        break;
+                }
+            }
+        }
+    }
+
 </script>
 </body>
 </html>
