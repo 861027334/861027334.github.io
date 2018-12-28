@@ -302,37 +302,37 @@
                     return val[2] / 10;
                 },
             },
-            // {
-            //     name: 'Top 5',
-            //     type: 'effectScatter',
-            //     coordinateSystem: 'geo',
-            //     data: convertData(mapData.sort(function (a, b) {
-            //         return b.value - a.value;
-            //     }).slice(0, 5)),
-            //     symbolSize: function (val) {
-            //         return val[2] / 10;
-            //     },
-            //     showEffectOn: 'render',
-            //     rippleEffect: {
-            //         brushType: 'stroke'
-            //     },
-            //     hoverAnimation: true,
-            //     label: {
-            //         normal: {
-            //             formatter: '{b}',
-            //             position: 'right',
-            //             show: true
-            //         }
-            //     },
-            //     itemStyle: {
-            //         normal: {
-            //             color: '#99CC99',
-            //             shadowBlur: 10,
-            //             shadowColor: '#333'
-            //         }
-            //     },
-            //     zlevel: 1
-            // }
+            {
+                name: 'Top 5',
+                type: 'effectScatter',
+                coordinateSystem: 'geo',
+                data: convertData(mapData.sort(function (a, b) {
+                    return b.value - a.value;
+                }).slice(0, 5)),
+                symbolSize: function (val) {
+                    return val[2] / 10;
+                },
+                showEffectOn: 'render',
+                rippleEffect: {
+                    brushType: 'stroke'
+                },
+                hoverAnimation: true,
+                label: {
+                    normal: {
+                        formatter: '{b}',
+                        position: 'right',
+                        show: true
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        color: '#99CC99',
+                        shadowBlur: 10,
+                        shadowColor: '#333'
+                    }
+                },
+                zlevel: 1
+            }
         ]
     };
 
@@ -380,7 +380,7 @@
         let scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
         let winHeight = window.innerHeight;
         for (let i = 0; i < charts.length; i++) {
-            if (charts[i].offsetTop + 100 < scrollTop + winHeight) {
+            if (charts[i].offsetTop + 200 < scrollTop + winHeight) {
                 switch (charts[i].id) {
                     case 'lineChart':
                         if (!lineChart) {
