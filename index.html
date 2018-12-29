@@ -18,6 +18,13 @@
         body {
             background-color: #ffffff;
         }
+
+        #page1 {
+            display: block;
+        }
+        .page {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -41,9 +48,6 @@
 
     function hashChange() {
         let hash = window.location.hash;
-        let domPages = $('.page');
-
-        domPages.css('display', 'none');
 
         switch(hash){
             case '':
@@ -147,6 +151,7 @@
                     let indexOf = pages.indexOf(hash);
                     if(indexOf!==0){
                         window.location.href = pages[indexOf - 1];
+                        scroll(0, 0);
                     }
                 }
                 break;
