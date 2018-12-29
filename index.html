@@ -130,9 +130,14 @@
         }
 
         .chart {
-            /*height: 13.333rem;*/
-            height: 14.866rem;
             display: none;
+        }
+
+        #page1Chart {
+            height: 14.866rem;
+        }
+        #page2Chart {
+            height: 11.866rem;
         }
 
         .contentMain .chart:first-child {
@@ -203,11 +208,11 @@
             <img src="img/contentTypeIcon.png" alt="">
             <div class="selectBox">
                 <div class="selectBoxOption contentTypeSelected" data-ref="1">主体评级</div>
-                <!--<div class="selectBoxOption" data-ref="2"></div>-->
+                <div class="selectBoxOption" data-ref="2">主体评级2</div>
             </div>
         </div>
         <div class="contentMain">
-            <div id="page2Chart" style="height:10000px" class="chart"></div>
+            <div id="page2Chart" class="chart"></div>
         </div>
     </div>
 </div>
@@ -226,11 +231,22 @@
 
     let pages = ['#page1', '#page2', '#page3'];
 
+    let page2Chart;
+
     window.onhashchange = function () {
+
         let hash = window.location.hash;
         let indexOf = pages.indexOf(hash);
         $('.page').eq(indexOf).css('display', 'block').siblings('.page').css('display', 'none');
         scroll(0, 0);
+        switch (hash) {
+            case '#page2':
+                if (!page2Chart) {
+                    page2Chart = echarts.init(document.getElementById('page2Chart'));
+                    page2Chart.setOption(page2HeaderType1ContentType1Option);
+                }
+                break;
+        }
     };
 
     //移动端手势
@@ -242,8 +258,6 @@
         startX = e.touches[0].pageX;
         startY = e.touches[0].pageY;
         startScrollTop = document.body.scrollTop || document.documentElement.scrollTop;
-        // console.log('startX --> ' + startX);
-        // console.log('startY --> ' + startY);
     }, false);
 
     window.addEventListener("touchend", function (e) {
@@ -344,7 +358,18 @@
                             page1Chart.setOption(page1HeaderType1ContentType1Option);
                             break;
                         case 2:
+                            console.log(barOption);
                             page1Chart.setOption(page1HeaderType1ContentType2Option);
+                            break;
+                    }
+                    break;
+                case 'page2Chart':
+                    switch (optionRef) {
+                        case 1:
+                            page2Chart.setOption(page2HeaderType1ContentType1Option);
+                            break;
+                        case 2:
+                            page2Chart.setOption(page2HeaderType1ContentType2Option);
                             break;
                     }
                     break;
@@ -406,10 +431,41 @@
         series: []
     };
 
-    //数据渲染
-    let page1Chart = echarts.init(document.getElementById('page1Chart'));
+    //饼图
+    let pieOption = {
+        tooltip: {
+            trigger: 'item',
+            formatter: "{b} : {c} ({d}%)"
+        },
+        color: ['#43DFFF', '#042EFD', '#FFF662', '#F8A313'],
+        series: [
+            {
+                type: 'pie',
+                radius: ['35%', '50%'],
+                label: {
+                    formatter: "{b}：{c}",
+                    color: '#000000',
+                    fontFamily: 'PingFangSC-Medium',
+                    fontWeight: 'bold',
+                    // fontSize: 14
+                },
+                labelLine: { //引导线
+                    smooth: false,
+                    lineStyle: {
+                        color: '#DBDBDB',
+                    }
+                },
+                itemStyle: {
+                    borderWidth: 2,
+                    borderColor: '#fff'
+                }
+            }
+        ]
+    };
 
-    let page1HeaderType1ContentType1Option = {...barOption};
+    //数据渲染
+    //page1
+    let page1HeaderType1ContentType1Option = deepClone(barOption);
     page1HeaderType1ContentType1Option.series = [
         {
             name: '发行',
@@ -423,7 +479,7 @@
         }
     ];
 
-    let page1HeaderType1ContentType2Option = {...barOption};
+    let page1HeaderType1ContentType2Option = deepClone(barOption);
     page1HeaderType1ContentType2Option.series = [
         {
             name: '发行',
@@ -437,7 +493,32 @@
         }
     ];
 
+    let page1Chart = echarts.init(document.getElementById('page1Chart'));
     page1Chart.setOption(page1HeaderType1ContentType1Option);
+
+    //page2
+    let page2HeaderType1ContentType1Option = deepClone(pieOption);
+    page2HeaderType1ContentType1Option.series[0].data = [
+        {name: 'AA-', value: 30},
+        {name: 'AA', value: 26},
+        {name: 'AA+', value: 17},
+        {name: 'AAA', value: 100},
+    ];
+
+    let page2HeaderType1ContentType2Option = deepClone(pieOption);
+    page2HeaderType1ContentType2Option.series[0].data = [
+        {name: 'AA-', value: 100},
+        {name: 'AA', value: 50},
+        {name: 'AA+', value: 35},
+        {name: 'AAA', value: 40},
+    ];
+
+
+    //深拷贝
+    //{...}不好使
+    function deepClone(obj) {
+        return JSON.parse(JSON.stringify(obj));
+    }
 
 </script>
 </body>
