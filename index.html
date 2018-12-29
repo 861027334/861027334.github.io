@@ -28,18 +28,17 @@
     </style>
 </head>
 <body>
-<div class="page" style="background-color: #00f888">
+<div class="page1" style="background-color: #00f888">
     <div style="height: 1000px">
         <div style="height: 900px;"></div>
         <button id="btn1">返回首页</button>
         <button id="btn2">返回首页</button>
-
     </div>
 </div>
-<div id="page1" class="page" style="background-color: red">
+<div id="page2" class="page" style="background-color: red">
     <div style="height: 2000px"></div>
 </div>
-<div id="page2" class="page" style="background-color: yellow">
+<div id="page3" class="page" style="background-color: yellow">
     <div style="height: 1000px;"></div>
 </div>
 <script src="js/jquery.min.js"></script>
@@ -47,15 +46,9 @@
 <script src="js/china.js"></script>
 <script>
 
-    $('#btn1').click(function () {
-        scroll(0, 0);
-    });
-    $('#btn2').click(function () {
-        document.documentElement.scrollTop = 0;
-    });
+    window.location.href = '#page1';
 
-
-    let pages = ['', '#page1', '#page2'];
+    let pages = ['#page1', '#page2', '#page3'];
 
     window.onload = function (ev) {
         hashChange();
@@ -170,6 +163,7 @@
                     let indexOf = pages.indexOf(hash);
                     if(indexOf!==0){
                         window.location.href = pages[indexOf - 1];
+                        scroll(0, 0);
                     }
                 }
                 break;
