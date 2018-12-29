@@ -271,21 +271,21 @@
         let X = endX - startX;
         let Y = endY - startY - differY;
 
-        if (Math.abs(X) > Math.abs(Y) && X > 0) {
+        if (Math.abs(X) > Math.abs(Y) && X > 10) {
             // console.log("向右");
             lastPage();
         }
-        else if (Math.abs(X) > Math.abs(Y) && X < 0) {
+        else if (Math.abs(X) > Math.abs(Y) && X < 10) {
             // console.log("向左");
             nextPage();
         }
-        else if (Math.abs(Y) > Math.abs(X) && Y > 0) {
+        else if (Math.abs(Y) > Math.abs(X) && Y > 10) {
             // console.log("向下");
             if (startScrollTop <= 0) {
                 lastPage();
             }
         }
-        else if (Math.abs(Y) > Math.abs(X) && Y < 0) {
+        else if (Math.abs(Y) > Math.abs(X) && Y < 10) {
             // console.log("向上");
             if (startScrollTop + clientHeight >= bodyHeight) {
                 nextPage();
