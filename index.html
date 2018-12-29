@@ -73,7 +73,9 @@
             case '#page2':
                 $('#page2').css('display', 'block');
                 break;
-
+            case '#page3':
+                $('#page3').css('display', 'block');
+                break;
         }
     }
 
@@ -162,8 +164,8 @@
                     let hash = window.location.hash;
                     let indexOf = pages.indexOf(hash);
                     if(indexOf!==0){
-                        window.location.href = pages[indexOf - 1];
                         scroll(0, 0);
+                        window.location.href = pages[indexOf - 1];
                     }
                 }
                 break;
