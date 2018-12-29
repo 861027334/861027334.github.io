@@ -49,6 +49,8 @@
     function hashChange() {
         let hash = window.location.hash;
 
+        $('.page').css('display', 'none');
+
         switch(hash){
             case '':
                 $('#page1').css('display', 'block');
