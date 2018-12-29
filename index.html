@@ -119,21 +119,44 @@
         endx = e.changedTouches[0].pageX;
         endy = e.changedTouches[0].pageY;
         var direction = getDirection(startx, starty, endx, endy);
+
+        let scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+        let clientHeight = document.documentElement.clientHeight;
+        let bodyHeight = document.body.clientHeight;
+
         switch (direction) {
             case 0:
-                alert("未滑动！");
+                // alert("未滑动！");
                 break;
             case 1:
-                alert("向上！");
+                // alert("向上！");
+                // pages.indexOf()
+                if(scrollTop + clientHeight === bodyHeight){
+                    let hash = window.location.hash;
+                    let indexOf = pages.indexOf(hash);
+                    if(indexOf+1!==pages.length) {
+                        window.location.href = pages[indexOf + 1];
+                    }
+                }
                 break;
             case 2:
-                alert("向下！");
+                // alert("向下！");
+                if(scrollTop === 0){
+                    let hash = window.location.hash;
+                    let indexOf = pages.indexOf(hash);
+                    // if(indexOf+1!==pages.length) {
+                    //     window.location.href = pages[indexOf + 1];
+                    // }
+                    if(indexOf!==0){
+                        window.location.href = pages[indexOf - 1];
+                    }
+                }
                 break;
             case 3:
-                alert("向左！");
+                // alert("向左！");
                 break;
             case 4:
-                alert("向右！");
+                // alert("向右！");
                 break;
             default:
         }
