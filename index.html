@@ -285,23 +285,33 @@
                 // alert("向下！");
                 // alert('scrollTop:' + scrollTop + '\n' + 'clientHeight:' + clientHeight + '\n' + 'bodyHeight' + bodyHeight);
                 if (scrollTop + clientHeight >= bodyHeight) {
-                    nextPage();
+                    // nextPage();
+                    let hash = window.location.hash;
+                    let indexOf = pages.indexOf(hash);
+                    if (indexOf + 1 !== pages.length) {
+                        window.location.href = pages[indexOf + 1];
+                    }
                 }
                 break;
             case 2:
                 // alert("向上！");
                 // alert('scrollTop:' + scrollTop + '\n' + 'clientHeight:' + clientHeight + '\n' + 'bodyHeight' + bodyHeight);
                 if (scrollTop <= 0) {
-                    lastPage();
+                    // lastPage();
+                    let hash = window.location.hash;
+                    let indexOf = pages.indexOf(hash);
+                    if (indexOf !== 0) {
+                        window.location.href = pages[indexOf - 1];
+                    }
                 }
                 break;
             case 3:
                 // alert("向左！");
-                nextPage();
+                // nextPage();
                 break;
             case 4:
                 // alert("向右！");
-                lastPage();
+                // lastPage();
                 break;
             default:
         }
