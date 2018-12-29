@@ -191,12 +191,23 @@
         </div>
         <div class="contentMain">
             <div id="page1Chart" class="chart"></div>
-            <div style="height: 1000px"></div>
         </div>
     </div>
 </div>
 <div id="page2" class="page">
-    <div class="content" style="height: 2000px"></div>
+    <div class="content">
+        <div class="contentType">
+            <span class="contentTypeName">主体评级</span>
+            <img src="img/contentTypeIcon.png" alt="">
+            <div class="selectBox">
+                <div class="selectBoxOption contentTypeSelected" data-ref="1">主体评级</div>
+                <!--<div class="selectBoxOption" data-ref="2"></div>-->
+            </div>
+        </div>
+        <div class="contentMain">
+            <div id="page2Chart" class="chart"></div>
+        </div>
+    </div>
 </div>
 <div id="page3" class="page">
     <div class="content" style="height: 1000px;"></div>
@@ -274,33 +285,52 @@
                 // alert("向下！");
                 // alert('scrollTop:' + scrollTop + '\n' + 'clientHeight:' + clientHeight + '\n' + 'bodyHeight' + bodyHeight);
                 if (scrollTop + clientHeight >= bodyHeight) {
-                    let hash = window.location.hash;
-                    let indexOf = pages.indexOf(hash);
-                    if (indexOf + 1 !== pages.length) {
-                        window.location.href = pages[indexOf + 1];
-                    }
+                    nextPage();
                 }
                 break;
             case 2:
                 // alert("向上！");
                 // alert('scrollTop:' + scrollTop + '\n' + 'clientHeight:' + clientHeight + '\n' + 'bodyHeight' + bodyHeight);
                 if (scrollTop <= 0) {
-                    let hash = window.location.hash;
-                    let indexOf = pages.indexOf(hash);
-                    if (indexOf !== 0) {
-                        window.location.href = pages[indexOf - 1];
-                    }
+                    lastPage();
                 }
                 break;
             case 3:
                 // alert("向左！");
+                nextPage();
                 break;
             case 4:
                 // alert("向右！");
+                lastPage();
                 break;
             default:
         }
     }, false);
+
+    //按钮翻页
+    $('#lastPage').click(function () {
+        lastPage();
+    });
+
+    $('#nextPage').click(function () {
+        nextPage();
+    });
+
+    function lastPage() {
+        let hash = window.location.hash;
+        let indexOf = pages.indexOf(hash);
+        if (indexOf !== 0) {
+            window.location.href = pages[indexOf - 1];
+        }
+    }
+
+    function nextPage() {
+        let hash = window.location.hash;
+        let indexOf = pages.indexOf(hash);
+        if (indexOf + 1 !== pages.length) {
+            window.location.href = pages[indexOf + 1];
+        }
+    }
 
     //顶部栏type点击事件
     $('#header').click(function (ev) {
@@ -431,7 +461,6 @@
             data: [255, 179, 537, 547, 228, 245, 363, 500, 320, 370, 488, 436]
         }
     ];
-
 
     page1Chart.setOption(page1HeaderType1ContentType1Option);
 
