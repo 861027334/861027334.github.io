@@ -247,32 +247,32 @@
         X = moveEndX - startX;
         Y = moveEndY - startY;
 
-        let scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
-        let clientHeight = document.documentElement.clientHeight;
-        let bodyHeight = document.body.clientHeight;
+        // let scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+        // let clientHeight = document.documentElement.clientHeight;
+        // let bodyHeight = document.body.clientHeight;
 
         if (Math.abs(X) > Math.abs(Y) && X > 0) {
-            console.log("left 2 right");
+            // console.log("left 2 right");
             lastPage();
         }
         else if (Math.abs(X) > Math.abs(Y) && X < 0) {
-            console.log("right 2 left");
+            // console.log("right 2 left");
             nextPage();
         }
         else if (Math.abs(Y) > Math.abs(X) && Y > 0) {
-            console.log("top 2 bottom");
-            if (scrollTop <= 0) {
-                lastPage();
-            }
+            // console.log("top 2 bottom");
+            // if (scrollTop <= 0) {
+            //     lastPage();
+            // }
         }
         else if (Math.abs(Y) > Math.abs(X) && Y < 0) {
-            console.log("bottom 2 top");
-            if (scrollTop + clientHeight >= bodyHeight) {
-                nextPage();
-            }
+            // console.log("bottom 2 top");
+            // if (scrollTop + clientHeight >= bodyHeight) {
+            //     nextPage();
+            // }
         }
         else {
-            console.log("just touch");
+            // console.log("just touch");
         }
     }, false);
 
