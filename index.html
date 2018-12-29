@@ -273,38 +273,35 @@
         endy = e.changedTouches[0].pageY;
         var direction = getDirection(startx, starty, endx, endy);
 
-        let scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
-        let clientHeight = document.documentElement.clientHeight;
-        let bodyHeight = document.body.clientHeight;
-
-        alert(direction + '  ' + scrollTop);
+        // let scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+        // let clientHeight = document.documentElement.clientHeight;
+        // let bodyHeight = document.body.clientHeight;
 
         switch (direction) {
             case 0:
                 // alert("未滑动！");
                 break;
             case 1:
-                // alert("向下！");
-                // alert('scrollTop:' + scrollTop + '\n' + 'clientHeight:' + clientHeight + '\n' + 'bodyHeight' + bodyHeight);
-                if (scrollTop + clientHeight >= bodyHeight) {
-                    nextPage();
-                }
-                break;
-            case 2:
                 // alert("向上！");
                 // alert('scrollTop:' + scrollTop + '\n' + 'clientHeight:' + clientHeight + '\n' + 'bodyHeight' + bodyHeight);
-                // alert(scrollTop);
-                if (scrollTop <= 0) {
-                    lastPage();
-                }
+                // if (scrollTop + clientHeight >= bodyHeight) {
+                //     nextPage();
+                // }
+                break;
+            case 2:
+                // alert("向下！");
+                // alert('scrollTop:' + scrollTop + '\n' + 'clientHeight:' + clientHeight + '\n' + 'bodyHeight' + bodyHeight);
+                // if (scrollTop <= 0) {
+                //     lastPage();
+                // }
                 break;
             case 3:
                 // alert("向左！");
-                // nextPage();
+                nextPage();
                 break;
             case 4:
                 // alert("向右！");
-                // lastPage();
+                lastPage();
                 break;
             default:
         }
