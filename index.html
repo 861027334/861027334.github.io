@@ -28,6 +28,14 @@
     </style>
 </head>
 <body>
+<div class="page" style="background-color: #00f888">
+    <div style="height: 1000px">
+        <div style="height: 900px;"></div>
+        <button id="btn1"></button>
+        <button id="btn2"></button>
+
+    </div>
+</div>
 <div id="page1" class="page" style="background-color: red">
     <div style="height: 2000px"></div>
 </div>
@@ -38,6 +46,15 @@
 <script src="js/echarts.min.js"></script>
 <script src="js/china.js"></script>
 <script>
+
+    $('#btn1').click(function () {
+        scroll(0, 0);
+    });
+    $('#btn2').click(function () {
+        document.documentElement.scrollTop = 0;
+    });
+
+
     let pages = ['', '#page1', '#page2'];
 
     window.onload = function (ev) {
@@ -49,11 +66,13 @@
     function hashChange() {
         let hash = window.location.hash;
 
-        $('.page').css('display', 'none');
-
+        let $page = $('.page');
+        $page.css('display', 'none');
+        console.log(hash);
         switch(hash){
             case '':
-                $('#page1').css('display', 'block');
+                console.log($page.eq(0));
+                $page.eq(0).css('display', 'block');
                 break;
             case '#page1':
                 $('#page1').css('display', 'block');
@@ -139,9 +158,7 @@
                 if(scrollTop + clientHeight >= bodyHeight){
                     let hash = window.location.hash;
                     let indexOf = pages.indexOf(hash);
-                    if(indexOf === 0){
-                        window.location.href = pages[2];
-                    }else if(indexOf+1!==pages.length) {
+                    if(indexOf+1!==pages.length) {
                         window.location.href = pages[indexOf + 1];
                     }
                 }
@@ -153,7 +170,6 @@
                     let indexOf = pages.indexOf(hash);
                     if(indexOf!==0){
                         window.location.href = pages[indexOf - 1];
-                        scroll(0, 0);
                     }
                 }
                 break;
