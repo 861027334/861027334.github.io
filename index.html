@@ -134,19 +134,18 @@
                 if(scrollTop + clientHeight >= bodyHeight){
                     let hash = window.location.hash;
                     let indexOf = pages.indexOf(hash);
-                    if(indexOf+1!==pages.length) {
+                    if(indexOf === 0){
+                        window.location.href = pages[2];
+                    }else if(indexOf+1!==pages.length) {
                         window.location.href = pages[indexOf + 1];
                     }
                 }
                 break;
             case 2:
                 alert('scrollTop:' + scrollTop + '\n' + 'clientHeight:' + clientHeight + '\n' + 'bodyHeight' + bodyHeight);
-                if(scrollTop === 0){
+                if(scrollTop <= 0){
                     let hash = window.location.hash;
                     let indexOf = pages.indexOf(hash);
-                    // if(indexOf+1!==pages.length) {
-                    //     window.location.href = pages[indexOf + 1];
-                    // }
                     if(indexOf!==0){
                         window.location.href = pages[indexOf - 1];
                     }
