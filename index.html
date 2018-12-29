@@ -209,8 +209,11 @@
         </div>
     </div>
 </div>
+<!--<div id="page3" class="page">-->
+    <!--<div class="content" style="height: 1000px;background-color: red"></div>-->
+<!--</div>-->
 <div id="page3" class="page">
-    <div class="content" style="height: 1000px;"></div>
+    <div class="content" style="height: 1000px;background-color: yellow"></div>
 </div>
 <script src="js/jquery.min.js"></script>
 <script src="js/echarts.min.js"></script>
@@ -277,31 +280,30 @@
         // let clientHeight = document.documentElement.clientHeight;
         // let bodyHeight = document.body.clientHeight;
 
-        alert(direction);
         switch (direction) {
             case 0:
                 // alert("未滑动！");
                 break;
             case 1:
-                // alert("向上！");
+                // console.log("向上！");
                 // alert('scrollTop:' + scrollTop + '\n' + 'clientHeight:' + clientHeight + '\n' + 'bodyHeight' + bodyHeight);
-                // if (scrollTop + clientHeight >= bodyHeight) {
-                //     nextPage();
-                // }
+                if (scrollTop + clientHeight >= bodyHeight) {
+                    nextPage();
+                }
                 break;
             case 2:
-                // alert("向下！");
+                // console.log("向下！");
                 // alert('scrollTop:' + scrollTop + '\n' + 'clientHeight:' + clientHeight + '\n' + 'bodyHeight' + bodyHeight);
-                // if (scrollTop <= 0) {
-                //     lastPage();
-                // }
+                if (scrollTop <= 0) {
+                    lastPage();
+                }
                 break;
             case 3:
-                // alert("向左！");
+                // console.log("向左！");
                 nextPage();
                 break;
             case 4:
-                // alert("向右！");
+                // console.log("向右！");
                 lastPage();
                 break;
             default:
