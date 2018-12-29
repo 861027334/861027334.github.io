@@ -276,9 +276,9 @@
         endy = e.changedTouches[0].pageY;
         var direction = getDirection(startx, starty, endx, endy);
 
-        // let scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
-        // let clientHeight = document.documentElement.clientHeight;
-        // let bodyHeight = document.body.clientHeight;
+        let scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+        let clientHeight = document.documentElement.clientHeight;
+        let bodyHeight = document.body.clientHeight;
 
         switch (direction) {
             case 0:
@@ -310,7 +310,7 @@
         }
     }, false);
 
-    //按钮翻页
+    //翻页按钮
     $('#lastPage').click(function () {
         lastPage();
     });
