@@ -130,15 +130,17 @@
         }
 
         .chart {
+            height: 14.866rem;
             display: none;
         }
 
-        #page1Chart {
-            height: 14.866rem;
-        }
-        #page2Chart {
-            height: 11.866rem;
-        }
+        /*#page1Chart {*/
+        /*height: 14.866rem;*/
+        /*}*/
+
+        /*#page2Chart {*/
+        /*height: 11.866rem;*/
+        /*}*/
 
         .contentMain .chart:first-child {
             display: block;
@@ -176,9 +178,9 @@
 </head>
 <body>
 <div id="header">
-    <div class="headerType headerSelected">债券</div>
-    <div class="headerType">权益</div>
-    <div class="headerType">债权</div>
+    <div class="headerType headerSelected" data-ref="1">债券</div>
+    <div class="headerType" data-ref="2">债权</div>
+    <div class="headerType" data-ref="3">权益</div>
 </div>
 
 <div id="footer">
@@ -193,7 +195,7 @@
             <img src="img/contentTypeIcon.png" alt="">
             <div class="selectBox">
                 <div class="selectBoxOption contentTypeSelected" data-ref="1">发行额度</div>
-                <div class="selectBoxOption" data-ref="2">发行只数</div>
+                <div class="selectBoxOption" data-ref="2">发行支数</div>
             </div>
         </div>
         <div class="contentMain">
@@ -208,7 +210,9 @@
             <img src="img/contentTypeIcon.png" alt="">
             <div class="selectBox">
                 <div class="selectBoxOption contentTypeSelected" data-ref="1">主体评级</div>
-                <div class="selectBoxOption" data-ref="2">主体评级2</div>
+                <div class="selectBoxOption" data-ref="2">发行规模</div>
+                <div class="selectBoxOption" data-ref="2">发行期限</div>
+                <div class="selectBoxOption" data-ref="2">发行类型</div>
             </div>
         </div>
         <div class="contentMain">
@@ -216,34 +220,89 @@
         </div>
     </div>
 </div>
-<!--<div id="page3" class="page">-->
-<!--<div class="content" style="height: 1000px;background-color: red"></div>-->
-<!--</div>-->
 <div id="page3" class="page">
-    <div class="content" style="height: 4000px;background-color: yellow"></div>
+    <div class="content">
+        <div class="contentType">
+            <span class="contentTypeName">发行额度TOP5</span>
+            <img src="img/contentTypeIcon.png" alt="">
+            <div class="selectBox">
+                <div class="selectBoxOption contentTypeSelected" data-ref="1">发行额度TOP5</div>
+                <div class="selectBoxOption" data-ref="2">发行支数TOP5</div>
+                <div class="selectBoxOption" data-ref="2">市场影响力TOP5</div>
+                <div class="selectBoxOption" data-ref="2">市场参与度TOP5</div>
+                <div class="selectBoxOption" data-ref="2">私募发行额度TOP5</div>
+                <div class="selectBoxOption" data-ref="2">私募发行支数TOP5</div>
+                <div class="selectBoxOption" data-ref="2">债券大单TOP5</div>
+            </div>
+        </div>
+        <div class="contentMain">
+            <div id="page3Chart" class="chart"></div>
+        </div>
+    </div>
 </div>
+
+<div id="page4" class="page">
+    <div class="content">
+        <div class="contentType">
+            <span class="contentTypeName">发行额度统计</span>
+            <img src="img/contentTypeIcon.png" alt="">
+            <div class="selectBox">
+                <div class="selectBoxOption contentTypeSelected" data-ref="1">发行额度统计</div>
+            </div>
+        </div>
+        <div class="contentMain">
+            <div id="page4Chart" class="chart"></div>
+        </div>
+    </div>
+</div>
+
+
 <script src="js/jquery.min.js"></script>
 <script src="js/echarts.min.js"></script>
 <script src="js/china.js"></script>
 <script>
 
+    // if(!window.location.hash)
     window.location.href = '#page1';
 
     let pages = ['#page1', '#page2', '#page3'];
 
-    let page2Chart;
+    let page2Chart, page3Chart, page4Chart;
 
     window.onhashchange = function () {
 
         let hash = window.location.hash;
         let indexOf = pages.indexOf(hash);
         $('.page').eq(indexOf).css('display', 'block').siblings('.page').css('display', 'none');
-        scroll(0, 0);
+        scroll(100, 0);
+        console.log(hash);
         switch (hash) {
             case '#page2':
                 if (!page2Chart) {
                     page2Chart = echarts.init(document.getElementById('page2Chart'));
-                    page2Chart.setOption(page2HeaderType1ContentType1Option);
+                    let headerType = $('.headerSelected').data('ref');
+                    let contentType = $('#page2').find('.contentTypeSelected').data('ref');
+                    chartChange(headerType, contentType, page2Chart);
+                }
+                break;
+            case '#page3':
+                if (!page3Chart) {
+                    page3Chart = echarts.init(document.getElementById('page3Chart'));
+                    let headerType = $('.headerSelected').data('ref');
+                    let contentType = $('#page3').find('.contentTypeSelected').data('ref');
+                    chartChange(headerType, contentType, page3Chart);
+                }
+                break;
+            case '#page4':
+                if (!page4Chart) {
+                    page4Chart = echarts.init(document.getElementById('page4Chart'));
+                    let headerType = $('.headerSelected').data('ref');
+                    let contentType = $('#page3').find('.contentTypeSelected').data('ref');
+
+                    console.log(headerType);
+                    console.log(contentType);
+                    console.log(page4Chart);
+                    chartChange(headerType, contentType, page4Chart);
                 }
                 break;
         }
@@ -321,61 +380,201 @@
         }
     }
 
-    //顶部栏type点击事件
+    //顶部栏type事件
     $('#header').click(function (ev) {
+
+        window.location.href = '#page1';
+        scroll(100, 0);
+
         let event = window.event || ev;
-        $(event.target).addClass('headerSelected').siblings().removeClass('headerSelected');
+        let headerOption = event.target;
+        $(headerOption).addClass('headerSelected').siblings().removeClass('headerSelected');
+
+        let headerType = $(headerOption).data('ref');
+        let page = $('.page:visible');
+        let contentType = page.find('.contentTypeSelected').data('ref');
+        let chart = page.find('.chart');
+
+        let $page1 = $('#page1');
+        let $page2 = $('#page2');
+        let $page3 = $('#page3');
+        let $page4 = $('#page4');
+
+        switch (headerType) {
+            case 1:
+                $page1.find('.contentTypeName').text('发行额度');
+                $page1.find('.selectBox').html(
+                    '<div class="selectBoxOption contentTypeSelected" data-ref="1">发行额度</div>' +
+                    '<div class="selectBoxOption" data-ref="2">发行支数</div>'
+                );
+                $page2.find('.contentTypeName').text('主体评级');
+                $page2.find('.selectBox').html(
+                    '<div class="selectBoxOption contentTypeSelected" data-ref="1">主体评级</div>' +
+                    '<div class="selectBoxOption" data-ref="2">发行规模</div>' +
+                    '<div class="selectBoxOption" data-ref="3">发行期限</div>' +
+                    '<div class="selectBoxOption" data-ref="4">发行类型</div>'
+                );
+                $page3.find('.contentTypeName').text('发行额度TOP5');
+                $page3.find('.selectBox').html(
+                    '<div class="selectBoxOption contentTypeSelected" data-ref="1">发行额度TOP5</div>' +
+                    '<div class="selectBoxOption" data-ref="2">发行支数TOP5</div>' +
+                    '<div class="selectBoxOption" data-ref="2">市场影响力TOP5</div>' +
+                    '<div class="selectBoxOption" data-ref="2">市场参与度TOP5</div>' +
+                    '<div class="selectBoxOption" data-ref="2">私募发行额度TOP5</div>' +
+                    '<div class="selectBoxOption" data-ref="2">私募发行支数TOP5</div>' +
+                    '<div class="selectBoxOption" data-ref="2">债券大单TOP5</div>'
+                );
+                pages = ['#page1', '#page2', '#page3'];
+                break;
+            case 2:
+                $page1.find('.contentTypeName').text('发行额度');
+                $page1.find('.selectBox').html(
+                    '<div class="selectBoxOption contentTypeSelected" data-ref="1">发行额度</div>' +
+                    '<div class="selectBoxOption" data-ref="2">发行支数</div>'
+                );
+                $page2.find('.contentTypeName').text('主体评级');
+                $page2.find('.selectBox').html(
+                    '<div class="selectBoxOption contentTypeSelected" data-ref="1">主体评级</div>' +
+                    '<div class="selectBoxOption" data-ref="2">发行规模</div>' +
+                    '<div class="selectBoxOption" data-ref="3">发行期限</div>' +
+                    '<div class="selectBoxOption" data-ref="4">行业分布</div>'
+                );
+                $page3.find('.contentTypeName').text('发行支数TOP5');
+                $page3.find('.selectBox').html(
+                    '<div class="selectBoxOption contentTypeSelected" data-ref="1">发行支数TOP5</div>' +
+                    '<div class="selectBoxOption" data-ref="2">发行金额TOP5</div>' +
+                    '<div class="selectBoxOption" data-ref="3">债权大单TOP5</div>'
+                );
+                $page4.find('.contentTypeName').text('发行额度统计');
+                $page4.find('.selectBox').html(
+                    '<div class="selectBoxOption contentTypeSelected" data-ref="1">发行额度统计</div>'
+                );
+                pages = ['#page1', '#page2', '#page3', '#page4'];
+                break;
+            case 3:
+                $page1.find('.contentTypeName').text('挂牌量');
+                $page1.find('.selectBox').html(
+                    '<div class="selectBoxOption contentTypeSelected" data-ref="1">挂牌量</div>' +
+                    '<div class="selectBoxOption" data-ref="2">挂牌金额</div>'
+                );
+                $page2.find('.contentTypeName').text('行业分布');
+                $page2.find('.selectBox').html(
+                    '<div class="selectBoxOption contentTypeSelected" data-ref="1">行业分布</div>' +
+                    '<div class="selectBoxOption" data-ref="2">项目比例</div>'
+                );
+                $page3.find('.contentTypeName').text('挂牌额度');
+                $page3.find('.selectBox').html(
+                    '<div class="selectBoxOption contentTypeSelected" data-ref="1">挂牌额度</div>'
+                );
+                pages = ['#page1', '#page2', '#page3'];
+                break;
+        }
+
+        chartChange(headerType, contentType, chart);
+
     });
 
-    //二级type点击事件
+    //二级type事件
     $('.contentType').click(function (ev) {
-
-        //select动画效果
         $(this).find('.selectBox').stop().slideToggle(100);
-        //图标动画
-        let img = $(this).find('img');
-        if (img.hasClass('imgRotate')) {
-            img.removeClass('imgRotate');
-        } else {
-            img.addClass('imgRotate');
-        }
+        $(this).find('img').toggleClass('imgRotate');
 
         //逻辑判断
         let event = window.event || ev;
-
         let option = $(event.target);
         if (option.hasClass('selectBoxOption')) {
             option.addClass('contentTypeSelected').siblings().removeClass('contentTypeSelected');
             let optionName = option.text();
-            let optionRef = option.data('ref');
             option.parents('.contentType').find('.contentTypeName').text(optionName);
+            let optionType = option.data('ref');
+            let chart = $(this).parents('.content').find('.chart');
+            let headerType = $('.headerSelected').data('ref');
 
-            let charts = $(this).parents('.content').find('.chart');
-            switch (charts[0].id) {
-                case 'page1Chart':
-                    switch (optionRef) {
-                        case 1:
-                            page1Chart.setOption(page1HeaderType1ContentType1Option);
-                            break;
-                        case 2:
-                            console.log(barOption);
-                            page1Chart.setOption(page1HeaderType1ContentType2Option);
-                            break;
-                    }
-                    break;
-                case 'page2Chart':
-                    switch (optionRef) {
-                        case 1:
-                            page2Chart.setOption(page2HeaderType1ContentType1Option);
-                            break;
-                        case 2:
-                            page2Chart.setOption(page2HeaderType1ContentType2Option);
-                            break;
-                    }
-                    break;
-            }
+            // console.log(headerType);
+            // console.log(optionType)
+            // console.log(chart);
+            chartChange(headerType, optionType, chart);
         }
     });
+
+    function chartChange(headerType, optionType, chart) {
+        let hash = window.location.hash;
+        $('.selectBox').hide();
+        switch (hash) {
+            case '#page1':
+
+                switch (headerType) {
+                    case 1:
+
+                        switch (optionType) {
+                            case 1:
+                                chart.setOption(page1HeaderType1ContentType1Option);
+                                break;
+                            case 2:
+                                chart.setOption(page1HeaderType1ContentType2Option);
+                                break;
+                        }
+
+                        break;
+                    case 2:
+                        break;
+                }
+
+                break;
+            case '#page2':
+
+                switch (headerType) {
+                    case 1:
+
+                        switch (optionType) {
+                            case 1:
+                                chart.setOption(page2HeaderType1ContentType1Option);
+                                break;
+                            case 2:
+                                chart.setOption(page2HeaderType1ContentType2Option);
+                                break;
+                        }
+
+                        break;
+                    case 2:
+                        break;
+                }
+                break;
+            case '#page3':
+                switch (headerType) {
+                    case 1:
+                        switch (optionType) {
+                            case 1:
+                                chart.setOption(page3HeaderType1ContentType1Option);
+                                break;
+                            case 2:
+                                chart.setOption(page3HeaderType1ContentType1Option);
+                                break;
+                        }
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                }
+                break;
+            case '#page4':
+                switch (headerType) {
+                    case 1:
+                        break;
+                    case 2:
+                        switch (optionType) {
+                            case 1:
+                                chart.setOption(page4HeaderType2ContentType1Option);
+                                break;
+                        }
+                        break;
+                    case 3:
+                        break;
+                }
+                break;
+        }
+    }
 
     //柱状图
     let barOption = {
@@ -385,7 +584,7 @@
                 type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
             }
         },
-        legend: {},
+        // legend: {},
         grid: {
             left: 0,
             right: '5%',
@@ -463,17 +662,185 @@
         ]
     };
 
+    //横向柱状图
+    let barOptionHorizontal = {
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+            }
+        },
+        grid: {
+            left: 0,
+            right: '5%',
+            top: '5%',
+            bottom: '5%',
+            containLabel: true //grid 区域是否包含坐标轴的刻度标签
+        },
+        yAxis: {
+            show: true,
+            type: 'category',
+            axisLine: {
+                show: false,
+            },
+            axisTick: {
+                show: false
+            },
+            axisLabel: {
+                show: true,
+                color: 'rgba(32,32,32,1)',
+                fontFamily: 'PingFangSC-Semibold',
+                fontWeight: 600,
+                fontSize: 10
+            }
+        },
+        xAxis: {
+            type: 'value',
+            axisLine: {
+                show: false,
+            },
+            axisTick: {
+                show: false
+            },
+            axisLabel: {
+                show: false,
+            }
+        },
+        color: ['#43DFFF', '#042EFD'],
+        series: []
+    };
+
+    //地图
+
+
+    let mapData = [
+        {name: '海门', value: 100},
+        {name: '鄂尔多斯', value: 120},
+        {name: '招远', value: 102},
+        {name: '舟山', value: 212},
+        {name: '齐齐哈尔', value: 300},
+        {name: '盐城', value: 100},
+        {name: '赤峰', value: 300},
+        {name: '青岛', value: 100},
+        {name: '乳山', value: 30}
+    ];
+
+    let geoCoordMap = {
+        '海门': [121.15, 31.89],
+        '鄂尔多斯': [109.781327, 39.608266],
+        '招远': [120.38, 37.35],
+        '舟山': [122.207216, 29.985295],
+        '齐齐哈尔': [123.97, 47.33],
+        '盐城': [120.13, 33.38],
+        '赤峰': [118.87, 42.28],
+        '青岛': [120.33, 36.07],
+        '乳山': [121.52, 36.89],
+    };
+
+    let mapOption = {
+        //提示框组件
+        tooltip: {
+            trigger: 'item'
+        },
+        //图例组件
+        visualMap: {
+            min: 0,
+            max: 300,
+            calculable: true,
+            inRange: {
+                color: ['#ABCDEF', '#99CC99']
+            },
+            textStyle: {
+                color: '#fff'
+            }
+        },
+        geo: {
+            map: 'china',
+            label: {
+                emphasis: {
+                    show: false
+                }
+            },
+            roam: false,
+            // 定义样式
+            itemStyle: {
+                // 普通状态下的样式
+                normal: {
+                    areaColor: '#ABCDEF99',
+                    borderColor: '#fff'
+                },
+                // 高亮状态下的样式,默认黄色
+                emphasis: {
+                    areaColor: '#2a333d'
+                }
+            }
+        },
+        series: [
+            {
+                name: 'pm2.5',            // series名称
+                type: 'scatter',          // series图表类型
+                coordinateSystem: 'geo',  // series坐标系类型
+                data: convertData(mapData),  // series数据内容
+                // data: mapData,  // series数据内容
+                //控制显示文本
+                label: {
+                    normal: {
+                        show: false
+                    },
+                    emphasis: {
+                        show: true
+                    }
+                },
+                //series样式
+                itemStyle: {
+                    normal: {
+                        color: '#ddb926'
+                    }
+                },
+                symbolSize: function (val) {//根据数值大小控制点的大小
+                    return val[2] / 10;
+                },
+            },
+            {
+                name: 'Top 5',
+                type: 'effectScatter',
+                coordinateSystem: 'geo',
+                data: convertData(mapData.sort(function (a, b) {
+                    return b.value - a.value;
+                }).slice(0, 5)),
+                symbolSize: function (val) {
+                    return val[2] / 10;
+                },
+                showEffectOn: 'render',
+                rippleEffect: {
+                    brushType: 'stroke'
+                },
+                hoverAnimation: true,
+                label: {
+                    normal: {
+                        formatter: '{b}',
+                        position: 'right',
+                        show: true
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        color: '#99CC99',
+                        shadowBlur: 10,
+                        shadowColor: '#333'
+                    }
+                },
+                zlevel: 1
+            }
+        ]
+    };
+
     //数据渲染
-    //page1
+    //债券
     let page1HeaderType1ContentType1Option = deepClone(barOption);
     page1HeaderType1ContentType1Option.series = [
         {
             name: '发行',
-            type: 'bar',
-            data: [27099350, 20803000, 60303000, 57237500, 27220600, 30402900, 42606500, 54550500, 34185200, 39513401, 50447400, 45727978.4]
-        },
-        {
-            name: '交易',
             type: 'bar',
             data: [27099350, 20803000, 60303000, 57237500, 27220600, 30402900, 42606500, 54550500, 34185200, 39513401, 50447400, 45727978.4]
         }
@@ -485,18 +852,12 @@
             name: '发行',
             type: 'bar',
             data: [255, 179, 537, 547, 228, 245, 363, 500, 320, 370, 488, 436]
-        },
-        {
-            name: '交易',
-            type: 'bar',
-            data: [255, 179, 537, 547, 228, 245, 363, 500, 320, 370, 488, 436]
         }
     ];
 
     let page1Chart = echarts.init(document.getElementById('page1Chart'));
     page1Chart.setOption(page1HeaderType1ContentType1Option);
 
-    //page2
     let page2HeaderType1ContentType1Option = deepClone(pieOption);
     page2HeaderType1ContentType1Option.series[0].data = [
         {name: 'AA-', value: 30},
@@ -512,6 +873,33 @@
         {name: 'AA+', value: 35},
         {name: 'AAA', value: 40},
     ];
+
+    let page3HeaderType1ContentType1Option = deepClone(barOptionHorizontal);
+    page3HeaderType1ContentType1Option.yAxis.data = ["中央汇金投资有限责任公司", "国家电力投资集团有限公司", "中国南方电网有限责任公司", "中国电信股份有限公司", "江苏交通控股有限公司"];
+    page3HeaderType1ContentType1Option.series = [
+        {
+            type: 'bar',
+            data: [16400000, 11200000, 7300000, 5970000, 5700000]
+        }
+    ];
+
+    //债权
+    let page4HeaderType2ContentType1Option = deepClone(mapOption);
+
+
+    function convertData(data) {
+        let res = [];
+        for (let i = 0; i < data.length; i++) {
+            let geoCoord = geoCoordMap[data[i].name];
+            if (geoCoord) {
+                res.push({
+                    name: data[i].name,
+                    value: geoCoord.concat(data[i].value)
+                });
+            }
+        }
+        return res;
+    }
 
 
     //深拷贝
