@@ -275,7 +275,6 @@
         let indexOf = pages.indexOf(hash);
         $('.page').eq(indexOf).css('display', 'block').siblings('.page').css('display', 'none');
         scroll(100, 0);
-        console.log(hash);
         switch (hash) {
             case '#page2':
                 if (!page2Chart) {
@@ -298,10 +297,6 @@
                     page4Chart = echarts.init(document.getElementById('page4Chart'));
                     let headerType = $('.headerSelected').data('ref');
                     let contentType = $('#page3').find('.contentTypeSelected').data('ref');
-
-                    console.log(headerType);
-                    console.log(contentType);
-                    console.log(page4Chart);
                     chartChange(headerType, contentType, page4Chart);
                 }
                 break;
@@ -470,7 +465,7 @@
                 break;
         }
 
-        chartChange(headerType, contentType, chart);
+        chartChange(headerType, contentType, echarts.init(chart[0]));
 
     });
 
@@ -493,13 +488,14 @@
             // console.log(headerType);
             // console.log(optionType)
             // console.log(chart);
-            chartChange(headerType, optionType, chart);
+            chartChange(headerType, optionType, echarts.init(chart[0]));
         }
     });
 
     function chartChange(headerType, optionType, chart) {
         let hash = window.location.hash;
         $('.selectBox').hide();
+        console.log(chart);
         switch (hash) {
             case '#page1':
 
