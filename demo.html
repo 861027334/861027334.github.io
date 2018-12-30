@@ -103,6 +103,40 @@
             display: block;
         }
 
+        .table {
+            width: 100%;
+            font-size: 0.38rem;
+            background-color: #a9d5e0;
+            color: #000000;
+            text-align: center;
+            border-collapse: collapse;
+            display: none;
+            font-weight: 600;
+        }
+
+        .table tr td {
+            border: 0.1rem solid #ffffff;
+            height: 0.73rem;
+            line-height: 0.73rem;
+        }
+
+        .table tr td:first-child {
+            background-color: #56AAC4;
+            min-width: 1rem;
+        }
+
+        .table tr td:nth-child(3) {
+            min-width: 2rem;
+        }
+
+        .table tr:nth-child(even) {
+            background-color: #d4eaf2;
+        }
+
+        #page2Table1,#page1Table1{
+            display: table;
+        }
+
     </style>
 </head>
 <body>
@@ -139,14 +173,217 @@
         <div class="contentType">
             <div class="contentTypeSelected" data-ref="1">发行额度TOP5</div>
             <div data-ref="2">发行支数TOP5</div>
-            <!--<div data-ref="3">市场影响力TOP5</div>-->
+            <div data-ref="3">市场影响力TOP5</div>
             <div data-ref="4">市场参与度TOP5</div>
             <div data-ref="5">私募发行额度TOP5</div>
             <div data-ref="6">私募发行支数TOP5</div>
             <div data-ref="7">债券大单TOP5</div>
         </div>
         <div class="contentMain">
-            <div id="page1Chart3" class="chart"></div>
+            <div id="page1Chart3" class="chart" style="height: auto; padding: 0.25rem;">
+
+                <table id="page1Table1" class="table">
+                    <tr>
+                        <td>1</td>
+                        <td>中央汇金投资有限责任公司</td>
+                        <td>16400000</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>国家电力投资集团有限公司</td>
+                        <td>11200000</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>中国南方电网有限责任公司</td>
+                        <td>7300000</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>中国电信股份有限公司</td>
+                        <td>5970000</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>江苏交通控股有限公司</td>
+                        <td>5700000</td>
+                    </tr>
+                </table>
+
+                <table id="page1Table2" class="table">
+                    <tr>
+                        <td>1</td>
+                        <td>国家电力投资集团有限公司</td>
+                        <td>43</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>山东钢铁集团有限公司</td>
+                        <td>33</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>大同煤矿集团有限责任公司</td>
+                        <td>32</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>江苏交通控股有限公司</td>
+                        <td>29</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>天津城市基础设施建设投资集团有限公司</td>
+                        <td>29</td>
+                    </tr>
+                </table>
+
+                <table id="page1Table3" class="table">
+                    <tr>
+                        <td>1</td>
+                        <td>申万宏源证券有限公司</td>
+                        <td>4233</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>东海证券股份有限公司</td>
+                        <td>3950</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>第一创业证券股份有限公司</td>
+                        <td>3629</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>中信证券股份有限公司</td>
+                        <td>3090</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>中国民生银行股份有限公司</td>
+                        <td>2707</td>
+                    </tr>
+                </table>
+
+                <table id="page1Table4" class="table">
+                    <tr>
+                        <td>1</td>
+                        <td>中国光大银行股份有限公司</td>
+                        <td>248</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>中国工商银行股份有限公司</td>
+                        <td>268</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>招商银行股份有限公司</td>
+                        <td>415</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>兴业银行股份有限公司</td>
+                        <td>527</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>上海农村商业银行股份有限公司</td>
+                        <td>398</td>
+                    </tr>
+                </table>
+
+                <table id="page1Table5" class="table">
+                    <tr>
+                        <td>1</td>
+                        <td>中国民生银行股份有限公司</td>
+                        <td>541.8</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>上海浦东发展银行股份有限公司</td>
+                        <td>439.5</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>中国光大银行股份有限公司</td>
+                        <td>346.4</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>兴业银行股份有限公司</td>
+                        <td>286.4</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>商银行股份有限公司</td>
+                        <td>290.6</td>
+                    </tr>
+                </table>
+
+                <table id="page1Table6" class="table">
+                    <tr>
+                        <td>1</td>
+                        <td>中国民生银行股份有限公司</td>
+                        <td>76</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>上海浦东发展银行股份有限公司</td>
+                        <td>59</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>中国光大银行股份有限公司</td>
+                        <td>54</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>兴业银行股份有限公司</td>
+                        <td>44</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>商银行股份有限公司</td>
+                        <td>39</td>
+                    </tr>
+                </table>
+
+
+                <table id="page1Table7" class="table">
+                    <tr>
+                        <td>1</td>
+                        <td>中国汇金投资有限责任公司</td>
+                        <td>1200000</td>
+                        <td>第四期中期票据（债券通）</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>中国汇金投资有限责任公司</td>
+                        <td>1100000</td>
+                        <td>第五期短期融资券</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>中国汇金投资有限责任公司</td>
+                        <td>1100000</td>
+                        <td>第七期短期融资券</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>中国汇金投资有限责任公司</td>
+                        <td>1000000</td>
+                        <td>第一期中期票据</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>中国汇金投资有限责任公司</td>
+                        <td>1000000</td>
+                        <td>第二期中期票据</td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
 
@@ -177,7 +414,7 @@
             <div class="contentTypeSelected" data-ref="1">主体评级</div>
             <div data-ref="2">发行规模</div>
             <div data-ref="3">发行期限</div>
-            <div data-ref="4">行业分布</div>
+            <!--<div data-ref="4">行业分布</div>-->
         </div>
         <div class="contentMain">
             <div id="page2Chart2" class="chart"></div>
@@ -191,7 +428,96 @@
             <div data-ref="3">债权大单TOP5</div>
         </div>
         <div class="contentMain">
-            <div id="page2Chart3" class="chart"></div>
+            <div id="page2Chart3" class="chart" style="height: auto; padding: 0.25rem;">
+                <table id="page2Table1" class="table">
+                    <tr>
+                        <td>1</td>
+                        <td>南京银行股份有限公司</td>
+                        <td>127</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>江苏银行股份有限公司</td>
+                        <td>98</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>徽商银行股份有限公司</td>
+                        <td>76</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>华夏银行股份有限公司</td>
+                        <td>55</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>宁波银行股份有限公司</td>
+                        <td>46</td>
+                    </tr>
+                </table>
+
+                <table id="page2Table2" class="table">
+                    <tr>
+                        <td>1</td>
+                        <td>徽商银行股份有限公司</td>
+                        <td>4648000</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>华夏银行股份有限公司</td>
+                        <td>4556100</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>南京银行股份有限公司</td>
+                        <td>3232400</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>江苏银行股份有限公司</td>
+                        <td>3184100</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>中国光大银行股份有限公司</td>
+                        <td>1352100</td>
+                    </tr>
+                </table>
+
+                <table id="page2Table3" class="table">
+                    <tr>
+                        <td>1</td>
+                        <td>招商银行股份有限公司</td>
+                        <td>330000</td>
+                        <td>广州交通投资集团有限公司2018年度第一期债权融资计划</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>杭州银行股份有限公司</td>
+                        <td>300000</td>
+                        <td>杭州市城建开发集团有限公司2017年度第一期债权融资计划</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>华夏银行股份有限公司</td>
+                        <td>300000</td>
+                        <td>北京城建投资发展股份有限公司2018年度第二期债权融资计划</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>上海银行股份有限公司</td>
+                        <td>300000</td>
+                        <td>中国冶金科工集团有限公司2018年度第一期债权融资计划</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>华夏银行股份有限公司</td>
+                        <td>250000</td>
+                        <td>陕西煤业化工集团有限责任公司2017年度第一期债权融资计划</td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
 
@@ -278,9 +604,11 @@
                         break;
                     case 'page1Chart3':
                         if (!page1Chart3) {
-                            page1Chart3 = echarts.init(document.getElementById('page1Chart3'));
-                            page1Chart3.setOption(page1Chart3Option1);
+                            // page1Chart3 = echarts.init(document.getElementById('page1Chart3'));
+                            // page1Chart3.setOption(page1Chart3Option1);
+                            // $('#page1Table1').show();
                         }
+                        break;
                     case 'page1Chart4':
                         if (!page1Chart4) {
                             page1Chart4 = echarts.init(document.getElementById('page1Chart4'));
@@ -301,8 +629,9 @@
                         break;
                     case 'page2Chart3':
                         if (!page2Chart3) {
-                            page2Chart3 = echarts.init(document.getElementById('page2Chart3'));
-                            page2Chart3.setOption(page2Chart3Option1);
+                            // page2Chart3 = echarts.init(document.getElementById('page2Chart3'));
+                            // page2Chart3.setOption(page2Chart3Option1);
+                            // $('#page2Table1').show();
                         }
                         break;
                     case 'page2Chart4':
@@ -372,25 +701,32 @@
             case 'page1Chart3':
                 switch (ref) {
                     case 1:
-                        echarts.init(chart).setOption(page1Chart3Option1);
+                        // echarts.init(chart).setOption(page1Chart3Option1);
+                        $('#page1Table1').show().siblings().hide();
                         break;
                     case 2:
-                        echarts.init(chart).setOption(page1Chart3Option2);
+                        // echarts.init(chart).setOption(page1Chart3Option2);
+                        $('#page1Table2').show().siblings().hide();
                         break;
                     case 3:
-                        echarts.init(chart).setOption(page1Chart3Option3);
+                        // echarts.init(chart).setOption(page1Chart3Option3);
+                        $('#page1Table3').show().siblings().hide();
                         break;
                     case 4:
-                        echarts.init(chart).setOption(page1Chart3Option4);
+                        // echarts.init(chart).setOption(page1Chart3Option4);
+                        $('#page1Table4').show().siblings().hide();
                         break;
                     case 5:
-                        echarts.init(chart).setOption(page1Chart3Option5);
+                        // echarts.init(chart).setOption(page1Chart3Option5);
+                        $('#page1Table5').show().siblings().hide();
                         break;
                     case 6:
-                        echarts.init(chart).setOption(page1Chart3Option6);
+                        // echarts.init(chart).setOption(page1Chart3Option6);
+                        $('#page1Table6').show().siblings().hide();
                         break;
                     case 7:
-                        echarts.init(chart).setOption(page1Chart3Option7);
+                        // echarts.init(chart).setOption(page1Chart3Option7);
+                        $('#page1Table7').show().siblings().hide();
                         break;
                 }
                 break;
@@ -430,13 +766,16 @@
             case 'page2Chart3':
                 switch (ref) {
                     case 1:
-                        echarts.init(chart).setOption(page2Chart3Option1);
+                        // echarts.init(chart).setOption(page2Chart3Option1);
+                        $('#page2Table1').show().siblings().hide();
                         break;
                     case 2:
-                        echarts.init(chart).setOption(page2Chart3Option2);
+                        // echarts.init(chart).setOption(page2Chart3Option2);
+                        $('#page2Table2').show().siblings().hide();
                         break;
                     case 3:
-                        echarts.init(chart).setOption(page2Chart3Option3);
+                        // echarts.init(chart).setOption(page2Chart3Option3);
+                        $('#page2Table3').show().siblings().hide();
                         break;
                 }
                 break;
@@ -555,7 +894,7 @@
                 type: 'pie',
                 radius: ['35%', '50%'],
                 label: {
-                    formatter: "{b}：{c}",
+                    formatter: "{b}：{d}%",
                     color: '#000000',
                     fontFamily: 'PingFangSC-Medium',
                     fontWeight: 'bold',
@@ -563,6 +902,8 @@
                 },
                 labelLine: { //引导线
                     smooth: false,
+                    length: 5,
+                    length2: 5,
                     lineStyle: {
                         color: '#DBDBDB',
                     }
@@ -1027,63 +1368,63 @@
         {name: 'CP', value: 467},
     ];
 
-    let page1Chart3Option1 = deepClone(barOptionHorizontal);
-    page1Chart3Option1.yAxis.data = ["中国建设银行股份有限公司", "兴业银行股份有限公司", "中国工商银行股份有限公司", "中国银行股份有限公司", "招商银行股份有限公司"];
-    page1Chart3Option1.series = [
-        {
-            type: 'bar',
-            barMaxWidth: 30,
-            data: [41821000, 40844400, 39471600, 39006000, 36886300]
-        }
-    ];
-    let page1Chart3Option2 = deepClone(barOptionHorizontal);
-    page1Chart3Option2.yAxis.data = ["兴业银行股份有限公司", "中国建设银行股份有限公司", "招商银行股份有限公司", "上海浦东发展银行股份有限公司", "中信银行股份有限公司"];
-    page1Chart3Option2.series = [
-        {
-            type: 'bar',
-            data: [439, 399, 358, 315, 315]
-        }
-    ];
-    let page1Chart3Option3 = deepClone(barOptionHorizontal);
-    // page1Chart3Option3.yAxis.data = ["中央汇金投资有限责任公司", "国家电力投资集团有限公司", "中国南方电网有限责任公司", "中国电信股份有限公司", "江苏交通控股有限公司"];
-    page1Chart3Option3.series = [
-        {
-            // type: 'bar',
-            // data: [16400000, 11200000, 7300000, 5970000, 5700000]
-        }
-    ];
-    let page1Chart3Option4 = deepClone(barOptionHorizontal);
-    page1Chart3Option4.yAxis.data = ["中国光大银行股份有限公司", "中国工商银行股份有限公司", "招商银行股份有限公司", "兴业银行股份有限公司", "上海农村商业银行股份有限公司"];
-    page1Chart3Option4.series = [
-        {
-            type: 'bar',
-            data: [248, 268, 415, 527, 398]
-        }
-    ];
-    let page1Chart3Option5 = deepClone(barOptionHorizontal);
-    page1Chart3Option5.yAxis.data = ["中国民生银行股份有限公司", "上海浦东发展银行股份有限公司", "中国光大银行股份有限公司", "兴业银行股份有限公司", "商银行股份有限公司"];
-    page1Chart3Option5.series = [
-        {
-            type: 'bar',
-            data: [541.8, 439.5, 346.4, 286.4, 290.6]
-        }
-    ];
-    let page1Chart3Option6 = deepClone(barOptionHorizontal);
-    page1Chart3Option6.yAxis.data = ["中国民生银行股份有限公司", "上海浦东发展银行股份有限公司", "中国光大银行股份有限公司", "兴业银行股份有限公司", "商银行股份有限公司"];
-    page1Chart3Option6.series = [
-        {
-            type: 'bar',
-            data: [76, 59, 54, 44, 39]
-        }
-    ];
-    let page1Chart3Option7 = deepClone(barOptionHorizontal);
-    page1Chart3Option7.yAxis.data = ["中国汇金投资有限责任公司", "中国汇金投资有限责任公司", "中国汇金投资有限责任公司", "中国汇金投资有限责任公司", "中国汇金投资有限责任公司"];
-    page1Chart3Option7.series = [
-        {
-            type: 'bar',
-            data: [1200000, 1100000, 1100000, 1000000, 1000000]
-        }
-    ];
+    // let page1Chart3Option1 = deepClone(barOptionHorizontal);
+    // page1Chart3Option1.yAxis.data = ["中国建设银行股份有限公司", "兴业银行股份有限公司", "中国工商银行股份有限公司", "中国银行股份有限公司", "招商银行股份有限公司"];
+    // page1Chart3Option1.series = [
+    //     {
+    //         type: 'bar',
+    //         barMaxWidth: 30,
+    //         data: [41821000, 40844400, 39471600, 39006000, 36886300]
+    //     }
+    // ];
+    // let page1Chart3Option2 = deepClone(barOptionHorizontal);
+    // page1Chart3Option2.yAxis.data = ["兴业银行股份有限公司", "中国建设银行股份有限公司", "招商银行股份有限公司", "上海浦东发展银行股份有限公司", "中信银行股份有限公司"];
+    // page1Chart3Option2.series = [
+    //     {
+    //         type: 'bar',
+    //         data: [439, 399, 358, 315, 315]
+    //     }
+    // ];
+    // let page1Chart3Option3 = deepClone(barOptionHorizontal);
+    // // page1Chart3Option3.yAxis.data = ["中央汇金投资有限责任公司", "国家电力投资集团有限公司", "中国南方电网有限责任公司", "中国电信股份有限公司", "江苏交通控股有限公司"];
+    // page1Chart3Option3.series = [
+    //     {
+    //         // type: 'bar',
+    //         // data: [16400000, 11200000, 7300000, 5970000, 5700000]
+    //     }
+    // ];
+    // let page1Chart3Option4 = deepClone(barOptionHorizontal);
+    // page1Chart3Option4.yAxis.data = ["中国光大银行股份有限公司", "中国工商银行股份有限公司", "招商银行股份有限公司", "兴业银行股份有限公司", "上海农村商业银行股份有限公司"];
+    // page1Chart3Option4.series = [
+    //     {
+    //         type: 'bar',
+    //         data: [248, 268, 415, 527, 398]
+    //     }
+    // ];
+    // let page1Chart3Option5 = deepClone(barOptionHorizontal);
+    // page1Chart3Option5.yAxis.data = ["中国民生银行股份有限公司", "上海浦东发展银行股份有限公司", "中国光大银行股份有限公司", "兴业银行股份有限公司", "商银行股份有限公司"];
+    // page1Chart3Option5.series = [
+    //     {
+    //         type: 'bar',
+    //         data: [541.8, 439.5, 346.4, 286.4, 290.6]
+    //     }
+    // ];
+    // let page1Chart3Option6 = deepClone(barOptionHorizontal);
+    // page1Chart3Option6.yAxis.data = ["中国民生银行股份有限公司", "上海浦东发展银行股份有限公司", "中国光大银行股份有限公司", "兴业银行股份有限公司", "商银行股份有限公司"];
+    // page1Chart3Option6.series = [
+    //     {
+    //         type: 'bar',
+    //         data: [76, 59, 54, 44, 39]
+    //     }
+    // ];
+    // let page1Chart3Option7 = deepClone(barOptionHorizontal);
+    // page1Chart3Option7.yAxis.data = ["中国汇金投资有限责任公司", "中国汇金投资有限责任公司", "中国汇金投资有限责任公司", "中国汇金投资有限责任公司", "中国汇金投资有限责任公司"];
+    // page1Chart3Option7.series = [
+    //     {
+    //         type: 'bar',
+    //         data: [1200000, 1100000, 1100000, 1000000, 1000000]
+    //     }
+    // ];
 
     let page1Chart4Option1 = deepClone(lineOption);
     page1Chart4Option1.series[0].data = [
