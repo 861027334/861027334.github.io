@@ -40,6 +40,7 @@
             border-radius: 0.266rem;
             box-shadow: 0 0.1rem 0.266rem 0 rgba(0, 13, 79, 0.09);
             overflow: hidden;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
         }
 
         #header .headerType {
@@ -65,6 +66,7 @@
             border-radius: 0.266rem;
             overflow: hidden;
             box-shadow: 0 0.1rem 0.266rem 0 rgba(0, 13, 79, 0.09);
+            margin-bottom: 0.666rem;
         }
 
         .contentType {
@@ -77,56 +79,20 @@
             color: rgba(0, 10, 58, 1);
             line-height: 1.466rem;
             text-align: center;
-            position: relative;
+            display: flex;
+            overflow-y: auto;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            -webkit-overflow-scrolling: touch;
         }
 
-        .contentType img {
-            width: 0.633rem;
-            height: 0.633rem;
-            position: absolute;
-            top: 0.433rem;
-            margin-left: 0.333rem;
-            transition: all 100ms linear 0s;
+        .contentType div {
+            flex-grow: 1;
+            white-space: nowrap;
+            padding: 0 0.3rem;
         }
 
-        .imgRotate {
-            -webkit-transform: rotate(180deg);
-            -moz-transform: rotate(180deg);
-            -ms-transform: rotate(180deg);
-            -o-transform: rotate(180deg);
-            transform: rotate(180deg);
-        }
-
-        .contentType .selectBox {
-            display: none;
-            position: absolute;
-            top: 1.466rem;
-            left: 0;
-            right: 0;
-            width: 5.366rem;
-            /*height: 5rem;*/
-            background: rgba(255, 255, 255, 1);
-            box-shadow: 0 0.1rem 0.266rem 0 rgba(0, 13, 79, 0.09);
-            -webkit-border-radius: 0.266rem;
-            -moz-border-radius: 0.266rem;
-            border-radius: 0.266rem;
-            overflow: hidden;
-            margin: auto;
-            z-index: 1;
-        }
-
-        .contentType .selectBox .selectBoxOption {
-            width: 100%;
-            height: 1.333rem;
-            font-size: 0.466rem;
-            font-family: PingFangSC-Regular;
-            font-weight: 400;
-            color: rgba(0, 10, 58, 1);
-            line-height: 1.333rem;
-        }
-
-        .contentType .selectBox .contentTypeSelected {
-            color: rgba(44, 79, 249, 1);
+        .contentType .contentTypeSelected {
+            background-color: #ffffff;
         }
 
         .chart {
@@ -138,35 +104,40 @@
             display: block;
         }
 
-        #footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 1;
+        .table {
+            width: 100%;
+            font-size: 0.38rem;
+            background-color: #a9d5e0;
+            color: #000000;
+            text-align: center;
+            border-collapse: collapse;
+            display: none;
+            font-weight: 600;
         }
 
-        .pageBtn {
-            opacity: 0.5;
-            width: 2.166rem;
-            height: 2.166rem;
+        .table tr td {
+            border: 0.1rem solid #ffffff;
+            height: 0.73rem;
+            line-height: 0.73rem;
         }
 
-        #lastPage {
-            position: absolute;
-            left: 0.233rem;
-            bottom: 0.666rem;
-            background: url("img/lastPage.png");
-            background-size: cover;
+        .table tr td:first-child {
+            background-color: #56AAC4;
+            min-width: 1rem;
         }
 
-        #nextPage {
-            position: absolute;
-            right: 0.233rem;
-            bottom: 0.666rem;
-            background: url("img/nextPage.png");
-            background-size: cover;
+        .table tr td:nth-child(3) {
+            min-width: 2rem;
         }
+
+        .table tr:nth-child(even) {
+            background-color: #d4eaf2;
+        }
+
+        #page2Table1,#page1Table1{
+            display: table;
+        }
+
     </style>
 </head>
 <body>
@@ -176,77 +147,423 @@
     <div class="headerType" data-ref="3">权益</div>
 </div>
 
-<div id="footer">
-    <div id="lastPage" class="pageBtn"></div>
-    <div id="nextPage" class="pageBtn"></div>
-</div>
-
 <div id="page1" class="page">
     <div class="content">
         <div class="contentType">
-            <span class="contentTypeName">发行额度</span>
-            <img src="img/contentTypeIcon.png" alt="">
-            <div class="selectBox">
-                <div class="selectBoxOption contentTypeSelected" data-ref="1">发行额度</div>
-                <div class="selectBoxOption" data-ref="2">发行支数</div>
-            </div>
+            <div class="contentTypeSelected" data-ref="1">发行额度</div>
+            <div data-ref="2">发行只数</div>
         </div>
         <div class="contentMain">
-            <div id="page1Chart" class="chart"></div>
+            <div id="page1Chart1" class="chart"></div>
         </div>
     </div>
+
+    <div class="content">
+        <div class="contentType">
+            <div class="contentTypeSelected" data-ref="1">主体评级</div>
+            <div data-ref="2">发行规模</div>
+            <div data-ref="3">发行期限</div>
+            <div data-ref="4">发行类型</div>
+        </div>
+        <div class="contentMain">
+            <div id="page1Chart2" class="chart"></div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="contentType">
+            <div class="contentTypeSelected" data-ref="1">发行额度TOP5</div>
+            <div data-ref="2">发行支数TOP5</div>
+            <div data-ref="3">市场影响力TOP5</div>
+            <div data-ref="4">市场参与度TOP5</div>
+            <div data-ref="5">私募发行额度TOP5</div>
+            <div data-ref="6">私募发行支数TOP5</div>
+            <div data-ref="7">债券大单TOP5</div>
+        </div>
+        <div class="contentMain">
+            <div id="page1Chart3" class="chart" style="height: auto; padding: 0.25rem;">
+
+                <table id="page1Table1" class="table">
+                    <tr>
+                        <td>1</td>
+                        <td>中央汇金投资有限责任公司</td>
+                        <td>16400000</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>国家电力投资集团有限公司</td>
+                        <td>11200000</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>中国南方电网有限责任公司</td>
+                        <td>7300000</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>中国电信股份有限公司</td>
+                        <td>5970000</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>江苏交通控股有限公司</td>
+                        <td>5700000</td>
+                    </tr>
+                </table>
+
+                <table id="page1Table2" class="table">
+                    <tr>
+                        <td>1</td>
+                        <td>国家电力投资集团有限公司</td>
+                        <td>43</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>山东钢铁集团有限公司</td>
+                        <td>33</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>大同煤矿集团有限责任公司</td>
+                        <td>32</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>江苏交通控股有限公司</td>
+                        <td>29</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>天津城市基础设施建设投资集团有限公司</td>
+                        <td>29</td>
+                    </tr>
+                </table>
+
+                <table id="page1Table3" class="table">
+                    <tr>
+                        <td>1</td>
+                        <td>申万宏源证券有限公司</td>
+                        <td>4233</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>东海证券股份有限公司</td>
+                        <td>3950</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>第一创业证券股份有限公司</td>
+                        <td>3629</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>中信证券股份有限公司</td>
+                        <td>3090</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>中国民生银行股份有限公司</td>
+                        <td>2707</td>
+                    </tr>
+                </table>
+
+                <table id="page1Table4" class="table">
+                    <tr>
+                        <td>1</td>
+                        <td>兴业银行股份有限公司</td>
+                        <td>527</td>
+
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>招商银行股份有限公司</td>
+                        <td>415</td>
+
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>上海农村商业银行股份有限公司</td>
+                        <td>398</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>中国工商银行股份有限公司</td>
+                        <td>268</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>中国光大银行股份有限公司</td>
+                        <td>248</td>
+                    </tr>
+                </table>
+
+                <table id="page1Table5" class="table">
+                    <tr>
+                        <td>1</td>
+                        <td>中国民生银行股份有限公司</td>
+                        <td>541.8</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>上海浦东发展银行股份有限公司</td>
+                        <td>439.5</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>中国光大银行股份有限公司</td>
+                        <td>346.4</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>商银行股份有限公司</td>
+                        <td>290.6</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>兴业银行股份有限公司</td>
+                        <td>286.4</td>
+                    </tr>
+                </table>
+
+                <table id="page1Table6" class="table">
+                    <tr>
+                        <td>1</td>
+                        <td>中国民生银行股份有限公司</td>
+                        <td>76</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>上海浦东发展银行股份有限公司</td>
+                        <td>59</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>中国光大银行股份有限公司</td>
+                        <td>54</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>兴业银行股份有限公司</td>
+                        <td>44</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>商银行股份有限公司</td>
+                        <td>39</td>
+                    </tr>
+                </table>
+
+
+                <table id="page1Table7" class="table">
+                    <tr>
+                        <td>1</td>
+                        <td>中国汇金投资有限责任公司</td>
+                        <td>1200000</td>
+                        <td>第四期中期票据（债券通）</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>中国汇金投资有限责任公司</td>
+                        <td>1100000</td>
+                        <td>第五期短期融资券</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>中国汇金投资有限责任公司</td>
+                        <td>1100000</td>
+                        <td>第七期短期融资券</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>中国汇金投资有限责任公司</td>
+                        <td>1000000</td>
+                        <td>第一期中期票据</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>中国汇金投资有限责任公司</td>
+                        <td>1000000</td>
+                        <td>第二期中期票据</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="contentType">
+            <div class="contentTypeSelected" data-ref="1">申购区间</div>
+        </div>
+        <div class="contentMain">
+            <div id="page1Chart4" class="chart"></div>
+        </div>
+    </div>
+
 </div>
+
 <div id="page2" class="page">
     <div class="content">
         <div class="contentType">
-            <span class="contentTypeName">主体评级</span>
-            <img src="img/contentTypeIcon.png" alt="">
-            <div class="selectBox">
-                <div class="selectBoxOption contentTypeSelected" data-ref="1">主体评级</div>
-                <div class="selectBoxOption" data-ref="2">发行规模</div>
-                <div class="selectBoxOption" data-ref="3">发行期限</div>
-                <div class="selectBoxOption" data-ref="4">发行类型</div>
-            </div>
+            <div class="contentTypeSelected" data-ref="1">发行额度</div>
+            <div data-ref="2">发行支数</div>
         </div>
         <div class="contentMain">
-            <div id="page2Chart" class="chart"></div>
+            <div id="page2Chart1" class="chart"></div>
         </div>
     </div>
-</div>
-<div id="page3" class="page">
+
     <div class="content">
         <div class="contentType">
-            <span class="contentTypeName">发行额度TOP5</span>
-            <img src="img/contentTypeIcon.png" alt="">
-            <div class="selectBox">
-                <div class="selectBoxOption contentTypeSelected" data-ref="1">发行额度TOP5</div>
-                <div class="selectBoxOption" data-ref="2">发行支数TOP5</div>
-                <!--<div class="selectBoxOption" data-ref="3">市场影响力TOP5</div>-->
-                <!--<div class="selectBoxOption" data-ref="4">市场参与度TOP5</div>-->
-                <div class="selectBoxOption" data-ref="5">私募发行额度TOP5</div>
-                <div class="selectBoxOption" data-ref="6">私募发行支数TOP5</div>
-                <div class="selectBoxOption" data-ref="7">债券大单TOP5</div>
-            </div>
+            <div class="contentTypeSelected" data-ref="1">主体评级</div>
+            <div data-ref="2">发行规模</div>
+            <div data-ref="3">发行期限</div>
+            <!--<div data-ref="4">行业分布</div>-->
         </div>
         <div class="contentMain">
-            <div id="page3Chart" class="chart"></div>
+            <div id="page2Chart2" class="chart"></div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="contentType">
+            <div class="contentTypeSelected" data-ref="1">发行支数TOP5</div>
+            <div data-ref="2">发行金额TOP5</div>
+            <div data-ref="3">债权大单TOP5</div>
+        </div>
+        <div class="contentMain">
+            <div id="page2Chart3" class="chart" style="height: auto; padding: 0.25rem;">
+                <table id="page2Table1" class="table">
+                    <tr>
+                        <td>1</td>
+                        <td>南京银行股份有限公司</td>
+                        <td>127</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>江苏银行股份有限公司</td>
+                        <td>98</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>徽商银行股份有限公司</td>
+                        <td>76</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>华夏银行股份有限公司</td>
+                        <td>55</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>宁波银行股份有限公司</td>
+                        <td>46</td>
+                    </tr>
+                </table>
+
+                <table id="page2Table2" class="table">
+                    <tr>
+                        <td>1</td>
+                        <td>徽商银行股份有限公司</td>
+                        <td>4648000</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>华夏银行股份有限公司</td>
+                        <td>4556100</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>南京银行股份有限公司</td>
+                        <td>3232400</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>江苏银行股份有限公司</td>
+                        <td>3184100</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>中国光大银行股份有限公司</td>
+                        <td>1352100</td>
+                    </tr>
+                </table>
+
+                <table id="page2Table3" class="table">
+                    <tr>
+                        <td>1</td>
+                        <td>招商银行股份有限公司</td>
+                        <td>330000</td>
+                        <td>广州交通投资集团有限公司2018年度第一期债权融资计划</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>杭州银行股份有限公司</td>
+                        <td>300000</td>
+                        <td>杭州市城建开发集团有限公司2017年度第一期债权融资计划</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>华夏银行股份有限公司</td>
+                        <td>300000</td>
+                        <td>北京城建投资发展股份有限公司2018年度第二期债权融资计划</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>上海银行股份有限公司</td>
+                        <td>300000</td>
+                        <td>中国冶金科工集团有限公司2018年度第一期债权融资计划</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>华夏银行股份有限公司</td>
+                        <td>250000</td>
+                        <td>陕西煤业化工集团有限责任公司2017年度第一期债权融资计划</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="contentType">
+            <div class="contentTypeSelected" data-ref="1">发行额度统计</div>
+        </div>
+        <div class="contentMain">
+            <div id="page2Chart4" class="chart"></div>
         </div>
     </div>
 </div>
 
-<div id="page4" class="page">
+<div id="page3" class="page">
     <div class="content">
         <div class="contentType">
-            <span class="contentTypeName">发行额度统计</span>
-            <img src="img/contentTypeIcon.png" alt="">
-            <div class="selectBox">
-                <div class="selectBoxOption contentTypeSelected" data-ref="1">发行额度统计</div>
-            </div>
+            <div class="contentTypeSelected" data-ref="1">挂牌量</div>
+            <div data-ref="2">挂牌金额</div>
         </div>
         <div class="contentMain">
-            <div id="page4Chart" class="chart"></div>
+            <div id="page3Chart1" class="chart"></div>
         </div>
     </div>
+
+    <div class="content">
+        <div class="contentType">
+            <div class="contentTypeSelected" data-ref="1">行业分布</div>
+            <div data-ref="2">项目比例</div>
+        </div>
+        <div class="contentMain">
+            <div id="page3Chart2" class="chart"></div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="contentType">
+            <div class="contentTypeSelected" data-ref="1">挂牌额度</div>
+        </div>
+        <div class="contentMain">
+            <div id="page3Chart3" class="chart"></div>
+        </div>
+    </div>
+
 </div>
 
 
@@ -255,391 +572,264 @@
 <script src="js/china.js"></script>
 <script>
 
-    if (!window.location.hash) {
-        window.location.href = '#page1';
-    } else {
-        window.onload = hashChange;
-    }
+    // let charts = document.getElementsByClassName('chart');
+    let charts = $('#page1').find('.chart');
 
-    let pages = ['#page1', '#page2', '#page3'];
+    window.onload = function () {
+        lazyLoad();
+    };
 
-    let page1Chart, page2Chart, page3Chart, page4Chart;
+    window.onscroll = function () {
+        lazyLoad();
+    };
 
-    window.onhashchange = hashChange;
+    let page1Chart1, page1Chart2, page1Chart3, page1Chart4, page2Chart1, page2Chart2, page2Chart3, page2Chart4,
+        page3Chart1, page3Chart2, page3Chart3;
 
-    function hashChange() {
+    function lazyLoad() {
+        let scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+        let winHeight = window.innerHeight;
 
-        let hash = window.location.hash;
-        $('.page').hide();
-        scroll(0, 0);
-
-        let pageChart;
-        switch (hash) {
-            case '#page1':
-                $('#page1').show();
-                pageChart = page1Chart = page1Chart ? page1Chart : echarts.init(document.getElementById('page1Chart'));
-                break;
-            case '#page2':
-                $('#page2').show();
-                pageChart = page2Chart = page2Chart ? page2Chart : echarts.init(document.getElementById('page2Chart'));
-                break;
-            case '#page3':
-                $('#page3').show();
-                pageChart = page3Chart = page3Chart ? page3Chart : echarts.init(document.getElementById('page3Chart'));
-                break;
-            case '#page4':
-                $('#page4').show();
-                pageChart = page4Chart = page4Chart ? page4Chart : echarts.init(document.getElementById('page4Chart'));
-                break;
-        }
-
-        let headerType = $('.headerSelected').data('ref');
-        let contentType = $('.page:visible').find('.contentTypeSelected').data('ref');
-
-        chartChange(headerType, contentType, pageChart);
-    }
-
-    //移动端手势
-    let startX;
-    let startY;
-    let startScrollTop;
-
-    window.addEventListener("touchstart", function (e) {
-        startX = e.touches[0].pageX;
-        startY = e.touches[0].pageY;
-        startScrollTop = document.body.scrollTop || document.documentElement.scrollTop;
-    }, false);
-
-    window.addEventListener("touchend", function (e) {
-        let endX = e.changedTouches[0].pageX;
-        let endY = e.changedTouches[0].pageY;
-        let endScrollTop = document.body.scrollTop || document.documentElement.scrollTop;
-        let clientHeight = document.documentElement.clientHeight;
-        let bodyHeight = document.body.clientHeight;
-
-        let differY = endScrollTop - startScrollTop;
-        let X = endX - startX;
-        let Y = endY - startY - differY;
-
-        if (Math.abs(X) > Math.abs(Y) && X > 10) {
-            // console.log("向右");
-            lastPage();
-        }
-        else if (Math.abs(X) > Math.abs(Y) && X < 10) {
-            // console.log("向左");
-            nextPage();
-        }
-        else if (Math.abs(Y) > Math.abs(X) && Y > 10) {
-            // console.log("向下");
-            if (startScrollTop <= 0) {
-                lastPage();
+        for (let i = 0; i < charts.length; i++) {
+            if (charts[i].offsetTop + 200 < scrollTop + winHeight) {
+                switch (charts[i].id) {
+                    case 'page1Chart1':
+                        if (!page1Chart1) {
+                            page1Chart1 = echarts.init(document.getElementById('page1Chart1'));
+                            page1Chart1.setOption(page1Chart1Option1);
+                        }
+                        break;
+                    case 'page1Chart2':
+                        if (!page1Chart2) {
+                            page1Chart2 = echarts.init(document.getElementById('page1Chart2'));
+                            page1Chart2.setOption(page1Chart2Option1);
+                        }
+                        break;
+                    case 'page1Chart3':
+                        if (!page1Chart3) {
+                            // page1Chart3 = echarts.init(document.getElementById('page1Chart3'));
+                            // page1Chart3.setOption(page1Chart3Option1);
+                            // $('#page1Table1').show();
+                        }
+                        break;
+                    case 'page1Chart4':
+                        if (!page1Chart4) {
+                            page1Chart4 = echarts.init(document.getElementById('page1Chart4'));
+                            page1Chart4.setOption(page1Chart4Option1);
+                        }
+                        break;
+                    case 'page2Chart1':
+                        if (!page2Chart1) {
+                            page2Chart1 = echarts.init(document.getElementById('page2Chart1'));
+                            page2Chart1.setOption(page2Chart1Option1);
+                        }
+                        break;
+                    case 'page2Chart2':
+                        if (!page2Chart2) {
+                            page2Chart2 = echarts.init(document.getElementById('page2Chart2'));
+                            page2Chart2.setOption(page2Chart2Option1);
+                        }
+                        break;
+                    case 'page2Chart3':
+                        if (!page2Chart3) {
+                            // page2Chart3 = echarts.init(document.getElementById('page2Chart3'));
+                            // page2Chart3.setOption(page2Chart3Option1);
+                            // $('#page2Table1').show();
+                        }
+                        break;
+                    case 'page2Chart4':
+                        if (!page2Chart4) {
+                            page2Chart4 = echarts.init(document.getElementById('page2Chart4'));
+                            page2Chart4.setOption(page2Chart4Option1);
+                        }
+                        break;
+                    case 'page3Chart1':
+                        if (!page3Chart1) {
+                            page3Chart1 = echarts.init(document.getElementById('page3Chart1'));
+                            page3Chart1.setOption(page3Chart1Option1);
+                        }
+                        break;
+                    case 'page3Chart2':
+                        if (!page3Chart2) {
+                            page3Chart2 = echarts.init(document.getElementById('page3Chart2'));
+                            page3Chart2.setOption(page3Chart2Option1);
+                        }
+                        break;
+                    case 'page3Chart3':
+                        if (!page3Chart3) {
+                            page3Chart3 = echarts.init(document.getElementById('page3Chart3'));
+                            page3Chart3.setOption(page3Chart3Option1);
+                        }
+                        break;
+                }
             }
         }
-        else if (Math.abs(Y) > Math.abs(X) && Y < 10) {
-            // console.log("向上");
-            if (startScrollTop + clientHeight >= bodyHeight) {
-                nextPage();
-            }
-        }
-        else {
-            // console.log("未滑动");
-        }
-    }, false);
-
-    //翻页按钮
-    $('#lastPage').click(function () {
-        lastPage();
-    });
-
-    $('#nextPage').click(function () {
-        nextPage();
-    });
-
-    function lastPage() {
-        let hash = window.location.hash;
-        let indexOf = pages.indexOf(hash);
-        if (indexOf !== 0) {
-            window.location.href = pages[indexOf - 1];
-        }
     }
 
-    function nextPage() {
-        let hash = window.location.hash;
-        let indexOf = pages.indexOf(hash);
-        if (indexOf + 1 !== pages.length) {
-            window.location.href = pages[indexOf + 1];
+    $('.contentType').click(function (e) {
+
+        let event = window.event || e;
+        let that = $(event.target);
+        that.addClass('contentTypeSelected').siblings().removeClass('contentTypeSelected');
+        let ref = that.data('ref');
+        let chart = $(this).parent('.content').find('.chart')[0];
+
+        switch (chart.id) {
+            case 'page1Chart1':
+                switch (ref) {
+                    case 1:
+                        echarts.init(chart).setOption(page1Chart1Option1);
+                        break;
+                    case 2:
+                        echarts.init(chart).setOption(page1Chart1Option2);
+                        break;
+                }
+                break;
+            case 'page1Chart2':
+                switch (ref) {
+                    case 1:
+                        echarts.init(chart).setOption(page1Chart2Option1);
+                        break;
+                    case 2:
+                        echarts.init(chart).setOption(page1Chart2Option2);
+                        break;
+                    case 3:
+                        echarts.init(chart).setOption(page1Chart2Option3);
+                        break;
+                    case 4:
+                        echarts.init(chart).setOption(page1Chart2Option4);
+                        break;
+                }
+                break;
+            case 'page1Chart3':
+                switch (ref) {
+                    case 1:
+                        // echarts.init(chart).setOption(page1Chart3Option1);
+                        $('#page1Table1').show().siblings().hide();
+                        break;
+                    case 2:
+                        // echarts.init(chart).setOption(page1Chart3Option2);
+                        $('#page1Table2').show().siblings().hide();
+                        break;
+                    case 3:
+                        // echarts.init(chart).setOption(page1Chart3Option3);
+                        $('#page1Table3').show().siblings().hide();
+                        break;
+                    case 4:
+                        // echarts.init(chart).setOption(page1Chart3Option4);
+                        $('#page1Table4').show().siblings().hide();
+                        break;
+                    case 5:
+                        // echarts.init(chart).setOption(page1Chart3Option5);
+                        $('#page1Table5').show().siblings().hide();
+                        break;
+                    case 6:
+                        // echarts.init(chart).setOption(page1Chart3Option6);
+                        $('#page1Table6').show().siblings().hide();
+                        break;
+                    case 7:
+                        // echarts.init(chart).setOption(page1Chart3Option7);
+                        $('#page1Table7').show().siblings().hide();
+                        break;
+                }
+                break;
+            case 'page1Chart4':
+                switch (ref) {
+                    case 1:
+                        echarts.init(chart).setOption(page1Chart4Option1);
+                        break;
+                }
+                break;
+            case 'page2Chart1':
+                switch (ref) {
+                    case 1:
+                        echarts.init(chart).setOption(page2Chart1Option1);
+                        break;
+                    case 2:
+                        echarts.init(chart).setOption(page2Chart1Option2);
+                        break;
+                }
+                break;
+            case 'page2Chart2':
+                switch (ref) {
+                    case 1:
+                        echarts.init(chart).setOption(page2Chart2Option1);
+                        break;
+                    case 2:
+                        echarts.init(chart).setOption(page2Chart2Option2);
+                        break;
+                    case 3:
+                        echarts.init(chart).setOption(page2Chart2Option3);
+                        break;
+                    case 4:
+                        echarts.init(chart).setOption(page2Chart2Option4);
+                        break;
+                }
+                break;
+            case 'page2Chart3':
+                switch (ref) {
+                    case 1:
+                        // echarts.init(chart).setOption(page2Chart3Option1);
+                        $('#page2Table1').show().siblings().hide();
+                        break;
+                    case 2:
+                        // echarts.init(chart).setOption(page2Chart3Option2);
+                        $('#page2Table2').show().siblings().hide();
+                        break;
+                    case 3:
+                        // echarts.init(chart).setOption(page2Chart3Option3);
+                        $('#page2Table3').show().siblings().hide();
+                        break;
+                }
+                break;
+            case 'page2Chart4':
+                switch (ref) {
+                    case 1:
+                        echarts.init(chart).setOption(page2Chart4Option1);
+                        break;
+                }
+                break;
+            case 'page3Chart1':
+                switch (ref) {
+                    case 1:
+                        echarts.init(chart).setOption(page3Chart1Option1);
+                        break;
+                    case 2:
+                        echarts.init(chart).setOption(page3Chart1Option2);
+                        break;
+                }
+                break;
+            case 'page3Chart2':
+                switch (ref) {
+                    case 1:
+                        echarts.init(chart).setOption(page3Chart2Option1);
+                        break;
+                    case 2:
+                        echarts.init(chart).setOption(page3Chart2Option2);
+                        break;
+                }
+                break;
+            case 'page3Chart3':
+                switch (ref) {
+                    case 1:
+                        echarts.init(chart).setOption(page3Chart3Option1);
+                        break;
+                }
+                break;
         }
-    }
-
-    //顶部栏type事件
-    $('#header').click(function (ev) {
-
-        window.location.href = '#page1';
-        scroll(100, 0);
-
-        let event = window.event || ev;
-        let headerOption = event.target;
-        $(headerOption).addClass('headerSelected').siblings().removeClass('headerSelected');
-
-        let headerType = $(headerOption).data('ref');
-        let page = $('.page:visible');
-        let contentType = page.find('.contentTypeSelected').data('ref');
-        let chart = page.find('.chart');
-
-        let $page1 = $('#page1');
-        let $page2 = $('#page2');
-        let $page3 = $('#page3');
-        let $page4 = $('#page4');
-
-        switch (headerType) {
-            case 1:
-                $page1.find('.contentTypeName').text('发行额度');
-                $page1.find('.selectBox').html(
-                    '<div class="selectBoxOption contentTypeSelected" data-ref="1">发行额度</div>' +
-                    '<div class="selectBoxOption" data-ref="2">发行支数</div>'
-                );
-                $page2.find('.contentTypeName').text('主体评级');
-                $page2.find('.selectBox').html(
-                    '<div class="selectBoxOption contentTypeSelected" data-ref="1">主体评级</div>' +
-                    '<div class="selectBoxOption" data-ref="2">发行规模</div>' +
-                    '<div class="selectBoxOption" data-ref="3">发行期限</div>' +
-                    '<div class="selectBoxOption" data-ref="4">发行类型</div>'
-                );
-                $page3.find('.contentTypeName').text('发行额度TOP5');
-                $page3.find('.selectBox').html(
-                    '<div class="selectBoxOption contentTypeSelected" data-ref="1">发行额度TOP5</div>' +
-                    '<div class="selectBoxOption" data-ref="2">发行支数TOP5</div>' +
-                    // '<div class="selectBoxOption" data-ref="2">市场影响力TOP5</div>' +
-                    // '<div class="selectBoxOption" data-ref="2">市场参与度TOP5</div>' +
-                    '<div class="selectBoxOption" data-ref="2">私募发行额度TOP5</div>' +
-                    '<div class="selectBoxOption" data-ref="2">私募发行支数TOP5</div>' +
-                    '<div class="selectBoxOption" data-ref="2">债券大单TOP5</div>'
-                );
-                pages = ['#page1', '#page2', '#page3'];
-                break;
-            case 2:
-                $page1.find('.contentTypeName').text('发行额度');
-                $page1.find('.selectBox').html(
-                    '<div class="selectBoxOption contentTypeSelected" data-ref="1">发行额度</div>' +
-                    '<div class="selectBoxOption" data-ref="2">发行支数</div>'
-                );
-                $page2.find('.contentTypeName').text('主体评级');
-                $page2.find('.selectBox').html(
-                    '<div class="selectBoxOption contentTypeSelected" data-ref="1">主体评级</div>' +
-                    '<div class="selectBoxOption" data-ref="2">发行规模</div>' +
-                    '<div class="selectBoxOption" data-ref="3">发行期限</div>'
-                    // '<div class="selectBoxOption" data-ref="4">行业分布</div>'
-                );
-                $page3.find('.contentTypeName').text('发行支数TOP5');
-                $page3.find('.selectBox').html(
-                    '<div class="selectBoxOption contentTypeSelected" data-ref="1">发行支数TOP5</div>' +
-                    '<div class="selectBoxOption" data-ref="2">发行金额TOP5</div>' +
-                    '<div class="selectBoxOption" data-ref="3">债权大单TOP5</div>'
-                );
-                $page4.find('.contentTypeName').text('发行额度统计');
-                $page4.find('.selectBox').html(
-                    '<div class="selectBoxOption contentTypeSelected" data-ref="1">发行额度统计</div>'
-                );
-                pages = ['#page1', '#page2', '#page3', '#page4'];
-                break;
-            case 3:
-                $page1.find('.contentTypeName').text('挂牌量');
-                $page1.find('.selectBox').html(
-                    '<div class="selectBoxOption contentTypeSelected" data-ref="1">挂牌量</div>' +
-                    '<div class="selectBoxOption" data-ref="2">挂牌金额</div>'
-                );
-                $page2.find('.contentTypeName').text('行业分布');
-                $page2.find('.selectBox').html(
-                    '<div class="selectBoxOption contentTypeSelected" data-ref="1">行业分布</div>' +
-                    '<div class="selectBoxOption" data-ref="2">项目比例</div>'
-                );
-                // $page3.find('.contentTypeName').text('挂牌额度');
-                // $page3.find('.selectBox').html(
-                //     '<div class="selectBoxOption contentTypeSelected" data-ref="1">挂牌额度</div>'
-                // );
-                // pages = ['#page1', '#page2', '#page3'];
-                pages = ['#page1', '#page2'];
-                break;
-        }
-
-        chartChange(headerType, 1, echarts.init(chart[0]));
 
     });
 
-    //二级type事件
-    $('.contentType').click(function (ev) {
-        $(this).find('.selectBox').stop().slideToggle(100);
-        $(this).find('img').toggleClass('imgRotate');
+    $('#header').click(function (e) {
+        let event = window.event || e;
 
-        //逻辑判断
-        let event = window.event || ev;
-        let option = $(event.target);
-        if (option.hasClass('selectBoxOption')) {
-            option.addClass('contentTypeSelected').siblings().removeClass('contentTypeSelected');
-            let optionName = option.text();
-            option.parents('.contentType').find('.contentTypeName').text(optionName);
-            let optionType = option.data('ref');
-            let chart = $(this).parents('.content').find('.chart');
-            let headerType = $('.headerSelected').data('ref');
-
-            // console.log(headerType);
-            // console.log(optionType)
-            // console.log(chart);
-            chartChange(headerType, optionType, echarts.init(chart[0]));
-        }
+        let that = $(event.target);
+        that.addClass('headerSelected').siblings().removeClass('headerSelected');
+        let ref = that.data('ref');
+        $('.page').eq(ref - 1).show().siblings('.page').hide();
+        charts = $('#page' + ref).find('.chart');
+        lazyLoad();
     });
-
-    function chartChange(headerType, optionType, chart) {
-        let hash = window.location.hash;
-        $('.selectBox').hide();
-
-        switch (hash) {
-            case '#page1':
-
-                switch (headerType) {
-                    case 1:
-
-                        switch (optionType) {
-                            case 1:
-                                chart.setOption(page1HeaderType1ContentType1Option);
-                                break;
-                            case 2:
-                                chart.setOption(page1HeaderType1ContentType2Option);
-                                break;
-                        }
-
-                        break;
-                    case 2:
-                        switch (optionType) {
-                            case 1:
-                                chart.setOption(page1HeaderType2ContentType1Option);
-                                break;
-                            case 2:
-                                chart.setOption(page1HeaderType2ContentType2Option);
-                                break;
-                        }
-                        break;
-                    case 3:
-                        switch (optionType) {
-                            case 1:
-                                chart.setOption(page1HeaderType3ContentType1Option);
-                                break;
-                            case 2:
-                                chart.setOption(page1HeaderType3ContentType2Option);
-                                break;
-                        }
-                }
-
-                break;
-            case '#page2':
-
-                switch (headerType) {
-                    case 1:
-
-                        switch (optionType) {
-                            case 1:
-                                chart.setOption(page2HeaderType1ContentType1Option);
-                                break;
-                            case 2:
-                                chart.setOption(page2HeaderType1ContentType2Option);
-                                break;
-                            case 3:
-                                chart.setOption(page2HeaderType1ContentType3Option);
-                                break;
-                            case 4:
-                                chart.setOption(page2HeaderType1ContentType4Option);
-                                break;
-                        }
-
-                        break;
-                    case 2:
-                        switch (optionType) {
-                            case 1:
-                                chart.setOption(page2HeaderType2ContentType1Option);
-                                break;
-                            case 2:
-                                chart.setOption(page2HeaderType2ContentType2Option);
-                                break;
-                            case 3:
-                                chart.setOption(page2HeaderType2ContentType3Option);
-                                break;
-                            case 4:
-                                chart.setOption(page2HeaderType2ContentType4Option);
-                                break;
-                        }
-                        break;
-                    case 3:
-                        switch (optionType) {
-                            case 1:
-                                chart.setOption(page2HeaderType3ContentType1Option);
-                                break;
-                            case 2:
-                                chart.setOption(page2HeaderType3ContentType2Option);
-                                break;
-                        }
-                }
-                break;
-            case '#page3':
-                switch (headerType) {
-                    case 1:
-                        switch (optionType) {
-                            case 1:
-                                chart.setOption(page3HeaderType1ContentType1Option);
-                                break;
-                            case 2:
-                                chart.setOption(page3HeaderType1ContentType2Option);
-                                break;
-                            case 3:
-                                chart.setOption(page3HeaderType1ContentType3Option);
-                                break;
-                            case 4:
-                                chart.setOption(page3HeaderType1ContentType4Option);
-                                break;
-                            case 5:
-                                chart.setOption(page3HeaderType1ContentType5Option);
-                                break;
-                            case 6:
-                                chart.setOption(page3HeaderType1ContentType6Option);
-                                break;
-                            case 7:
-                                chart.setOption(page3HeaderType1ContentType7Option);
-                                break;
-                        }
-                        break;
-                    case 2:
-                        switch (optionType) {
-                            case 1:
-                                chart.setOption(page3HeaderType2ContentType1Option);
-                                break;
-                            case 2:
-                                chart.setOption(page3HeaderType2ContentType2Option);
-                                break;
-                            case 3:
-                                chart.setOption(page3HeaderType2ContentType3Option);
-                                break;
-                        }
-                        break;
-                    case 3:
-                        break;
-                }
-                break;
-            case '#page4':
-                switch (headerType) {
-                    case 1:
-                        break;
-                    case 2:
-                        switch (optionType) {
-                            case 1:
-                                chart.setOption(page4HeaderType2ContentType1Option);
-                                break;
-                        }
-                        break;
-                    case 3:
-                        break;
-                }
-                break;
-        }
-    }
 
     //柱状图
     let barOption = {
@@ -707,7 +897,7 @@
                 type: 'pie',
                 radius: ['35%', '50%'],
                 label: {
-                    formatter: "{b}：{c}",
+                    formatter: "{b}：{d}%",
                     color: '#000000',
                     fontFamily: 'PingFangSC-Medium',
                     fontWeight: 'bold',
@@ -715,6 +905,8 @@
                 },
                 labelLine: { //引导线
                     smooth: false,
+                    length: 5,
+                    length2: 5,
                     lineStyle: {
                         color: '#DBDBDB',
                     }
@@ -778,11 +970,67 @@
         series: []
     };
 
+    //折线图
+    let lineOption = {
+        tooltip: {
+            trigger: 'axis', //触发类型
+        },
+        grid: {
+            // containLabel: true //grid 区域是否包含坐标轴的刻度标签
+        },
+        xAxis: {
+            type: 'category', //x轴类型
+            // boundaryGap: false, //数值起始和结束两端空白策略
+            axisLine: {
+                show: false,
+            },
+            axisTick: {
+                show: false
+            },
+            axisLabel: {
+                show: true,
+                color: 'rgba(32,32,32,1)',
+                fontFamily: 'PingFangSC-Semibold',
+                fontWeight: 600,
+                fontSize: 10
+            },
+            data: ['0%', '0.01%', '0.83%', '2%', '2.5%', '3%', '3.33%', '3.64%', '3.85%', '4%', '4.17%', '4.44%', '4.55%', '5%', '5.33%', '5.56%', '5.71%', '5.83%', '6%', '6.25%', '6.67%', '7%', '7.14%', '7.5%', '7.69%', '8%', '8.18%', '8.33%', '8.75%', '9%', '9.09%', '10%', '10.59%', '10.67%', '10.77%', '11%', '11.11%', '11.33%', '11.43%', '11.54%', '11.67%', '12%', '12.14%', '12.5%', '12.67%', '12.86%', '13%', '13.33%', '13.75%', '14%', '14.17%', '14.29%', '14.5%', '14.62%', '14.67%', '15%', '15.38%', '15.83%', '16%', '16.25%', '16.36%', '16.67%', '16.92%', '17%', '17.27%', '17.69%', '17.78%', '18%', '18.33%', '18.46%', '18.57%', '18.67%', '18.75%', '19%', '19.17%', '19.23%', '20%', '20.45%', '20.83%', '21%', '21.11%', '21.25%', '21.33%', '21.43%', '21.54%', '21.67%', '22%', '22.22%', '22.31%', '22.4%', '22.5%', '22.63%', '22.73%', '22.86%', '22.94%', '23%', '23.08%', '23.33%', '23.5%', '23.75%', '24%', '24.17%', '24.29%', '24.55%', '24.67%', '24.71%', '25%', '25.33%', '25.45%', '25.91%', '26%', '26.15%', '26.25%', '26.43%', '26.67%', '26.92%', '27%', '27.14%', '27.27%', '27.5%', '27.78%', '28%', '28.33%', '28.46%', '28.57%', '28.67%', '28.75%', '29%', '29.17%', '29.23%', '29.33%', '30%', '30.77%', '30.8%', '30.83%', '31%', '31.11%', '31.25%', '31.33%', '31.67%', '32%', '32.14%', '32.31%', '32.35%', '32.5%', '32.73%', '32.86%', '33%', '33.08%', '33.33%', '33.57%', '33.64%', '33.75%', '33.85%', '34%', '34.17%', '34.38%', '34.55%', '34.62%', '34.67%', '34.8%', '35%', '35.33%', '35.71%', '35.83%', '36%', '36.15%', '36.25%', '36.36%', '36.67%', '36.92%', '37%', '37.14%', '37.27%', '37.33%', '37.5%', '37.83%', '38%', '38.13%', '38.18%', '38.33%', '38.46%', '38.57%', '38.67%', '38.75%', '38.89%', '39%', '39.17%', '39.38%', '40%', '40.91%', '41%', '41.25%', '41.33%', '41.43%', '41.54%', '41.67%', '42%', '42.11%', '42.22%', '42.5%', '42.67%', '42.73%', '42.86%', '43%', '43.33%', '43.64%', '43.75%', '43.85%', '44%', '44.17%', '44.44%', '44.55%', '44.62%', '44.67%', '45%', '45.33%', '45.45%', '45.56%', '45.71%', '45.83%', '45.88%', '46%', '46.15%', '46.25%', '46.67%', '47%', '47.14%', '47.5%', '47.69%', '48%', '48.18%', '48.33%', '48.57%', '48.75%', '48.89%', '49%', '49.09%', '49.17%', '49.23%', '49.33%', '50%', '50.67%', '50.77%', '51%', '51.25%', '51.33%', '51.43%', '51.54%', '52%', '52.22%', '52.31%', '52.5%', '52.67%', '52.73%', '52.86%', '53%', '53.08%', '53.33%', '53.75%', '53.85%', '54%', '54.17%', '54.29%', '54.55%', '54.67%', '55%', '55.33%', '55.38%', '55.56%', '55.71%', '55.83%', '56%', '56.15%', '56.25%', '56.36%', '56.43%', '56.67%', '56.92%', '57%', '57.14%', '57.22%', '57.5%', '57.69%', '58%', '58.33%', '58.57%', '58.67%', '58.75%', '59%', '59.09%', '59.23%', '60%', '60.67%', '60.77%', '60.83%', '61%', '61.11%', '61.25%', '61.54%', '61.67%', '62%', '62.11%', '62.22%', '62.5%', '62.67%', '62.73%', '62.86%', '63%', '63.33%', '64%', '64.17%', '64.29%', '64.5%', '64.62%', '64.67%', '65%', '65.33%', '65.38%', '65.56%', '65.83%', '66%', '66.25%', '66.43%', '66.67%', '67%', '67.14%', '67.5%', '67.69%', '67.86%', '68%', '68.23%', '68.33%', '68.57%', '68.75%', '69%', '69.09%', '69.23%', '69.33%', '69.5%', '70%', '70.59%', '70.67%', '70.77%', '70.83%', '70.91%', '71%', '71.11%', '71.25%', '71.33%', '71.43%', '72%', '72.22%', '72.31%', '72.5%', '72.73%', '72.86%', '73%', '73.08%', '73.16%', '73.33%', '73.75%', '73.85%', '74%', '74.29%', '74.44%', '74.55%', '75%', '75.38%', '75.56%', '75.71%', '75.85%', '76%', '76.15%', '76.31%', '76.36%', '76.67%', '76.92%', '77%', '77.14%', '77.33%', '77.78%', '78%', '78.18%', '78.33%', '78.57%', '78.67%', '79%', '79.17%', '79.23%', '79.38%', '79.91%', '80%', '80.67%', '80.83%', '81%', '81.25%', '81.43%', '81.54%', '81.67%', '81.82%', '82%', '82.14%', '82.31%', '82.5%', '83%', '83.08%', '83.33%', '83.57%', '83.75%', '83.85%', '84%', '84.44%', '84.62%', '84.67%', '85%', '85.29%', '85.56%', '85.71%', '85.83%', '86%', '86.15%', '86.25%', '86.47%', '86.67%', '86.88%', '86.92%', '87%', '87.27%', '87.5%', '88%', '88.24%', '88.33%', '88.57%', '88.89%', '89%', '89.33%', '89.43%', '89.47%', '90%', '90.63%', '90.77%', '90.91%', '91%', '91.43%', '91.54%', '91.67%', '92%', '92.14%', '92.31%', '92.5%', '92.67%', '92.78%', '92.86%', '93%', '93.02%', '93.33%', '93.46%', '93.68%', '93.75%', '93.82%', '94%', '94.3%', '94.44%', '94.55%', '95%', '95.45%', '95.71%', '95.83%', '96%', '96.15%', '96.25%', '96.67%', '97%', '97.1%', '97.14%', '97.33%', '97.5%', '98%', '98.33%', '98.57%', '98.67%', '98.75%', '98.89%', '99%', '99.17%', '99.23%', '99.73%', '100%']
+
+        },
+        yAxis: {
+            type: 'value', //y轴类型
+            axisLine: {
+                show: false,
+            },
+            axisTick: {
+                show: false
+            },
+            axisLabel: {
+                show: true,
+                color: 'rgba(32,32,32,1)',
+                fontFamily: 'PingFangSC-Semibold',
+                fontWeight: 600,
+                fontSize: 10
+            }
+        },
+        color: '#43DFFF',
+        series: [
+            {
+                // name: '邮件营销',
+                type: 'line',
+                // data: [918, 100, 312, 314]
+            },
+        ]
+    };
+
     //地图
     let geoCoordMap = {
         '北京': [116.46, 39.92],
         '江苏': [118.78, 32.04],
         '安徽': [117.27, 31.86],
+        '湖北': [114.31, 30.52],
+        '广东': [113.23, 23.16],
+        '天津': [117.2, 39.13]
     };
     // let geoCoordMap = {
     //     '海门': [121.15, 31.89],
@@ -1017,7 +1265,7 @@
         },
         series: [
             {
-                name: 'TOP 3',
+                // name: 'TOP 3',
                 type: 'scatter',
                 coordinateSystem: 'geo',
                 // data: convertData(data),
@@ -1073,24 +1321,24 @@
 
     //数据渲染
     //债券
-    let page1HeaderType1ContentType1Option = deepClone(barOption);
-    page1HeaderType1ContentType1Option.series = [
+    let page1Chart1Option1 = deepClone(barOption);
+    page1Chart1Option1.series = [
         {
             type: 'bar',
             data: [27099350, 20803000, 60303000, 57237500, 27220600, 30402900, 42606500, 54550500, 34185200, 39513401, 50447400, 46108578]
         }
     ];
 
-    let page1HeaderType1ContentType2Option = deepClone(barOption);
-    page1HeaderType1ContentType2Option.series = [
+    let page1Chart1Option2 = deepClone(barOption);
+    page1Chart1Option2.series = [
         {
             type: 'bar',
             data: [255, 179, 537, 547, 228, 245, 363, 500, 320, 370, 488, 436]
         }
     ];
 
-    let page2HeaderType1ContentType1Option = deepClone(pieOption);
-    page2HeaderType1ContentType1Option.series[0].data = [
+    let page1Chart2Option1 = deepClone(pieOption);
+    page1Chart2Option1.series[0].data = [
         {name: 'AA', value: 675},
         {name: 'AAA', value: 2196},
         {name: 'AA+', value: 1457},
@@ -1098,24 +1346,24 @@
         {name: 'AA-', value: 7}
     ];
 
-    let page2HeaderType1ContentType2Option = deepClone(pieOption);
-    page2HeaderType1ContentType2Option.series[0].data = [
+    let page1Chart2Option2 = deepClone(pieOption);
+    page1Chart2Option2.series[0].data = [
         {name: '1亿', value: 44},
         {name: '1-5亿', value: 3274},
         {name: '大于5亿', value: 2842},
         {name: '面议', value: 0},
     ];
 
-    let page2HeaderType1ContentType3Option = deepClone(pieOption);
-    page2HeaderType1ContentType3Option.series[0].data = [
+    let page1Chart2Option3 = deepClone(pieOption);
+    page1Chart2Option3.series[0].data = [
         {name: '1年内', value: 2943},
         {name: '1-3年', value: 776},
         {name: '3-5年', value: 461},
         {name: '5年以上', value: 291},
     ];
 
-    let page2HeaderType1ContentType4Option = deepClone(pieOption);
-    page2HeaderType1ContentType4Option.series[0].data = [
+    let page1Chart2Option4 = deepClone(pieOption);
+    page1Chart2Option4.series[0].data = [
         {name: 'MTN', value: 1577},
         {name: 'RB-PB', value: 3},
         {name: 'ABN', value: 157},
@@ -1123,100 +1371,105 @@
         {name: 'CP', value: 467},
     ];
 
-    let page3HeaderType1ContentType1Option = deepClone(barOptionHorizontal);
-    page3HeaderType1ContentType1Option.yAxis.data = ["中国建设银行股份有限公司", "兴业银行股份有限公司", "中国工商银行股份有限公司", "中国银行股份有限公司", "招商银行股份有限公司"];
-    page3HeaderType1ContentType1Option.series = [
-        {
-            type: 'bar',
-            barMaxWidth: 30,
-            data: [41821000, 40844400, 39471600, 39006000, 36886300]
-        }
-    ];
-    let page3HeaderType1ContentType2Option = deepClone(barOptionHorizontal);
-    page3HeaderType1ContentType2Option.yAxis.data = ["兴业银行股份有限公司", "中国建设银行股份有限公司", "招商银行股份有限公司", "上海浦东发展银行股份有限公司", "中信银行股份有限公司"];
-    page3HeaderType1ContentType2Option.series = [
-        {
-            type: 'bar',
-            data: [439, 399, 358, 315, 315]
-        }
-    ];
-    let page3HeaderType1ContentType3Option = deepClone(barOptionHorizontal);
-    // page3HeaderType1ContentType2Option.yAxis.data = ["中央汇金投资有限责任公司", "国家电力投资集团有限公司", "中国南方电网有限责任公司", "中国电信股份有限公司", "江苏交通控股有限公司"];
-    page3HeaderType1ContentType3Option.series = [
-        {
-            // type: 'bar',
-            // data: [16400000, 11200000, 7300000, 5970000, 5700000]
-        }
-    ];
-    let page3HeaderType1ContentType4Option = deepClone(barOptionHorizontal);
-    // page3HeaderType1ContentType2Option.yAxis.data = ["中央汇金投资有限责任公司", "国家电力投资集团有限公司", "中国南方电网有限责任公司", "中国电信股份有限公司", "江苏交通控股有限公司"];
-    page3HeaderType1ContentType4Option.series = [
-        {
-            // type: 'bar',
-            // data: [16400000, 11200000, 7300000, 5970000, 5700000]
-        }
-    ];
-    let page3HeaderType1ContentType5Option = deepClone(barOptionHorizontal);
-    page3HeaderType1ContentType5Option.yAxis.data = ["中国民生银行股份有限公司", "上海浦东发展银行股份有限公司", "中国光大银行股份有限公司", "兴业银行股份有限公司", "商银行股份有限公司"];
-    page3HeaderType1ContentType5Option.series = [
-        {
-            type: 'bar',
-            data: [541.8, 439.5, 346.4, 286.4, 290.6]
-        }
-    ];
-    let page3HeaderType1ContentType6Option = deepClone(barOptionHorizontal);
-    page3HeaderType1ContentType6Option.yAxis.data = ["中国民生银行股份有限公司", "上海浦东发展银行股份有限公司", "中国光大银行股份有限公司", "兴业银行股份有限公司", "商银行股份有限公司"];
-    page3HeaderType1ContentType6Option.series = [
-        {
-            type: 'bar',
-            data: [76, 59, 54, 44, 39]
-        }
-    ];
-    let page3HeaderType1ContentType7Option = deepClone(barOptionHorizontal);
-    page3HeaderType1ContentType7Option.yAxis.data = ["中国汇金投资有限责任公司", "中国汇金投资有限责任公司", "中国汇金投资有限责任公司", "中国汇金投资有限责任公司", "中国汇金投资有限责任公司"];
-    page3HeaderType1ContentType7Option.series = [
-        {
-            type: 'bar',
-            data: [1200000, 1100000, 1100000, 1000000, 1000000]
-        }
+    // let page1Chart3Option1 = deepClone(barOptionHorizontal);
+    // page1Chart3Option1.yAxis.data = ["中国建设银行股份有限公司", "兴业银行股份有限公司", "中国工商银行股份有限公司", "中国银行股份有限公司", "招商银行股份有限公司"];
+    // page1Chart3Option1.series = [
+    //     {
+    //         type: 'bar',
+    //         barMaxWidth: 30,
+    //         data: [41821000, 40844400, 39471600, 39006000, 36886300]
+    //     }
+    // ];
+    // let page1Chart3Option2 = deepClone(barOptionHorizontal);
+    // page1Chart3Option2.yAxis.data = ["兴业银行股份有限公司", "中国建设银行股份有限公司", "招商银行股份有限公司", "上海浦东发展银行股份有限公司", "中信银行股份有限公司"];
+    // page1Chart3Option2.series = [
+    //     {
+    //         type: 'bar',
+    //         data: [439, 399, 358, 315, 315]
+    //     }
+    // ];
+    // let page1Chart3Option3 = deepClone(barOptionHorizontal);
+    // // page1Chart3Option3.yAxis.data = ["中央汇金投资有限责任公司", "国家电力投资集团有限公司", "中国南方电网有限责任公司", "中国电信股份有限公司", "江苏交通控股有限公司"];
+    // page1Chart3Option3.series = [
+    //     {
+    //         // type: 'bar',
+    //         // data: [16400000, 11200000, 7300000, 5970000, 5700000]
+    //     }
+    // ];
+    // let page1Chart3Option4 = deepClone(barOptionHorizontal);
+    // page1Chart3Option4.yAxis.data = ["中国光大银行股份有限公司", "中国工商银行股份有限公司", "招商银行股份有限公司", "兴业银行股份有限公司", "上海农村商业银行股份有限公司"];
+    // page1Chart3Option4.series = [
+    //     {
+    //         type: 'bar',
+    //         data: [248, 268, 415, 527, 398]
+    //     }
+    // ];
+    // let page1Chart3Option5 = deepClone(barOptionHorizontal);
+    // page1Chart3Option5.yAxis.data = ["中国民生银行股份有限公司", "上海浦东发展银行股份有限公司", "中国光大银行股份有限公司", "兴业银行股份有限公司", "商银行股份有限公司"];
+    // page1Chart3Option5.series = [
+    //     {
+    //         type: 'bar',
+    //         data: [541.8, 439.5, 346.4, 286.4, 290.6]
+    //     }
+    // ];
+    // let page1Chart3Option6 = deepClone(barOptionHorizontal);
+    // page1Chart3Option6.yAxis.data = ["中国民生银行股份有限公司", "上海浦东发展银行股份有限公司", "中国光大银行股份有限公司", "兴业银行股份有限公司", "商银行股份有限公司"];
+    // page1Chart3Option6.series = [
+    //     {
+    //         type: 'bar',
+    //         data: [76, 59, 54, 44, 39]
+    //     }
+    // ];
+    // let page1Chart3Option7 = deepClone(barOptionHorizontal);
+    // page1Chart3Option7.yAxis.data = ["中国汇金投资有限责任公司", "中国汇金投资有限责任公司", "中国汇金投资有限责任公司", "中国汇金投资有限责任公司", "中国汇金投资有限责任公司"];
+    // page1Chart3Option7.series = [
+    //     {
+    //         type: 'bar',
+    //         data: [1200000, 1100000, 1100000, 1000000, 1000000]
+    //     }
+    // ];
+
+    let page1Chart4Option1 = deepClone(lineOption);
+    page1Chart4Option1.series[0].data = [
+        126, 1, 1, 2, 2, 3, 1, 1, 1, 4, 2, 1, 1, 14, 2, 1, 1, 1, 3, 4, 4, 9, 7, 3, 5, 15, 1, 2, 1, 5, 1, 41, 1, 1, 1, 3, 2, 1, 5, 1, 2, 12, 1, 7, 1, 2, 8, 5, 1, 19, 2, 3, 1, 1, 1, 26, 3, 1, 7, 1, 1, 11, 1, 10, 1, 2, 1, 31, 1, 1, 6, 1, 6, 18, 1, 1, 80, 1, 2, 4, 1, 3, 1, 6, 1, 2, 15, 2, 3, 1, 6, 1, 1, 1, 1, 9, 2, 10, 1, 2, 14, 3, 2, 1, 2, 2, 68, 2, 1, 1, 6, 1, 1, 2, 6, 3, 26, 3, 1, 4, 1, 36, 4, 4, 13, 2, 2, 34, 3, 1, 1, 107, 3, 1, 3, 1, 1, 8, 1, 8, 17, 1, 2, 1, 7, 1, 5, 27, 1, 22, 1, 1, 5, 1, 19, 1, 1, 1, 1, 1, 1, 49, 1, 4, 2, 16, 1, 6, 1, 4, 2, 30, 1, 1, 1, 26, 1, 51, 1, 1, 3, 3, 4, 3, 1, 3, 27, 1, 1, 116, 1, 6, 1, 1, 3, 1, 19, 20, 1, 1, 5, 1, 1, 16, 19, 3, 1, 14, 1, 34, 3, 7, 1, 1, 3, 75, 3, 3, 2, 1, 2, 1, 22, 2, 8, 7, 35, 3, 12, 1, 60, 1, 7, 2, 5, 1, 47, 1, 3, 1, 1, 207, 2, 1, 6, 1, 1, 2, 1, 17, 1, 3, 2, 1, 1, 1, 15, 2, 9, 3, 3, 16, 4, 4, 2, 2, 58, 2, 1, 2, 2, 1, 18, 1, 12, 2, 1, 5, 2, 22, 11, 1, 7, 1, 53, 6, 2, 3, 6, 31, 1, 4, 107, 1, 2, 2, 4, 1, 7, 3, 2, 7, 1, 1, 28, 1, 1, 3, 14, 9, 14, 3, 3, 1, 3, 2, 44, 1, 1, 2, 2, 10, 2, 1, 29, 17, 2, 2, 2, 1, 30, 1, 1, 2, 6, 26, 1, 2, 1, 1, 120, 1, 1, 1, 1, 1, 3, 2, 4, 1, 15, 6, 5, 1, 3, 2, 1, 16, 2, 1, 10, 2, 1, 17, 1, 1, 1, 61, 1, 1, 2, 1, 4, 2, 1, 2, 1, 5, 14, 1, 1, 6, 34, 1, 2, 5, 1, 13, 3, 2, 1, 1, 97, 1, 1, 2, 3, 1, 1, 2, 2, 6, 2, 1, 6, 4, 2, 22, 1, 1, 1, 6, 1, 4, 1, 19, 1, 1, 4, 2, 3, 1, 3, 1, 5, 2, 1, 6, 1, 9, 16, 2, 2, 2, 3, 9, 1, 1, 1, 61, 1, 2, 1, 2, 2, 1, 3, 8, 1, 1, 2, 2, 1, 1, 4, 1, 4, 1, 3, 4, 1, 7, 1, 2, 1, 24, 1, 1, 1, 7, 2, 1, 4, 4, 1, 2, 4, 5, 14, 3, 3, 2, 2, 1, 9, 1, 1, 1, 675
     ];
 
     //债权
-    let page1HeaderType2ContentType1Option = deepClone(barOption);
-    page1HeaderType2ContentType1Option.series = [
+    let page2Chart1Option1 = deepClone(barOption);
+    page2Chart1Option1.series = [
         {
             type: 'bar',
             data: [3319810, 1998000, 2956000, 2737200, 1241000, 2717600, 1747800, 3485900, 2719500, 2127900, 3133950, 4941900]
         }
     ];
-    let page1HeaderType2ContentType2Option = deepClone(barOption);
-    page1HeaderType2ContentType2Option.series = [
+    let page2Chart1Option2 = deepClone(barOption);
+    page2Chart1Option2.series = [
         {
             type: 'bar',
             data: [80, 46, 77, 62, 26, 55, 45, 77, 64, 50, 78, 115]
         }
     ];
 
-    let page2HeaderType2ContentType1Option = deepClone(pieOption);
-    page2HeaderType2ContentType1Option.series[0].data = [
-        {name: '无', value: 14},
+    let page2Chart2Option1 = deepClone(pieOption);
+    page2Chart2Option1.series[0].data = [
+        {name: '无', value: 88},
         {name: 'AA-', value: 15},
         {name: 'AA', value: 379},
         {name: 'AA+', value: 231},
         {name: 'AAA', value: 62},
-        {name: 'null', value: 74}
+        // {name: 'null', value: 74}
     ];
 
-    let page2HeaderType2ContentType2Option = deepClone(pieOption);
-    page2HeaderType2ContentType2Option.series[0].data = [
+    let page2Chart2Option2 = deepClone(pieOption);
+    page2Chart2Option2.series[0].data = [
         {name: '小于1亿', value: 133},
         {name: '1-5亿', value: 502},
         {name: '大于5亿', value: 157},
         {name: '面议', value: 0}
     ];
 
-    let page2HeaderType2ContentType3Option = deepClone(pieOption);
-    page2HeaderType2ContentType3Option.series[0].data = [
+    let page2Chart2Option3 = deepClone(pieOption);
+    page2Chart2Option3.series[0].data = [
         {name: '1', value: 47},
         {name: '2+3', value: 2},
         {name: '6+6+6+6', value: 1},
@@ -1234,38 +1487,38 @@
         {name: '7+N', value: 5},
     ];
 
-    let page2HeaderType2ContentType4Option = deepClone(pieOption);
-    page2HeaderType2ContentType4Option.series[0].data = [
+    let page2Chart2Option4 = deepClone(pieOption);
+    page2Chart2Option4.series[0].data = [
         // {name: '1', value: 47},
         // {name: '2+3', value: 2}
     ];
 
-    let page3HeaderType2ContentType1Option = deepClone(barOptionHorizontal);
-    page3HeaderType2ContentType1Option.yAxis.data = ["南京银行股份有限公司", "江苏银行股份有限公司", "徽商银行股份有限公司", "华夏银行股份有限公司", "宁波银行股份有限公司"];
-    page3HeaderType2ContentType1Option.series = [
+    let page2Chart3Option1 = deepClone(barOptionHorizontal);
+    page2Chart3Option1.yAxis.data = ["南京银行股份有限公司", "江苏银行股份有限公司", "徽商银行股份有限公司", "华夏银行股份有限公司", "宁波银行股份有限公司"];
+    page2Chart3Option1.series = [
         {
             type: 'bar',
             data: [127, 98, 76, 55, 46]
         }
     ];
-    let page3HeaderType2ContentType2Option = deepClone(barOptionHorizontal);
-    page3HeaderType2ContentType2Option.yAxis.data = ["徽商银行股份有限公司", "华夏银行股份有限公司", "南京银行股份有限公司", "江苏银行股份有限公司", "中国光大银行股份有限公司"];
-    page3HeaderType2ContentType2Option.series = [
+    let page2Chart3Option2 = deepClone(barOptionHorizontal);
+    page2Chart3Option2.yAxis.data = ["徽商银行股份有限公司", "华夏银行股份有限公司", "南京银行股份有限公司", "江苏银行股份有限公司", "中国光大银行股份有限公司"];
+    page2Chart3Option2.series = [
         {
             type: 'bar',
             data: [127, 98, 76, 55, 46]
         }
     ];
-    let page3HeaderType2ContentType3Option = deepClone(barOptionHorizontal);
-    page3HeaderType2ContentType3Option.yAxis.data = ["招商银行股份有限公司", "杭州银行股份有限公司", "华夏银行股份有限公司", "上海银行股份有限公司", "华夏银行股份有限公司"];
-    page3HeaderType2ContentType2Option.series = [
+    let page2Chart3Option3 = deepClone(barOptionHorizontal);
+    page2Chart3Option3.yAxis.data = ["招商银行股份有限公司", "杭州银行股份有限公司", "华夏银行股份有限公司", "上海银行股份有限公司", "华夏银行股份有限公司"];
+    page2Chart3Option3.series = [
         {
             type: 'bar',
             data: [330000, 300000, 300000, 300000, 250000]
         }
     ];
 
-    let page4HeaderType2ContentType1Option = deepClone(mapOption);
+    let page2Chart4Option1 = deepClone(mapOption);
     let mapData1 = [
         {name: '黑龙江', value: 25000},
         {name: '甘肃', value: 30000},
@@ -1294,30 +1547,30 @@
         {name: '安徽', value: 4139750},
         {name: '江苏', value: 9783250},
     ];
-    page4HeaderType2ContentType1Option.visualMap.max = 10000000;
-    page4HeaderType2ContentType1Option.series[1].name = '不同省发行额度统计';
-    page4HeaderType2ContentType1Option.series[1].data = mapData1;
-    page4HeaderType2ContentType1Option.series[0].data = convertData(mapData1.sort(function (a, b) {
+    page2Chart4Option1.visualMap.max = 10000000;
+    page2Chart4Option1.series[1].name = '不同省发行额度统计';
+    page2Chart4Option1.series[1].data = mapData1;
+    page2Chart4Option1.series[0].data = convertData(mapData1.sort(function (a, b) {
         return b.value - a.value;
     }).slice(0, 3));
 
     //权益
-    let page1HeaderType3ContentType1Option = deepClone(barOption);
-    page1HeaderType3ContentType1Option.series = [
+    let page3Chart1Option1 = deepClone(barOption);
+    page3Chart1Option1.series = [
         {
             type: 'bar',
             data: [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 18, 35]
         }
     ];
-    let page1HeaderType3ContentType2Option = deepClone(barOption);
-    page1HeaderType3ContentType2Option.series = [
+    let page3Chart1Option2 = deepClone(barOption);
+    page3Chart1Option2.series = [
         {
             type: 'bar',
             data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 242142.249671, 1783835.572100]
         }
     ];
-    let page2HeaderType3ContentType1Option = deepClone(pieOption);
-    page2HeaderType3ContentType1Option.series[0].data = [
+    let page3Chart2Option1 = deepClone(pieOption);
+    page3Chart2Option1.series[0].data = [
         {name: '金融业', value: 90},
         {name: '冶金工业', value: 1},
         {name: '建材工业', value: 5},
@@ -1335,14 +1588,45 @@
         {name: '农、林、牧、渔业', value: 1},
     ];
 
-    let page2HeaderType3ContentType2Option = deepClone(pieOption);
-    page2HeaderType3ContentType2Option.series[0].data = [
+    let page3Chart2Option2 = deepClone(pieOption);
+    page3Chart2Option2.series[0].data = [
         {name: '金融股权', value: 10},
         {name: '实物资产', value: 2},
         {name: '不良债权', value: 4},
         {name: '招商项目', value: 38},
     ];
 
+
+    let page3Chart3Option1 = deepClone(mapOption);
+    let mapData2 = [
+        {name: '重庆', value: 2085.02},
+        {name: '山西', value: 626.29},
+        {name: '河南', value: 0},
+        {name: '安徽', value: 30.6573},
+        {name: '北京', value: 4100.14},
+        {name: '湖北', value: 48004.51},
+        {name: '山东', value: 100},
+        {name: '海南', value: 0},
+        {name: '黑龙江', value: 5200},
+        {name: '吉林', value: 394.55},
+        {name: '福建', value: 650.4987},
+        {name: '云南', value: 0},
+        {name: '四川', value: 0},
+        {name: '上海', value: 0},
+        {name: '新疆', value: 0},
+        {name: '河北', value: 1861},
+        {name: '广东', value: 23299.5},
+        {name: '江苏', value: 0},
+        {name: '内蒙古', value: 0},
+        {name: '辽宁', value: 0},
+        {name: '天津', value: 22601.4},
+    ];
+    page3Chart3Option1.visualMap.max = 50000;
+    page3Chart3Option1.series[1].name = '不同省发行额度统计';
+    page3Chart3Option1.series[1].data = mapData2;
+    page3Chart3Option1.series[0].data = convertData(mapData2.sort(function (a, b) {
+        return b.value - a.value;
+    }).slice(0, 3));
 
     //深拷贝
     //{...}不好使
