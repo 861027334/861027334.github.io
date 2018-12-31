@@ -151,7 +151,7 @@
     <div class="content">
         <div class="contentType">
             <div class="contentTypeSelected" data-ref="1">发行额度</div>
-            <div data-ref="2">发行只数</div>
+            <div data-ref="2">发行支数</div>
         </div>
         <div class="contentMain">
             <div id="page1Chart1" class="chart"></div>
@@ -1266,14 +1266,14 @@
         series: [
             {
                 // name: 'TOP 3',
-                type: 'scatter',
+                type: 'effectScatter',
                 coordinateSystem: 'geo',
                 // data: convertData(data),
-                symbolSize: 30,
+                symbolSize: 20,
                 showEffectOn: 'render',
-                rippleEffect: {
-                    brushType: 'stroke'
-                },
+                // rippleEffect: {
+                //     brushType: 'stroke'
+                // },
                 hoverAnimation: true,
                 label: {
                     normal: {
