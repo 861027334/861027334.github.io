@@ -3,6 +3,7 @@
 	height:100%;
 }
 html {
+	font-size: 13.333vw;
 	overflow:hidden;
 }
 * {
@@ -28,40 +29,29 @@ body {
 	width:100%;
 	background:#fff;
 }
-#top .addr {
-	height:36px;
-	margin:0 auto;
-	display:block;
-}
-#top .search {
-	position:absolute;
-	top:0;
-	right:0;
-	height:36px;
-	display:block;
-}
 #nav {
-	border-bottom:1px solid #ebebeb;
+	/*border-bottom:1px solid #ebebeb;*/
 }
 #nav .swiper-slide span {
 	margin:0 5px;
 	text-align:center;
 	display:block;
 	line-height:2.5;
-	font-size:14px;
-	color:#333333;
+	font-size:0.32rem;
+	font-family:PingFangSC-Medium;
+	color:rgba(124,124,125,1);
+	font-weight:500;
 }
 #nav .bar {
-	width:50px;
-	height:3px;
 	position:absolute;
-	bottom:0px;
+	bottom:0;
 }
 #nav .bar .color {
-	width:36px;
+	width:0.86rem;
+	height: 0.04rem;
 	margin:0 auto;
-	height:3px;
-	background:#ff4891;
+	background:rgba(221,169,68,1);
+	border-radius:0.03rem;
 }
 .banner img {
 	width:100%;
