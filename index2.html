@@ -211,9 +211,9 @@
         }
     });
 
-    navSwiper.$el.on('touchstart', function (e) {
-        e.preventDefault() //去掉按压阴影
-    })
+    // navSwiper.$el.on('touchstart', function (e) {
+    //     e.preventDefault() //去掉按压阴影
+    // })
     navSwiper.on('tap', function (e) {
 
         clickIndex = this.clickedIndex
@@ -232,76 +232,76 @@
         //65是头部的高
         //36是top地址和搜索的高
 
-        slidesOffsetBefore: topbarHeight,
+        // slidesOffsetBefore: topbarHeight,
         direction: 'vertical',
         freeMode: true,
         slidesPerView: 'auto',
         // autoHeight:true,
-        resistanceRatio: 0,
+        // resistanceRatio: 0,
 
-        mousewheel: {
-            releaseOnEdges: true,
-        },
-        on: {
-            touchMove: function () {
-
-                if (this.translate > topbarHeight - offsetTop && this.translate < topbarHeight) {
-                    topBar.transform('translateY(' + (this.translate - topbarHeight) + 'px)');
-                }
-
-            },
-            touchStart: function () {
-                startPosition = this.translate
-            },
-            touchEnd: function () {
-                topBar.transition(tSpeed)
-                if (this.translate > offsetTop && this.translate < topbarHeight && this.translate < startPosition) {
-                    topBar.transform('translateY(-' + offsetTop + 'px)');
-                    for (sc = 0; sc < scrollSwiper.length; sc++) {
-                        if (scrollSwiper[sc].translate > offsetTop) {
-                            scrollSwiper[sc].setTransition(tSpeed);
-                            scrollSwiper[sc].setTranslate(offsetTop)
-                        }
-                    }
-                }
-                if (this.translate > offsetTop && this.translate < topbarHeight && this.translate > startPosition) {
-                    topBar.transform('translateY(0px)');
-                    for (sc = 0; sc < scrollSwiper.length; sc++) {
-                        if (scrollSwiper[sc].translate < topbarHeight && scrollSwiper[sc].translate > 0) {
-                            scrollSwiper[sc].setTransition(tSpeed);
-                            scrollSwiper[sc].setTranslate(topbarHeight)
-                        }
-                    }
-
-                }
-            },
-
-            transitionStart: function () {
-                topBar.transition(tSpeed)
-                if (this.translate < topbarHeight - offsetTop) {
-                    topBar.transform('translateY(-' + offsetTop + 'px)');
-                    if (scrollSwiper) {
-                        for (sc = 0; sc < scrollSwiper.length; sc++) {
-                            if (scrollSwiper[sc].translate > offsetTop) {
-                                scrollSwiper[sc].setTransition(tSpeed);
-                                scrollSwiper[sc].setTranslate(offsetTop)
-                            }
-                        }
-                    }
-
-                } else {
-                    topBar.transform('translateY(0px)');
-                    if (scrollSwiper) {
-                        for (sc = 0; sc < scrollSwiper.length; sc++) {
-                            if (scrollSwiper[sc].translate < topbarHeight && scrollSwiper[sc].translate > 0) {
-                                scrollSwiper[sc].setTransition(tSpeed);
-                                scrollSwiper[sc].setTranslate(topbarHeight)
-                            }
-                        }
-                    }
-                }
-            },
-        }
+        // mousewheel: {
+        //     releaseOnEdges: true,
+        // },
+        // on: {
+        //     touchMove: function () {
+        //
+        //         if (this.translate > topbarHeight - offsetTop && this.translate < topbarHeight) {
+        //             topBar.transform('translateY(' + (this.translate - topbarHeight) + 'px)');
+        //         }
+        //
+        //     },
+        //     touchStart: function () {
+        //         startPosition = this.translate
+        //     },
+        //     touchEnd: function () {
+        //         topBar.transition(tSpeed)
+        //         if (this.translate > offsetTop && this.translate < topbarHeight && this.translate < startPosition) {
+        //             topBar.transform('translateY(-' + offsetTop + 'px)');
+        //             for (sc = 0; sc < scrollSwiper.length; sc++) {
+        //                 if (scrollSwiper[sc].translate > offsetTop) {
+        //                     scrollSwiper[sc].setTransition(tSpeed);
+        //                     scrollSwiper[sc].setTranslate(offsetTop)
+        //                 }
+        //             }
+        //         }
+        //         if (this.translate > offsetTop && this.translate < topbarHeight && this.translate > startPosition) {
+        //             topBar.transform('translateY(0px)');
+        //             for (sc = 0; sc < scrollSwiper.length; sc++) {
+        //                 if (scrollSwiper[sc].translate < topbarHeight && scrollSwiper[sc].translate > 0) {
+        //                     scrollSwiper[sc].setTransition(tSpeed);
+        //                     scrollSwiper[sc].setTranslate(topbarHeight)
+        //                 }
+        //             }
+        //
+        //         }
+        //     },
+        //
+        //     transitionStart: function () {
+        //         topBar.transition(tSpeed)
+        //         if (this.translate < topbarHeight - offsetTop) {
+        //             topBar.transform('translateY(-' + offsetTop + 'px)');
+        //             if (scrollSwiper) {
+        //                 for (sc = 0; sc < scrollSwiper.length; sc++) {
+        //                     if (scrollSwiper[sc].translate > offsetTop) {
+        //                         scrollSwiper[sc].setTransition(tSpeed);
+        //                         scrollSwiper[sc].setTranslate(offsetTop)
+        //                     }
+        //                 }
+        //             }
+        //
+        //         } else {
+        //             topBar.transform('translateY(0px)');
+        //             if (scrollSwiper) {
+        //                 for (sc = 0; sc < scrollSwiper.length; sc++) {
+        //                     if (scrollSwiper[sc].translate < topbarHeight && scrollSwiper[sc].translate > 0) {
+        //                         scrollSwiper[sc].setTransition(tSpeed);
+        //                         scrollSwiper[sc].setTranslate(topbarHeight)
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //     },
+        // }
 
     })
 </script>
