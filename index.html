@@ -166,6 +166,51 @@
             height: 0.01rem;
             background: rgba(238, 238, 238, 1);
         }
+
+
+        .page-logo {
+            height: 1.19rem;
+            position: relative;
+        }
+        .logo-pic {
+            background: url("https://mnapp.cfae.cn:1540/nas/images/roadShow/20180826210148aa77b6cf-a3f9-43f9-873d-ae0ddcf6e53e.png");
+            background-size: cover;
+            position: absolute;
+            top: 0.29rem;
+            bottom: 0.21rem;
+            left: 0;
+            width: 0.69rem;
+        }
+
+        .logo-name {
+            position: absolute;
+            top: 0.43rem;
+            bottom: 0.36rem;
+            left: 0.9rem;
+            right: 0;
+            font-size: 0.28rem;
+            font-family: PingFangSC-Medium;
+            font-weight: 500;
+            color: rgba(32, 32, 32, 1);
+        }
+
+        .page-paragraph {
+            margin-top: 0.2rem;
+            font-size: 0.26rem;
+            font-family: PingFangSC-Regular;
+            font-weight: 400;
+            color: rgba(155, 155, 155, 1);
+            line-height: 0.48rem;
+            text-align: justify;
+            white-space: pre-wrap;
+        }
+
+        .list-item {
+            height: 2.08rem;
+            margin-left: 0.3rem;
+            padding: 0.3rem 0;
+            border-bottom: 0.01rem solid rgba(238,238,238,1);
+        }
     </style>
 </head>
 <body>
@@ -182,11 +227,11 @@
 <div class="swiper-container" id="nav">
     <div class="swiper-wrapper">
         <div class="swiper-slide">
-            <span>产品信息</span></div>
+            <span>路演信息</span></div>
         <div class="swiper-slide">
             <span>讨论专区</span></div>
         <div class="swiper-slide">
-            <span>路演相关</span></div>
+            <span>相关路演</span></div>
         <div class="bar">
             <div class="color"></div>
         </div>
@@ -210,6 +255,12 @@
                                 <span class="info-count">次数：1203次</span>
                             </div>
                             <div class="page-hr"></div>
+                            <div class="page-logo">
+                                <div class="logo-pic"></div>
+                                <div class="logo-name">中国工商银行</div>
+                            </div>
+                            <div class="page-hr"></div>
+                            <div class="page-paragraph">        行政规范性文件是除国务院的行政法规、决定、命令以及部门规章和地方政府规章外，由行政机关或者经法律、法规授权的具有管理公共事务职能的组织（以下统称行政机关）依照法定权限、程序制定并公开发布，涉及公民、法人和其他组织权利义务，具有普遍约束力，在一定期限内反复适用的公文。制发行政规范性文件是行政机关依法履行职能的重要方式，直接关系群众切身利益，事关政府形象。近年来，各地区、各部门不断加强行政规范性文件制定和监督管理工作，取得了一定成效，但乱发文、出台“奇葩”文件的现象还不同程度地存在，侵犯了公民、法人和其他组织的合法权益，损害了政府公信力。为全面贯彻习近平新时代中国特色社会主义思想和党的十九大精神，落实党中央、国务院关</div>
                         </div>
 
                     </div>
@@ -237,7 +288,16 @@
         <div class="swiper-slide slidepage">
             <div class="swiper-container scroll">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide slidescroll">slide3</div>
+                    <div class="swiper-slide slidescroll">
+
+                        <div class="list-item">
+                            
+                        </div>
+                        <div class="list-item"></div>
+                        <div class="list-item"></div>
+                        <div class="list-item"></div>
+
+                    </div>
                 </div>
             </div>
         </div>
