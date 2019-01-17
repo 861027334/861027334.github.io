@@ -221,89 +221,18 @@
         pageSwiper.slideTo(clickIndex, 0);
         this.slides.find('span').css('color', 'rgba(124,124,125,1)');
         clickSlide.find('span').css('color', 'rgba(221,169,68,1)');
-    })
+    });
 
 
-    // var topbarHeight = document.getElementById('nav').clientHeight;
-    var topbarHeight = 0;
-    var offsetTop = 0;
     //内容滚动
-    var scrollSwiper = new Swiper('.scroll', {
-        //65是头部的高
-        //36是top地址和搜索的高
-
-        // slidesOffsetBefore: topbarHeight,
+    new Swiper('.scroll', {
         direction: 'vertical',
         freeMode: true,
         slidesPerView: 'auto',
-        // autoHeight:true,
-        // resistanceRatio: 0,
-
         mousewheel: {
             releaseOnEdges: true,
         },
-        // on: {
-        //     touchMove: function () {
-        //
-        //         if (this.translate > topbarHeight - offsetTop && this.translate < topbarHeight) {
-        //             topBar.transform('translateY(' + (this.translate - topbarHeight) + 'px)');
-        //         }
-        //
-        //     },
-        //     touchStart: function () {
-        //         startPosition = this.translate
-        //     },
-        //     touchEnd: function () {
-        //         topBar.transition(tSpeed)
-        //         if (this.translate > offsetTop && this.translate < topbarHeight && this.translate < startPosition) {
-        //             topBar.transform('translateY(-' + offsetTop + 'px)');
-        //             for (sc = 0; sc < scrollSwiper.length; sc++) {
-        //                 if (scrollSwiper[sc].translate > offsetTop) {
-        //                     scrollSwiper[sc].setTransition(tSpeed);
-        //                     scrollSwiper[sc].setTranslate(offsetTop)
-        //                 }
-        //             }
-        //         }
-        //         if (this.translate > offsetTop && this.translate < topbarHeight && this.translate > startPosition) {
-        //             topBar.transform('translateY(0px)');
-        //             for (sc = 0; sc < scrollSwiper.length; sc++) {
-        //                 if (scrollSwiper[sc].translate < topbarHeight && scrollSwiper[sc].translate > 0) {
-        //                     scrollSwiper[sc].setTransition(tSpeed);
-        //                     scrollSwiper[sc].setTranslate(topbarHeight)
-        //                 }
-        //             }
-        //
-        //         }
-        //     },
-        //
-        //     transitionStart: function () {
-        //         topBar.transition(tSpeed)
-        //         if (this.translate < topbarHeight - offsetTop) {
-        //             topBar.transform('translateY(-' + offsetTop + 'px)');
-        //             if (scrollSwiper) {
-        //                 for (sc = 0; sc < scrollSwiper.length; sc++) {
-        //                     if (scrollSwiper[sc].translate > offsetTop) {
-        //                         scrollSwiper[sc].setTransition(tSpeed);
-        //                         scrollSwiper[sc].setTranslate(offsetTop)
-        //                     }
-        //                 }
-        //             }
-        //
-        //         } else {
-        //             topBar.transform('translateY(0px)');
-        //             if (scrollSwiper) {
-        //                 for (sc = 0; sc < scrollSwiper.length; sc++) {
-        //                     if (scrollSwiper[sc].translate < topbarHeight && scrollSwiper[sc].translate > 0) {
-        //                         scrollSwiper[sc].setTransition(tSpeed);
-        //                         scrollSwiper[sc].setTranslate(topbarHeight)
-        //                     }
-        //                 }
-        //             }
-        //         }
-        //     },
-        // }
-
-    })
+    });
 </script>
 </body>
 </html>
