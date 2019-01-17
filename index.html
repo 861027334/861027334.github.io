@@ -208,8 +208,85 @@
         .list-item {
             height: 2.08rem;
             margin-left: 0.3rem;
-            padding: 0.3rem 0;
             border-bottom: 0.01rem solid rgba(238,238,238,1);
+            position: relative;
+        }
+
+        .item-pic {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 2.2rem;
+            height: 1.48rem;
+            margin: auto;
+            object-fit: cover;
+        }
+
+        .item-pic-type {
+            position: absolute;
+            top: 0.3rem;
+            width: 0.86rem;
+            height: 0.24rem;
+            left: 0;
+            background: rgba(104, 162, 215, 1);
+            font-size: 0.16rem;
+            font-family: PingFangSC-Regular;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 1);
+            line-height: 0.24rem;
+            text-align: center;
+        }
+
+        .item-pic-date {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 2.2rem;
+            height: 0.7rem;
+            margin: auto;
+            background: rgba(0, 74, 141, 0.35);
+            /*opacity: 0.35;*/
+            font-size: 0.22rem;
+            font-family: PingFangSC-Regular;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 1);
+            line-height: 0.35rem;
+            text-align: center;
+        }
+
+        .item-name {
+            position: absolute;
+            top: 0.3rem;
+            left: 2.46rem;
+            width: 4.43rem;
+            height: 0.9rem;
+            font-size: 0.32rem;
+            font-family: PingFangSC-Regular;
+            font-weight: 400;
+            color: rgba(32, 32, 32, 1);
+            line-height: 0.45rem;
+            letter-spacing: 0.01rem;
+        }
+
+        .item-tag {
+            position: absolute;
+            bottom: 0.3rem;
+            left: 2.46rem;
+            width: 0.86rem;
+            height: 0.24rem;
+            background: rgba(221, 169, 68, 1);
+            border-radius: 0.04rem;
+            font-size: 0.16rem;
+            font-family: PingFangSC-Regular;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 1);
+            line-height: 0.24rem;
+        }
+
+        .list-item-checked {
+            background: rgba(238, 238, 238, 1);
         }
     </style>
 </head>
@@ -290,12 +367,29 @@
                 <div class="swiper-wrapper">
                     <div class="swiper-slide slidescroll">
 
-                        <div class="list-item">
-                            
+                        <div class="list-item list-item-checked">
+                            <img class="item-pic" src="https://mnapp.cfae.cn:1540/nas/images/banner/20181213013324a8005df8-66f8-4ac7-ae6b-5cd72eaa6cde.jpg" alt="">
+                            <div class="item-pic-type">回放</div>
+                            <div class="item-pic-date">2018-11-03 15:30:00</div>
+                            <div class="item-name">20180126交银债券发行人调研系列活动浙江站</div>
+                            <div class="item-tag">交通银行</div>
                         </div>
-                        <div class="list-item"></div>
-                        <div class="list-item"></div>
-                        <div class="list-item"></div>
+
+                        <div class="list-item">
+                            <img class="item-pic" src="https://mnapp.cfae.cn:1540/nas/images/banner/20181213013324a8005df8-66f8-4ac7-ae6b-5cd72eaa6cde.jpg" alt="">
+                            <div class="item-pic-type">回放</div>
+                            <div class="item-pic-date">2018-11-03 15:30:00</div>
+                            <div class="item-name">20180126交银债券发行人调研系列活动浙江站</div>
+                            <div class="item-tag">交通银行</div>
+                        </div>
+
+                        <div class="list-item">
+                            <img class="item-pic" src="https://mnapp.cfae.cn:1540/nas/images/banner/20181213013324a8005df8-66f8-4ac7-ae6b-5cd72eaa6cde.jpg" alt="">
+                            <div class="item-pic-type">回放</div>
+                            <div class="item-pic-date">2018-11-03 15:30:00</div>
+                            <div class="item-name">20180126交银债券发行人调研系列活动浙江站</div>
+                            <div class="item-tag">交通银行</div>
+                        </div>
 
                     </div>
                 </div>
