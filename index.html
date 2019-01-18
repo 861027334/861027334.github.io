@@ -300,6 +300,86 @@
             left: -0.3rem;
             background:rgba(238,238,238,1);
         }
+
+        #face {
+            position: relative;
+        }
+
+        #face-pic {
+            position: absolute;
+            top: 1.25rem;
+            width: 1.4rem;
+            height: 1.4rem;
+            left: 0;
+            right: 0;
+            margin: auto;
+            background: url("img/face.png");
+            background-size: cover;
+        }
+
+        #face-span {
+            position: absolute;
+            top: 2.75rem;
+            width: 100%;
+            height: 0.42rem;
+            font-size: 0.28rem;
+            font-family: PingFangSC-Regular;
+            font-weight: 400;
+            color: rgba(167, 167, 167, 1);
+            line-height: 0.42rem;
+            text-align: center;
+        }
+
+        #login {
+            position: relative;
+        }
+
+        #login-span {
+            position: absolute;
+            top: 0.98rem;
+            width: 100%;
+            height: 0.45rem;
+            font-size: 0.32rem;
+            font-family: PingFangSC-Regular;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 1);
+            line-height: 0.45rem;
+            text-align: center;
+        }
+
+        #login-btn {
+            position: absolute;
+            top: 2.43rem;
+            left: 1.19rem;
+            width: 1.63rem;
+            height: 0.55rem;
+            background: rgba(221, 169, 68, 1);
+            box-shadow: 0 0.05rem 10rem 0 rgba(221, 169, 68, 0.31);
+            border-radius: 0.28rem;
+            font-size: 0.22rem;
+            font-family: PingFangSC-Regular;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 1);
+            line-height: 0.55rem;
+            text-align: center;
+        }
+
+        #register-btn {
+            position: absolute;
+            top: 2.43rem;
+            right: 1.19rem;
+            width: 1.63rem;
+            height: 0.55rem;
+            background: rgba(221, 169, 68, 1);
+            box-shadow: 0 0.05rem 10rem 0 rgba(221, 169, 68, 0.31);
+            border-radius: 0.28rem;
+            font-size: 0.22rem;
+            font-family: PingFangSC-Regular;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 1);
+            line-height: 0.55rem;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -311,6 +391,11 @@
 </div>
 
 <div id="screen">
+    <div id="login">
+        <div id="login-span">此路演需登录或注册后方可观看</div>
+        <div id="login-btn">登录</div>
+        <div id="register-btn">注册</div>
+    </div>
 </div>
 
 <div class="swiper-container" id="nav">
@@ -360,16 +445,12 @@
             <div class="swiper-container scroll">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide slidescroll">
-                        <p>1</p>
-                        <p>2</p>
-                        <p>3</p>
-                        <p>4</p>
-                        <p>5</p>
-                        <p>6</p>
-                        <p>7</p>
-                        <p>8</p>
-                        <p>9</p>
-                        <p>10</p>
+
+                        <div id="face">
+                            <div id="face-pic"></div>
+                            <div id="face-span">登录或注册后可见</div>
+                        </div>
+
                     </div>
                 </div>
             </div>
