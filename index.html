@@ -573,7 +573,9 @@
             position: absolute;
             top: 0.94rem;
             width: 100%;
-            height: 4.2rem;
+            /*height: 4.2rem;*/
+            bottom: 1.15rem;
+            /*background-color: #ffffff;*/
         }
 
         #pdf-last {
@@ -725,15 +727,6 @@
     </div>
 </div>
 
-<div id="pdf-btn"></div>
-<div id="pdf-box">
-    <div id="pdf-close"></div>
-    <div id="pdf-screen"></div>
-    <div id="pdf-last"></div>
-    <div id="pdf-page"></div>
-    <div id="pdf-next"></div>
-</div>
-
 <script src="js/swiper.min.js"></script>
 <script src="js/jquery.min.js"></script>
 <script src="js/touch.js"></script>
@@ -758,6 +751,16 @@
             '   <input type="text" id="chat-input" placeholder="我来说两句">\n' +
             '   <div id="chat-input-btn"></div>\n' +
             '   <div id="chat-input-send"></div>\n' +
+            '</div>');
+
+        $('body').append(
+            '<div id="pdf-btn"></div>\n' +
+            '<div id="pdf-box">\n' +
+            '    <div id="pdf-close"></div>\n' +
+            '    <div id="pdf-screen"></div>\n' +
+            '    <div id="pdf-last"></div>\n' +
+            '    <div id="pdf-page"></div>\n' +
+            '    <div id="pdf-next"></div>\n' +
             '</div>');
 
         var roadshowType = 1; //0直播 1回放
@@ -793,33 +796,6 @@
                     VhallPlayer.play();
                 }
             });
-
-            /**
-             * 初始化文档
-             */
-            doc = new VhallDoc({
-                docNode: 'pdf-screen',//文档容器
-                width: document.body.clientWidth,//文档显示的宽度,非必填
-                height: $('#pdf-screen').css('height').replace('px', ''),//文档显示的高度，非必填
-                // success:function () {
-                //     console.log('成功');
-                // }
-                // slideChange:function(slideIndex){
-                //     console.log(slideIndex);
-                // }
-            });
-
-            /**
-             * 加载文档
-             */
-            doc.loadDoc(docId, channelId, function (docId) {
-                console.info('load doc success,the docId is:', docId);
-            }, function (reason) {
-                console.error(reason);
-            });
-
-            //简单调用方式：
-            // doc.loadDoc(docId, channelId);
         });
 
         Vhall.onBroadcast(function (docInfo) {
@@ -863,9 +839,9 @@
     //输入框
     $('#chat-input').on('input', function () {
         if (this.value) {
-            $('#chat-input-btn').css({'background': 'url("img/send_disabled_btn.png")', 'backgroundSize': 'cover'});
-        } else {
             $('#chat-input-btn').css({'background': 'url("img/send_enable_btn.png")', 'backgroundSize': 'cover'});
+        } else {
+            $('#chat-input-btn').css({'background': 'url("img/send_disabled_btn.png")', 'backgroundSize': 'cover'});
         }
     });
 
@@ -884,7 +860,33 @@
 
     //pdf
     $('#pdf-btn').click(function () {
-        $('#pdf-box').slideToggle();
+
+        $('#pdf-box').slideToggle(300, function () {
+
+            if (!doc) {
+
+                /**
+                 * 初始化文档
+                 */
+                doc = new VhallDoc({
+                    docNode: 'pdf-screen',//文档容器
+                    width: document.body.clientWidth,//文档显示的宽度,非必填
+                    height: document.getElementById('pdf-screen').clientHeight//文档显示的高度，非必填
+                });
+
+                /**
+                 * 加载文档
+                 */
+                doc.loadDoc(docId, channelId, function (docId) {
+                    console.info('load doc success,the docId is:', docId);
+                }, function (reason) {
+                    console.error(reason);
+                });
+
+                //简单调用方式：
+                // doc.loadDoc(docId, channelId);
+            }
+        });
     });
 
     $('#pdf-close').click(function () {
