@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="css/swiper.min.css">
-    <link rel="stylesheet" href="https://static.vhallyun.com/jssdk/videojs.min.css?v=1.0.0"><!--播放器默认样式，需要引用在包含在页面的head标签里-->
+    <link rel="stylesheet" href="https://static.vhallyun.com/jssdk/videojs.min.css?v=1.0.0">
+    <!--播放器默认样式，需要引用在包含在页面的head标签里-->
     <script src="https://static.vhallyun.com/jssdk/dvideo-plugin.js?v=1.0.0"></script><!--依赖的播放器资源-->
     <script src="https://static.vhallyun.com/jssdk/vhall-jssdk-player-1.0.0.js"></script>
     <script src="https://static.vhallyun.com/jssdk/vhall-jssdk-base-1.0.0.js"></script>
@@ -93,7 +94,6 @@
             color: rgba(221, 169, 68, 1);
         }
 
-
         #nav .bar {
             position: absolute;
             bottom: 0.13rem;
@@ -156,15 +156,17 @@
             color: rgba(167, 167, 167, 1);
             line-height: 0.3rem;
         }
+
         .page-info span {
             float: left;
         }
+
         .info-hr {
             display: inline-block;
             margin: 0 0.17rem;
             width: 0.01rem;
             height: 100%;
-            background:rgba(240,240,240,1);
+            background: rgba(240, 240, 240, 1);
         }
 
         .page-hr {
@@ -172,11 +174,11 @@
             background: rgba(238, 238, 238, 1);
         }
 
-
         .page-logo {
             height: 1.19rem;
             position: relative;
         }
+
         .logo-pic {
             background: url("https://mnapp.cfae.cn:1540/nas/images/roadShow/20180826210148aa77b6cf-a3f9-43f9-873d-ae0ddcf6e53e.png");
             background-size: cover;
@@ -213,7 +215,7 @@
         .list-item {
             height: 2.08rem;
             margin-left: 0.3rem;
-            border-bottom: 0.01rem solid rgba(238,238,238,1);
+            border-bottom: 0.01rem solid rgba(238, 238, 238, 1);
             position: relative;
         }
 
@@ -297,6 +299,7 @@
             background: rgba(238, 238, 238, 1);
             border-bottom: none;
         }
+
         .list-item-checked::before {
             content: '';
             display: block;
@@ -304,7 +307,7 @@
             height: 100%;
             position: absolute;
             left: -0.3rem;
-            background:rgba(238,238,238,1);
+            background: rgba(238, 238, 238, 1);
         }
 
         #face {
@@ -407,7 +410,7 @@
             text-align: center;
         }
 
-        .chat-left,.chat-right {
+        .chat-left, .chat-right {
             position: relative;
             margin-bottom: 0.3rem;
         }
@@ -447,20 +450,25 @@
             font-weight: 400;
             line-height: 0.40rem;
             padding: 0.13rem 0.2rem;
+            white-space: pre-wrap;
+            word-wrap:break-word;
         }
 
         .chat-left .chat-user-header {
             left: 0.3rem;
         }
+
         .chat-left .chat-user-name {
             left: 1.22rem;
         }
+
         .chat-left .chat-user-tail {
             left: 1.13rem;
             top: 0.58rem;
             background: url("img/tail_left.png");
             background-size: cover;
         }
+
         .chat-left .chat-user-msg {
             top: 0.41rem;
             left: 1.23rem;
@@ -471,16 +479,18 @@
         .chat-right .chat-user-header {
             right: 0.3rem;
         }
+
         .chat-right .chat-user-tail {
             right: 1.13rem;
             top: 0.18rem;
             background: url("img/tail_right.png");
             background-size: cover;
         }
+
         .chat-right .chat-user-msg {
             right: 1.23rem;
-            background:rgba(104,162,215,1);
-            color:rgba(255,255,255,1);
+            background: rgba(104, 162, 215, 1);
+            color: rgba(255, 255, 255, 1);
         }
 
         #chat-input-box {
@@ -511,8 +521,9 @@
             padding-left: 0.35rem;
             box-sizing: border-box;
         }
+
         #chat-input::placeholder {
-            color:rgba(167,167,167,1);
+            color: rgba(167, 167, 167, 1);
         }
 
         #chat-input-btn {
@@ -615,6 +626,11 @@
             letter-spacing: 1px;
             text-align: center;
         }
+
+        /*富文本*/
+        .ql-editor {
+            padding: 0 !important;
+        }
     </style>
 </head>
 <body>
@@ -669,7 +685,9 @@
                                 <div class="logo-name">中国工商银行</div>
                             </div>
                             <div class="page-hr"></div>
-                            <div class="page-paragraph">        行政规范性文件是除国务院的行政法规、决定、命令以及部门规章和地方政府规章外，由行政机关或者经法律、法规授权的具有管理公共事务职能的组织（以下统称行政机关）依照法定权限、程序制定并公开发布，涉及公民、法人和其他组织权利义务，具有普遍约束力，在一定期限内反复适用的公文。制发行政规范性文件是行政机关依法履行职能的重要方式，直接关系群众切身利益，事关政府形象。近年来，各地区、各部门不断加强行政规范性文件制定和监督管理工作，取得了一定成效，但乱发文、出台“奇葩”文件的现象还不同程度地存在，侵犯了公民、法人和其他组织的合法权益，损害了政府公信力。为全面贯彻习近平新时代中国特色社会主义思想和党的十九大精神，落实党中央、国务院关</div>
+                            <div class="page-paragraph">
+                                行政规范性文件是除国务院的行政法规、决定、命令以及部门规章和地方政府规章外，由行政机关或者经法律、法规授权的具有管理公共事务职能的组织（以下统称行政机关）依照法定权限、程序制定并公开发布，涉及公民、法人和其他组织权利义务，具有普遍约束力，在一定期限内反复适用的公文。制发行政规范性文件是行政机关依法履行职能的重要方式，直接关系群众切身利益，事关政府形象。近年来，各地区、各部门不断加强行政规范性文件制定和监督管理工作，取得了一定成效，但乱发文、出台“奇葩”文件的现象还不同程度地存在，侵犯了公民、法人和其他组织的合法权益，损害了政府公信力。为全面贯彻习近平新时代中国特色社会主义思想和党的十九大精神，落实党中央、国务院关
+                            </div>
                         </div>
 
                     </div>
@@ -694,31 +712,7 @@
         <div class="swiper-slide slidepage">
             <div class="swiper-container scroll">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide slidescroll">
-
-                        <div class="list-item list-item-checked">
-                            <img class="item-pic" src="https://mnapp.cfae.cn:1540/nas/images/banner/20181213013324a8005df8-66f8-4ac7-ae6b-5cd72eaa6cde.jpg" alt="">
-                            <div class="item-pic-type">回放</div>
-                            <div class="item-pic-date">2018-11-03 15:30:00</div>
-                            <div class="item-name">20180126交银债券发行人调研系列活动浙江站</div>
-                            <div class="item-tag">交通银行</div>
-                        </div>
-
-                        <div class="list-item">
-                            <img class="item-pic" src="https://mnapp.cfae.cn:1540/nas/images/banner/20181213013324a8005df8-66f8-4ac7-ae6b-5cd72eaa6cde.jpg" alt="">
-                            <div class="item-pic-type">回放</div>
-                            <div class="item-pic-date">2018-11-03 15:30:00</div>
-                            <div class="item-name">20180126交银债券发行人调研系列活动浙江站</div>
-                            <div class="item-tag">交通银行</div>
-                        </div>
-
-                        <div class="list-item">
-                            <img class="item-pic" src="https://mnapp.cfae.cn:1540/nas/images/banner/20181213013324a8005df8-66f8-4ac7-ae6b-5cd72eaa6cde.jpg" alt="">
-                            <div class="item-pic-type">回放</div>
-                            <div class="item-pic-date">2018-11-03 15:30:00</div>
-                            <div class="item-name">20180126交银债券发行人调研系列活动浙江站</div>
-                            <div class="item-tag">交通银行</div>
-                        </div>
+                    <div class="swiper-slide slidescroll" id="list-box">
 
                     </div>
                 </div>
@@ -730,64 +724,167 @@
 <script src="js/swiper.min.js"></script>
 <script src="js/jquery.min.js"></script>
 <script src="js/touch.js"></script>
+<script src="js/dateFormat.js"></script>
 <script>
 
+    //用户信息
+    var appUserId = getCookie('appUserId') ? parseInt(getCookie('appUserId')) : 1;
     var accessToken = getCookie('accessToken');
-    var appUserId = getCookie('appUserId');
-    var chatroom;
-    var doc;
 
+    //基本信息
+    var ip = 'http://10.10.80.101:10021/business-service';
+    var app_enum = {
+        DEV: '46117d68',
+        UAT: '603844f6',
+        DEP: 'ac63acf8'
+    };
+    var appId = app_enum.DEV;
+    // var roadShowId = 650;
+    // var roadShowId = 1594;
+    var roadShowId = 1014;
+    // var roadShowId = GetRequest().id;
 
-    if(accessToken && appUserId){
-        var $screen = $('#screen');
-        $screen.find('#login').remove();
-        $screen.append('<div id="myVideo" class="vjs-big-play-centered" style="width:100%; height:100%;"></div>');
+    //路演信息
+    var token; //微吼token
+    var channelId; //后台channelId
+    var msgChannelId; //微吼channelId
+    var recordId; //回放Id
+    var roomId; //直播Id
+    var recordStatus; //路演状态
+    var docId = '4e90f09a'; //文档Id
+    var recordStatus_enum = {
+        RECORDING: '直播',
+        END_RECORD: '暂停',
+        CLOSE_RECORD: '关闭',
+        PREVIEW: '预告',
+        CUT_PREVIEW: '剪辑预览',
+        NOT_START: '预告',
+        FINISHED: '回放'
+    };
 
+    //杂项
+    var doc; //文档对象
+    var chatroom; //聊天室容器
+
+    ajaxUtil(ip + '/api/v1/business/roadshow/new/getNewRoadShowDetail?roadShowId=' + roadShowId, 'POST', {},
+        {'Content-Type': 'application/json', 'appUserId': appUserId},
+        init
+    );
+
+    function init(data) {
+        console.log(data);
+
+        token = data.token;
+        channelId = data.channelId;
+        msgChannelId = data.messageChannelId;
+        recordId = data.recordId;
+        roomId = data.roomId;
+        recordStatus = data.recordStatus; //路演状态
+
+        getRoadShowDetail(data);
+        getRoadShowList(data.organizationId);
+        if (accessToken && appUserId) {
+            initSDK();
+
+            // switch(data.recordStatus){
+            //     case 'PREVIEW':
+            //
+            //         break;
+            //     case 'RECORDING':
+            //         initVideo();
+            //         break;
+            //     case 'FINISHED':
+            //         initVideo();
+            //         break;
+            // }
+            initVideo(data.recordStatus);
+
+            initChatroom();
+            if(data.annexUrl){
+                initDoc();
+            }
+        }
+    }
+
+    function initChatroom() {
         var chatRoomBox = $('#chat-room-box');
         chatRoomBox.find('#face').remove();
         chatRoomBox.append('<div id="chat-room"></div>');
-        chatRoomBox.parent().css('backgroundColor', '#f7f8fa').after(
-            '<div id="chat-input-box">\n' +
-            '   <input type="text" id="chat-input" placeholder="我来说两句">\n' +
-            '   <div id="chat-input-btn"></div>\n' +
-            '   <div id="chat-input-send"></div>\n' +
-            '</div>');
+        chatRoomBox.parents('.slidepage').css('backgroundColor','#f7f8fa');
+        chatRoomBox.parent().after(
+            '<div id="chat-input-box">' +
+            '   <input type="text" id="chat-input" placeholder="我来说两句">' +
+            '   <div id="chat-input-btn"></div>' +
+            '   <div id="chat-input-send"></div>' +
+            '</div>'
+        );
 
-        $('body').append(
-            '<div id="pdf-btn"></div>\n' +
-            '<div id="pdf-box">\n' +
-            '    <div id="pdf-close"></div>\n' +
-            '    <div id="pdf-screen"></div>\n' +
-            '    <div id="pdf-last"></div>\n' +
-            '    <div id="pdf-page"></div>\n' +
-            '    <div id="pdf-next"></div>\n' +
-            '</div>');
+        chatroom = $('#chat-room');
 
-        var roadshowType = 1; //0直播 1回放
-        var recordId = '487731f9';
-        var docId = '4e90f09a';
-        var channelId = 'ch_d000541c';
+        getMsgByTime(new Date().Format('yyyy-MM-dd hh:mm:ss'));
 
+        //输入框
+        $('#chat-input').on('input', function () {
+            if (this.value) {
+                $('#chat-input-btn').css({'background': 'url("img/send_enable_btn.png")', 'backgroundSize': 'cover'});
+            } else {
+                $('#chat-input-btn').css({'background': 'url("img/send_disabled_btn.png")', 'backgroundSize': 'cover'});
+            }
+        });
+
+        //发送信息
+        $('#chat-input-btn,#chat-input-send').click(function () {
+            var oInput = $('#chat-input');
+            if (oInput.val()) {
+                chatRoomAddDate(chatroom);
+                chatRoomAddRight(chatroom, '', '', oInput.val());
+                oInput.val('');
+                oInput.trigger('input');
+                scrollSwiper[1].update();
+                scrollSwiper[1].slideNext();
+
+                ajaxUtil(ip + '/api/v1/business/roadshow/new/sendMsg', 'POST',
+                    {
+                        "channelId": channelId,
+                        "content": oInput.val()
+                    }, {
+                        'Content-Type': 'application/json',
+                        'userId': appUserId
+                    }
+                );
+            }
+        });
+    }
+
+    function initSDK() {
         /**
          * 初始化配置
          */
         Vhall.config({
-            appId: appUserId,//应用 ID ,必填
-            accountId: appUserId,//第三方用户唯一标识,必填
-            token: accessToken//token必填
+            appId: appId,//应用 ID ,必填
+            accountId: appId,//第三方用户唯一标识,必填
+            token: token//token必填
         });
+    }
 
-        /**
-         * 注册ready事件
-         */
-        Vhall.ready(function () {
-            /**
-             * 播放器初始化
-             */
-            VhallPlayer.init({
-                // roomId: 'lss_f8e384d9', //房间ID,直播必填，点播不写
+    function initVideo(recordStatus) {
+        // switch(recordStatus){
+        //     case 'PREVIEW':
+        //         break;
+        //     case 'RECORDING':
+        //         break;
+        // }
+        // if(recordStatus=== 'PREVIEW'){
+        //
+        // }else{
+            var $screen = $('#screen');
+            $screen.find('#login').remove();
+            $screen.append('<div id="myVideo" class="vjs-big-play-centered" style="width:100%; height:100%;"></div>');
+
+            var aaa = {
+                roomId: roomId, //房间ID,直播必填，点播不写
                 recordId: recordId,//回放Id，点播必填，直播不写
-                type: roadshowType ? 'vod' : 'live',//播放类型,必填，live 直播, vod 为点播
+                type: 'live',//播放类型,必填，live 直播, vod 为点播
                 videoNode: 'myVideo',//推流视频回显节点id，必填
                 complete: function () {
                     /**
@@ -795,7 +892,164 @@
                      */
                     VhallPlayer.play();
                 }
+            };
+
+
+            /**
+             * 注册ready事件
+             */
+            Vhall.ready(function () {
+                /**
+                 * 播放器初始化
+                 */
+                VhallPlayer.init(aaa);
             });
+        // }
+    }
+
+    function getRoadShowDetail(data) {
+        $('.page-title').text(data.title);
+        $('.info-date').text(data.beginTime);
+        $('.info-count').text('次数：' + data.viewCount + '次');
+        $('.logo-pic').css({'background': 'url(' + data.logoUrl + ')', 'backgroundSize': 'cover'});
+        $('.logo-name').text(data.orgName);
+        $('.page-paragraph').html(data.intro);
+        scrollSwiper[0].update();
+    }
+
+    function getRoadShowList(organizationId) {
+        ajaxUtil(ip + '/api/v1/business/roadshow/new/queryOrgRoadShow',
+            'POST',
+            {
+                id: organizationId
+            },
+            {
+                'Content-Type': 'application/json',
+                'appUserId': appUserId
+            },
+            function (data) {
+                var listBox = $('#list-box');
+                for (var i = 0; i < data.length; i++) {
+                    var item = data[i];
+                    var strHtml;
+                    if (item.rsId === roadShowId) {
+                        strHtml = '<div class="list-item list-item-checked">';
+                    } else {
+                        strHtml = '<div class="list-item">';
+                    }
+                    listBox.append(
+                        strHtml +
+                        '   <img class="item-pic" src="' + item.headImage + '" alt="">' +
+                        '   <div class="item-pic-type">' + recordStatus_enum[item.recordStatus] + '</div>' +
+                        '   <div class="item-pic-date">' + item.beginTime + '</div>' +
+                        '   <div class="item-name">' + item.title + '</div>' +
+                        '   <div class="item-tag">' + item.orgName + '</div>' +
+                        '</div>'
+                    );
+                }
+                scrollSwiper[2].update();
+            }
+        );
+    }
+
+    function getMsgByTime(strTime) {
+        // console.log(strTime);
+        ajaxUtil(ip + '/api/v1/business/roadshow/new/getMsgHistory', 'POST',
+            {
+                "channelId": channelId,
+                "endTime": strTime
+            }, {
+                'Content-Type': 'application/json',
+                'userId': appUserId
+            },
+            function (data) {
+                // console.log(data);
+                for (var i = 0; i < data.length; i++) {
+                    var item = data[i];
+                    if (appUserId == data.appUserId) {
+                        chatRoomAddRight(chatroom, item.picture, '', item.content);
+                    } else {
+                        chatRoomAddLeft(chatroom, item.picture, item.userName, item.content);
+                    }
+                    if (i === 9) {
+                        getMsgByTime(item.lastModifiedTime);
+                    } else {
+                        scrollSwiper[1].update();
+                        scrollSwiper[1].slideNext();
+                    }
+                }
+            }
+        );
+    }
+
+
+    //登录
+    $('#login-btn').click(function () {
+
+        setCookie('appUserId', '1', '12h');
+        setCookie('accessToken', '111', '12h');
+
+        window.location.href = '';
+    });
+
+    //注册
+    $('#register-btn').click(function () {
+        window.location.href = '';
+    });
+
+    function initDoc() {
+
+        $('body').append(
+            '<div id="pdf-btn"></div>' +
+            '<div id="pdf-box">' +
+            '    <div id="pdf-close"></div>' +
+            '    <div id="pdf-screen"></div>' +
+            '    <div id="pdf-last"></div>' +
+            '    <div id="pdf-page"></div>' +
+            '    <div id="pdf-next"></div>' +
+            '</div>'
+        );
+
+        $('#pdf-btn').click(function () {
+
+            $('#pdf-box').slideToggle(300, function () {
+
+                if (!doc) {
+
+                    /**
+                     * 初始化文档
+                     */
+                    doc = new VhallDoc({
+                        docNode: 'pdf-screen',//文档容器
+                        width: document.body.clientWidth,//文档显示的宽度,非必填
+                        height: document.getElementById('pdf-screen').clientHeight//文档显示的高度，非必填
+                    });
+
+                    /**
+                     * 加载文档
+                     */
+                    doc.loadDoc(docId, msgChannelId, function (docId) {
+                        console.info('load doc success,the docId is:', docId);
+                    }, function (reason) {
+                        console.error(reason);
+                    });
+
+                    //简单调用方式：
+                    // doc.loadDoc(docId, channelId);
+                }
+            });
+        });
+
+        $('#pdf-close').click(function () {
+            $('#pdf-box').slideToggle();
+        });
+
+        $('#pdf-last').click(function () {
+            doc.preSlide();
+        });
+
+        $('#pdf-next').click(function () {
+            doc.nextSlide();
         });
 
         Vhall.onBroadcast(function (docInfo) {
@@ -811,95 +1065,7 @@
             }
             $('#pdf-page').text(docInfo.currentPage + '/' + docInfo.page);
         });
-
-        //聊天
-        chatroom = $('#chat-room');
-        chatRoomAddDate(chatroom);
-        chatRoomAddLeft(chatroom, '', '测试', '我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容');
-        chatRoomAddLeft(chatroom, '', '测试', '我是内容');
-        chatRoomAddRight(chatroom, '', '', '我是内容');
-        scrollSwiper[1].update();
-        scrollSwiper[1].slideNext();
     }
-
-    //登录
-    $('#login-btn').click(function () {
-
-        setCookie('appUserId', 'f13001cc', '12h');
-        setCookie('accessToken', 'access:f13001cc:1c6954c6609af359', '12h');
-
-        window.location.href = '';
-    });
-
-    //注册
-    $('#register-btn').click(function () {
-        window.location.href = '';
-    });
-
-    //输入框
-    $('#chat-input').on('input', function () {
-        if (this.value) {
-            $('#chat-input-btn').css({'background': 'url("img/send_enable_btn.png")', 'backgroundSize': 'cover'});
-        } else {
-            $('#chat-input-btn').css({'background': 'url("img/send_disabled_btn.png")', 'backgroundSize': 'cover'});
-        }
-    });
-
-    //发送信息
-    $('#chat-input-btn,#chat-input-send').click(function () {
-        var oInput = $('#chat-input');
-        if (oInput.val()) {
-            chatRoomAddDate(chatroom);
-            chatRoomAddRight(chatroom, '', '', oInput.val());
-            oInput.val('');
-            oInput.trigger('input');
-            scrollSwiper[1].update();
-            scrollSwiper[1].slideNext();
-        }
-    });
-
-    //pdf
-    $('#pdf-btn').click(function () {
-
-        $('#pdf-box').slideToggle(300, function () {
-
-            if (!doc) {
-
-                /**
-                 * 初始化文档
-                 */
-                doc = new VhallDoc({
-                    docNode: 'pdf-screen',//文档容器
-                    width: document.body.clientWidth,//文档显示的宽度,非必填
-                    height: document.getElementById('pdf-screen').clientHeight//文档显示的高度，非必填
-                });
-
-                /**
-                 * 加载文档
-                 */
-                doc.loadDoc(docId, channelId, function (docId) {
-                    console.info('load doc success,the docId is:', docId);
-                }, function (reason) {
-                    console.error(reason);
-                });
-
-                //简单调用方式：
-                // doc.loadDoc(docId, channelId);
-            }
-        });
-    });
-
-    $('#pdf-close').click(function () {
-        $('#pdf-box').slideToggle();
-    });
-
-    $('#pdf-last').click(function () {
-        doc.preSlide();
-    });
-
-    $('#pdf-next').click(function () {
-        doc.nextSlide();
-    });
 
     function chatRoomAddDate(ele) {
         var date = new Date();
@@ -910,7 +1076,7 @@
         var strDate = month + '月' + day + '日 ' + hours + ':' + minutes;
         ele.append('<div class="chat-date">' + strDate + '</div>');
     }
-    
+
     function chatRoomAddLeft(ele, head, name, msg) {
 
         var clientWidth = document.body.clientWidth;
@@ -918,11 +1084,11 @@
         var maxWidth = clientWidth * 0.6733;
 
         ele.append(
-            '<div class="chat-left">\n' +
-            '<div class="chat-user-header"></div>\n' +
-            '<div class="chat-user-name">' + name + '</div>\n' +
-            '<div class="chat-user-tail"></div>\n' +
-            '<div class="chat-user-msg" style="max-width: ' + maxWidth + 'px;">' + msg + '</div>\n' +
+            '<div class="chat-left">' +
+            '<div class="chat-user-header"></div>' +
+            '<div class="chat-user-name">' + name + '</div>' +
+            '<div class="chat-user-tail"></div>' +
+            '<div class="chat-user-msg" style="max-width: ' + maxWidth + 'px;">' + msg + '</div>' +
             '</div>');
 
         var nowChatLeft = $('.chat-left').eq(-1);
@@ -938,14 +1104,15 @@
 
     function chatRoomAddRight(ele, head, name, msg) {
 
+        console.log(msg);
         var clientWidth = document.body.clientWidth;
         var maxWidth = clientWidth * 0.6733;
 
         ele.append(
-            '<div class="chat-right">\n' +
-            '<div class="chat-user-header"></div>\n' +
-            '<div class="chat-user-tail"></div>\n' +
-            '<div class="chat-user-msg" style="max-width: ' + maxWidth + 'px;">' + msg + '</div>\n' +
+            '<div class="chat-right">' +
+            '<div class="chat-user-header"></div>' +
+            '<div class="chat-user-tail"></div>' +
+            '<div class="chat-user-msg" style="max-width: ' + maxWidth + 'px;">' + msg + '</div>' +
             '</div>');
 
         var nowChatLeft = $('.chat-right').eq(-1);
@@ -965,11 +1132,11 @@
     function getSec(str) {
         var str1 = str.substring(1, str.length) * 1;
         var str2 = str.substring(0, 1);
-        if(str2 == "s") {
+        if (str2 == "s") {
             return str1 * 1000;
-        } else if(str2 == "h") {
+        } else if (str2 == "h") {
             return str1 * 60 * 60 * 1000;
-        } else if(str2 == "d") {
+        } else if (str2 == "d") {
             return str1 * 24 * 60 * 60 * 1000;
         }
     }
@@ -986,6 +1153,39 @@
             }
         }
         return ""
+    }
+
+    function ajaxUtil(url, type, data, headers, fn) {
+        $.ajax({
+            url: url,
+            data: JSON.stringify(data),
+            type: type,
+            dataType: 'JSON',
+            headers: headers,
+            success: function (data) {
+                if (data.success) {
+                    fn && fn(data.data);
+                } else {
+                    alert(data.errorMsg);
+                }
+            },
+            error: function (err) {
+                alert('服务器异常');
+            }
+        });
+    }
+
+    function GetRequest() {
+        var url = location.search;
+        var theRequest = {};
+        if (url.indexOf("?") !== -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for (var i = 0; i < strs.length; i++) {
+                theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+            }
+        }
+        return theRequest;
     }
 
 </script>
