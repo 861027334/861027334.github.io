@@ -5,91 +5,1347 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>title</title>
-    <style type="text/css">
-        * {
-            padding: 0;
-            margin: 0;
-        }
-        #box {
-            width: 100px;
-            height: 100px;
-            background-color: red;
-            position: fixed;
-            left: 0;
-            top: 0;
+    <title>Document</title>
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="https://static.vhallyun.com/jssdk/videojs.min.css?v=1.0.0"><!--播放器默认样式，需要引用在包含在页面的head标签里-->
+    <script src="https://static.vhallyun.com/jssdk/dvideo-plugin.js?v=1.0.0"></script><!--依赖的播放器资源-->
+    <script src="https://static.vhallyun.com/jssdk/vhall-jssdk-player-1.0.0.js"></script>
+    <script src="https://static.vhallyun.com/jssdk/vhall-jssdk-base-1.0.0.js"></script>
+    <script src="https://static.vhallyun.com/jssdk/vhall-jssdk-chat-1.0.0.js?v=201802261520"></script>
+    <script src="https://static.vhallyun.com/jssdk/vhall-jssdk-base-1.0.0.js?v=201802261520"></script>
+    <style>
+        html {
+            font-size: 13.333vw;
         }
 
-        #horizontal {
-            position: fixed;
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #top {
+            height: 0.9rem;
+            background: rgba(221, 169, 68, 1);
+            position: relative;
+        }
+
+        #logo {
+            position: absolute;
             top: 0;
             bottom: 0;
-            width: 100%;
-            height: 1px;
-            background-color: #000000;
+            left: 0.3rem;
+            margin: auto;
+            height: 0.7rem;
+            width: 0.7rem;
+            background: url("img/logo.png");
+            background-size: cover;
+        }
+
+        #top-title {
+            width: 3rem;
+            height: 0.42rem;
+            font-size: 0.32rem;
+            font-family: PingFangSC-Regular;
+            font-weight: 400;
+            color: rgba(35, 47, 63, 1);
+            line-height: 0.42rem;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 1.23rem;
             margin: auto;
         }
 
-        #vertical {
-            position: fixed;
+        #open-btn {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0.36rem;
+            margin: auto;
+            height: 0.45rem;
+            width: 1.39rem;
+            background: url("img/download_btn.png");
+            background-size: cover;
+        }
+
+        #screen {
+            height: 4.22rem;
+            background-color: #000000;
+        }
+
+        #screen #screen-msg {
+            height: 4.22rem;
+            line-height: 4.22rem;
+            text-align: center;
+            font-size: 0.32rem;
+            font-family: PingFangSC-Regular;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 1);
+        }
+
+        #nav {
+            height: 0.8rem;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+
+        #nav .swiper-slide span {
+            margin: 0 5px;
+            text-align: center;
+            display: block;
+            line-height: 2.5;
+            font-size: 0.32rem;
+            font-family: PingFangSC-Medium;
+            color: rgba(124, 124, 125, 1);
+            font-weight: 500;
+        }
+
+        #nav .swiper-slide:first-child span {
+            color: rgba(221, 169, 68, 1);
+        }
+
+        #nav .bar {
+            position: absolute;
+            bottom: 0.13rem;
+        }
+
+        #nav .bar .color {
+            width: 0.86rem;
+            height: 0.04rem;
+            margin: 0 auto;
+            background: rgba(221, 169, 68, 1);
+            border-radius: 0.03rem;
+        }
+
+        .hr {
+            height: 0.2rem;
+            background: rgba(247, 248, 250, 1);
+        }
+
+        #page {
+            position: absolute;
+            top: 6.12rem;
+            width: 100%;
+            bottom: 0;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+
+        #page .slidepage {
+            height: 100%;
+        }
+
+        .scroll {
+            height: 100%;
+        }
+
+        .slidescroll {
+            height: auto;
+        }
+
+        .page {
+            padding: 0.22rem 0.3rem;
+        }
+
+        .page-title {
+            text-align: justify;
+            /*height: 0.84rem;*/
+            font-size: 0.32rem;
+            font-family: PingFangSC-Regular;
+            font-weight: 400;
+            color: rgba(32, 32, 32, 1);
+            line-height: 0.43rem;
+        }
+
+        .page-info {
+            position: relative;
+            margin: 0.12rem 0 0.18rem;
+            height: 0.30rem;
+            font-size: 0.22rem;
+            font-family: PingFangSC-Regular;
+            font-weight: 400;
+            color: rgba(167, 167, 167, 1);
+            line-height: 0.3rem;
+        }
+
+        .page-info span {
+            float: left;
+        }
+
+        .info-hr {
+            display: inline-block;
+            margin: 0 0.17rem;
+            width: 0.01rem;
+            height: 100%;
+            background: rgba(240, 240, 240, 1);
+        }
+
+        .page-hr {
+            height: 0.01rem;
+            background: rgba(238, 238, 238, 1);
+        }
+
+        .page-logo {
+            height: 1.19rem;
+            position: relative;
+        }
+
+        .logo-pic {
+            /*background: url("https://mnapp.cfae.cn:1540/nas/images/roadShow/20180826210148aa77b6cf-a3f9-43f9-873d-ae0ddcf6e53e.png");*/
+            /*background-size: cover;*/
+            position: absolute;
+            top: 0.29rem;
+            bottom: 0.21rem;
+            left: 0;
+            width: 0.69rem;
+        }
+
+        .logo-name {
+            position: absolute;
+            top: 0.43rem;
+            bottom: 0.36rem;
+            left: 0.9rem;
+            right: 0;
+            font-size: 0.28rem;
+            font-family: PingFangSC-Medium;
+            font-weight: 500;
+            color: rgba(32, 32, 32, 1);
+        }
+
+        .page-paragraph {
+            margin-top: 0.2rem;
+            font-size: 0.26rem;
+            font-family: PingFangSC-Regular;
+            font-weight: 400;
+            color: rgba(155, 155, 155, 1);
+            line-height: 0.48rem;
+            text-align: justify;
+            white-space: pre-wrap;
+        }
+
+        .list-item {
+            height: 2.08rem;
+            margin-left: 0.3rem;
+            border-bottom: 0.01rem solid rgba(238, 238, 238, 1);
+            position: relative;
+        }
+
+        .item-pic {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 2.2rem;
+            height: 1.48rem;
+            margin: auto;
+            object-fit: cover;
+        }
+
+        .item-pic-type {
+            position: absolute;
+            top: 0.3rem;
+            width: 0.86rem;
+            height: 0.24rem;
+            left: 0;
+            background: rgba(104, 162, 215, 1);
+            font-size: 0.16rem;
+            font-family: PingFangSC-Regular;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 1);
+            line-height: 0.245rem;
+            text-align: center;
+        }
+
+        .item-pic-date {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 2.2rem;
+            height: 0.7rem;
+            margin: auto;
+            padding: 0 0.2rem;
+            box-sizing: border-box;
+            background: rgba(0, 74, 141, 0.35);
+            /*opacity: 0.35;*/
+            font-size: 0.22rem;
+            font-family: PingFangSC-Regular;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 1);
+            line-height: 0.35rem;
+            text-align: center;
+        }
+
+        .item-name {
+            position: absolute;
+            top: 0.3rem;
+            left: 2.46rem;
+            width: 4.43rem;
+            height: 0.9rem;
+            font-size: 0.32rem;
+            font-family: PingFangSC-Regular;
+            font-weight: 400;
+            color: rgba(32, 32, 32, 1);
+            line-height: 0.45rem;
+            letter-spacing: 0.01rem;
+        }
+
+        .item-tag {
+            position: absolute;
+            bottom: 0.3rem;
+            left: 2.46rem;
+            width: 0.86rem;
+            height: 0.24rem;
+            background: rgba(221, 169, 68, 1);
+            border-radius: 0.04rem;
+            font-size: 0.16rem;
+            font-family: PingFangSC-Regular;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 1);
+            text-align: center;
+            line-height: 0.245rem;
+        }
+
+        .list-item-checked {
+            background: rgba(238, 238, 238, 1);
+            border-bottom: none;
+        }
+
+        .list-item-checked::before {
+            content: '';
+            display: block;
+            width: 0.3rem;
+            height: 100%;
+            position: absolute;
+            left: -0.3rem;
+            background: rgba(238, 238, 238, 1);
+        }
+
+        .tab-pic {
+            position: absolute;
+            top: 1.25rem;
+            width: 1.4rem;
+            height: 1.4rem;
             left: 0;
             right: 0;
-            width: 1px;
+            margin: auto;
+        }
+        .tab-msg {
+            position: absolute;
+            top: 2.75rem;
+            width: 100%;
+            height: 0.42rem;
+            font-size: 0.28rem;
+            font-family: PingFangSC-Regular;
+            font-weight: 400;
+            color: rgba(167, 167, 167, 1);
+            line-height: 0.42rem;
+            text-align: center;
+        }
+
+        #login {
+            background-color: #000000;
+            position: relative;
+            height: 100%;
+        }
+
+        #login-span {
+            position: absolute;
+            top: 0.98rem;
+            width: 100%;
+            height: 0.45rem;
+            font-size: 0.32rem;
+            font-family: PingFangSC-Regular;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 1);
+            line-height: 0.45rem;
+            text-align: center;
+        }
+
+        #login-btn {
+            position: absolute;
+            top: 2.43rem;
+            left: 1.19rem;
+            width: 1.63rem;
+            height: 0.55rem;
+            background: rgba(221, 169, 68, 1);
+            box-shadow: 0 0.05rem 10rem 0 rgba(221, 169, 68, 0.31);
+            border-radius: 0.28rem;
+            font-size: 0.22rem;
+            font-family: PingFangSC-Regular;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 1);
+            line-height: 0.56rem;
+            text-align: center;
+        }
+
+        #register-btn {
+            position: absolute;
+            top: 2.43rem;
+            right: 1.19rem;
+            width: 1.63rem;
+            height: 0.55rem;
+            background: rgba(221, 169, 68, 1);
+            box-shadow: 0 0.05rem 10rem 0 rgba(221, 169, 68, 0.31);
+            border-radius: 0.28rem;
+            font-size: 0.22rem;
+            font-family: PingFangSC-Regular;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 1);
+            line-height: 0.56rem;
+            text-align: center;
+        }
+
+        #chat-room {
+            height: 100%;
+            position: relative;
+            margin: 0.3rem 0 1rem;
+            background-color: #f7f8fa;
+        }
+
+        .chat-date {
+            margin: 0 auto 0.2rem;
+            height: 0.3rem;
+            font-size: 0.22rem;
+            font-family: PingFangSC-Regular;
+            font-weight: 400;
+            color: rgba(167, 167, 167, 1);
+            line-height: 0.3rem;
+            text-align: center;
+        }
+
+        .chat-left, .chat-right {
+            position: relative;
+            margin-bottom: 0.3rem;
+        }
+
+        .chat-user-header {
+            width: 0.72rem;
+            height: 0.72rem;
+            /*background: url("http://www.sucaitianxia.net/sheji/pic/200902/20090208015345473.jpg");*/
+            /*background-size: cover;*/
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+            object-fit: cover;
+            position: absolute;
+        }
+
+        .chat-user-name {
+            height: 0.33rem;
+            font-size: 0.24rem;
+            font-family: PingFangSC-Regular;
+            font-weight: 400;
+            color: rgba(124, 124, 125, 1);
+            line-height: 0.33rem;
+            position: absolute;
+        }
+
+        .chat-user-tail {
+            width: 0.1rem;
+            height: 0.16rem;
+            position: absolute;
+        }
+
+        .chat-user-msg {
+            position: absolute;
+            border-radius: 0.14rem;
+            font-size: 0.28rem;
+            font-family: PingFangSC-Regular;
+            font-weight: 400;
+            line-height: 0.40rem;
+            padding: 0.13rem 0.2rem;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .chat-left .chat-user-header {
+            left: 0.3rem;
+        }
+
+        .chat-left .chat-user-name {
+            left: 1.22rem;
+        }
+
+        .chat-left .chat-user-tail {
+            left: 1.13rem;
+            top: 0.58rem;
+            background: url("img/tail_left.png");
+            background-size: cover;
+        }
+
+        .chat-left .chat-user-msg {
+            top: 0.41rem;
+            left: 1.23rem;
+            background-color: #FFFFFF;
+            color: #000000;
+        }
+
+        .chat-right .chat-user-header {
+            right: 0.3rem;
+        }
+
+        .chat-right .chat-user-tail {
+            right: 1.13rem;
+            top: 0.18rem;
+            background: url("img/tail_right.png");
+            background-size: cover;
+        }
+
+        .chat-right .chat-user-msg {
+            right: 1.23rem;
+            background: rgba(104, 162, 215, 1);
+            color: rgba(255, 255, 255, 1);
+        }
+
+        #chat-input-box {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 1rem;
+            border-top: 1px solid rgba(240, 240, 240, 1);
+            z-index: 1;
+            background: rgba(247, 248, 250, 1);
+        }
+
+        #chat-input {
+            display: inline-block;
+            position: absolute;
+            width: 5.66rem;
+            height: 0.7rem;
+            left: 0.3rem;
             top: 0;
             bottom: 0;
             margin: auto;
+            border: none;
+            outline: medium;
+            border-radius: 0.08rem;
+            font-size: 0.28rem;
+            font-family: PingFangSC-Regular;
+            font-weight: 400;
+            padding-left: 0.35rem;
+            box-sizing: border-box;
+        }
+
+        #chat-input::placeholder {
+            color: rgba(167, 167, 167, 1);
+        }
+
+        #chat-input-btn {
+            position: absolute;
+            bottom: 0;
+            right: 0.1rem;
+            width: 1.3rem;
+            height: 0.9rem;
+            background: url("img/send_disabled_btn.png");
+            background-size: cover;
+        }
+
+        #chat-input-send {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0.47rem;
+            width: 0.56rem;
+            height: 0.4rem;
+            margin: auto;
+            background: url("img/send.png") no-repeat center;
+            background-size: 100% auto;
+        }
+
+        #pdf-btn {
+            width: 1.16rem;
+            height: 1.24rem;
+            background: url("img/pdf_btn.png");
+            background-size: cover;
+            position: fixed;
+            z-index: 1;
+            bottom: 1rem;
+            right: 0;
+        }
+
+        #pdf-box {
+            display: none;
+            position: absolute;
+            width: 100%;
+            /*height: 9.15rem;*/
+            /*top: 5.12rem;*/
+            top: 0.9rem;
+            bottom: 0;
             background-color: #000000;
+            z-index: 1;
+        }
+
+        #pdf-close {
+            position: absolute;
+            top: 0.27rem;
+            right: 0.26rem;
+            width: 0.4rem;
+            height: 0.4rem;
+            background: url("img/pdf_close.png");
+            background-size: cover;
+        }
+
+        #pdf-screen {
+            position: absolute;
+            top: 0.94rem;
+            width: 100%;
+            /*height: 4.2rem;*/
+            /*bottom: 1.15rem;*/
+            bottom: 0;
+            /*background-color: #ffffff;*/
+        }
+
+        #pdf-last {
+            position: absolute;
+            bottom: 0.2rem;
+            left: 0.2rem;
+            width: 1.83rem;
+            height: 0.75rem;
+            background: url("img/pdf_last_disabled.png");
+            background-size: cover;
+        }
+
+        #pdf-next {
+            position: absolute;
+            bottom: 0.2rem;
+            right: 0.2rem;
+            width: 1.83rem;
+            height: 0.75rem;
+            background: url("img/pdf_next_enable.png");
+            background-size: cover;
+        }
+
+        #pdf-page {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0.4rem;
+            margin: auto;
+            width: 2rem;
+            /*width: 100%;*/
+            height: 0.45rem;
+            font-size: 0.32rem;
+            font-family: PingFangSC-Regular;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 1);
+            line-height: 0.45rem;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        /*富文本*/
+        .ql-editor {
+            padding: 0 !important;
         }
     </style>
 </head>
 <body>
-<div id="box"></div>
-<div id="horizontal"></div>
-<div id="vertical"></div>
+
+<div id="top">
+    <div id="logo"></div>
+    <div id="top-title">北京金融资产交易所</div>
+    <div id="open-btn"></div>
+</div>
+
+<div id="screen">
+    <div id="login">
+        <div id="login-span">此路演需登录或注册后方可观看</div>
+        <div id="login-btn">登录</div>
+        <div id="register-btn">注册</div>
+    </div>
+</div>
+
+<div class="swiper-container" id="nav">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <span>路演信息</span></div>
+        <div class="swiper-slide">
+            <span>讨论专区</span></div>
+        <div class="swiper-slide">
+            <span>相关路演</span></div>
+        <div class="bar">
+            <div class="color"></div>
+        </div>
+    </div>
+</div>
+
+<div class="hr"></div>
+
+<div class="swiper-container" id="page">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <div class="swiper-container scroll">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide slidescroll" id="detail-box">
+
+                        <div class="page">
+                            <div class="page-title"></div>
+                            <div class="page-info">
+                                <span class="info-date"></span>
+                                <span class="info-hr"></span>
+                                <span class="info-count"></span>
+                            </div>
+                            <div class="page-hr"></div>
+                            <div class="page-logo">
+                                <div class="logo-pic"></div>
+                                <div class="logo-name"></div>
+                            </div>
+                            <div class="page-hr"></div>
+                            <div class="page-paragraph"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide slidepage">
+            <div class="swiper-container scroll">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide slidescroll" id="chatroom-box">
+
+                            <img class="tab-pic" src="img/face.png">
+                            <div class="tab-msg">登录或注册后可见</div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="swiper-slide slidepage">
+            <div class="swiper-container scroll">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide slidescroll" id="list-box">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/swiper.min.js"></script>
 <script src="js/hammer.min.js"></script>
-<script src="js/jquery.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/touch.js"></script>
+<script src="js/dateFormat.js"></script>
 <script>
 
-    console.log();
-    console.log(window.innerWidth);
+    //基本信息
+    var app_enum = {
+        DEV: '46117d68',
+        UAT: '603844f6',
+        DEP: 'ac63acf8'
+    };
 
-    let oBox = $('#box');
-    let hammer = new Hammer(oBox[0]);
+    var ip = 'http://10.10.80.101:10021/business-service';
+    var appId = app_enum.DEV;
+    // var ip = window.location.origin + '/business-service';
+    // switch(window.location.origin){
+    //     case 'http://10.10.80.99:808':
+    //         appId = app_enum.DEV;
+    //         break;
+    //     case 'https://mnapp.cfae.cn:1540':
+    //         appId = app_enum.UAT;
+    //         break;
+    //     case 'https://apps.cfae.cn':
+    //         appId = app_enum.DEP;
+    //         break;
+    // }
+    var param = GetRequest();
+    var roadShowId = parseInt(GetRequest().id)||340;
+    var shareUserId = param.userId;
 
-    let width = oBox.width();
-    let height = oBox.height();
-    let pos_x=oBox.position().left;
-    let pos_y=oBox.position().top;
-    hammer.on('panstart', function (e) {
-        pos_x=oBox.position().left;
-        pos_y=oBox.position().top;
+    //用户信息
+    var appUserId = getCookie('appUserId') ? parseInt(getCookie('appUserId')) : 1;
+    var accessToken = getCookie('accessToken');
+
+    //路演信息
+    var token; //微吼token
+    var vuserId; //微吼userId
+    var channelId; //后台channelId
+    var msgChannelId; //微吼channelId
+    var recordId; //回放Id
+    var roomId; //直播Id
+    var recordStatus; //路演状态
+    var lastModifiedTime; //上一条信息时间
+    var picture; //头像
+    var defaultPicture = 'img/logo.png';
+    var docId; //文档Id
+    var recordStatus_enum = {
+        RECORDING: '直播',
+        END_RECORD: '暂停',
+        CLOSE_RECORD: '关闭',
+        PREVIEW: '预览',
+        CUT_PREVIEW: '剪辑预览',
+        NOT_START: '预告',
+        FINISHED: '回放'
+    };
+    var type_enum = {
+        VIDEO: '视频',
+        AUDIO: '音频',
+        GRAPHIC: '图文交流'
+    };
+
+    //杂项
+    var doc; //微吼文档对象
+    var vChat; //微吼chat对象
+    var chatroom; //聊天室容器
+
+    createRoadshow();
+
+    function createRoadshow() {
+        ajaxUtil(ip + '/api/v1/business/roadshow/new/getNewRoadShowDetail?roadShowId=' + roadShowId, 'POST', {},
+            {'Content-Type': 'application/json', 'appUserId': appUserId}, init, createError
+        );
+    }
+
+    function init(data) {
+        console.log(data);
+
+        token = data.token;
+        channelId = data.channelId;
+        msgChannelId = data.messageChannelId;
+        recordId = data.recordId;
+        roomId = data.roomId;
+        recordStatus = data.recordStatus; //路演状态
+        picture = data.picture;
+        vuserId = data.vuserId;
+
+        getRoadShowDetail(data);
+        getRoadShowList(data.organizationId);
+        if (accessToken && appUserId) {
+            initSDK();
+            initVideo(data.recordStatus);
+            initChatroom();
+            if (data.annexUrl) {
+                initDoc(data.annexUrl);
+            }
+        }
+    }
+
+    function createError(data) {
+        if(data.errorCode === 10000003 || 10000001){
+            $('#screen').empty().append('<div id="screen-msg">数据不存在或已过期</div>');
+
+            $('#detail-box, #chatroom-box').empty().append(
+                '<img class="tab-pic" src="img/face.png">' +
+                '<div class="tab-msg">数据不存在或已过期</div>'
+            );
+            $('#list-box').append(
+                '<img class="tab-pic" src="img/face.png">' +
+                '<div class="tab-msg">数据不存在或已过期</div>'
+            );
+            scrollSwiper[0].update();
+        }
+    }
+
+    function initChatroom() {
+
+        vChat = new VhallChat({
+            channelId: msgChannelId//频道Id，必填
+        });
+
+        var chatRoomBox = $('#chatroom-box');
+        chatRoomBox.empty();
+        // chatRoomBox.find('#face').remove();
+        chatRoomBox.append('<div id="chat-room"></div>');
+        chatRoomBox.parents('.slidepage').css('backgroundColor', '#f7f8fa');
+        chatRoomBox.parent().after(
+            '<div id="chat-input-box">' +
+            '   <input type="text" id="chat-input" placeholder="我来说两句">' +
+            '   <div id="chat-input-btn"></div>' +
+            '   <div id="chat-input-send"></div>' +
+            '</div>'
+        );
+
+        chatroom = $('#chat-room');
+
+        getMsgByTime(new Date().Format('yyyy-MM-dd hh:mm:ss'), function () {
+            scrollSwiper[1].slideNext();
+        });
+
+        //输入框
+        $('#chat-input').on('input', function () {
+            if (this.value) {
+                $('#chat-input-btn').css({'background': 'url("img/send_enable_btn.png")', 'backgroundSize': 'cover'});
+            } else {
+                $('#chat-input-btn').css({'background': 'url("img/send_disabled_btn.png")', 'backgroundSize': 'cover'});
+            }
+        });
+
+        //发送信息
+        $('#chat-input-btn,#chat-input-send').click(function () {
+            var oInput = $('#chat-input');
+            if (oInput.val()) {
+                ajaxUtil(ip + '/api/v1/business/roadshow/new/sendMsg', 'POST',
+                    {
+                        "channelId": channelId,
+                        "content": oInput.val()
+                    }, {
+                        'Content-Type': 'application/json',
+                        'userId': appUserId
+                    }
+                );
+                chatRoomAddDate(chatroom, new Date(), 'append');
+                chatRoomAddRight(chatroom, picture, '', oInput.val(), 'append');
+                oInput.val('');
+                oInput.trigger('input');
+                scrollSwiper[1].update();
+                scrollSwiper[1].slideNext();
+            }
+        });
+    }
+
+    function initSDK() {
+        //初始化配置
+        Vhall.config({
+            appId: appId,//应用 ID ,必填
+            accountId: appId,//第三方用户唯一标识,必填
+            token: token//token必填
+        });
+    }
+
+    function initVideo(recordStatus) {
+        var $screen = $('#screen');
+        $screen.empty();
+        if (recordStatus === 'RECORDING' || recordStatus === 'FINISHED') {
+            $screen.append('<div id="myVideo" class="vjs-big-play-centered" style="width:100%; height:100%;"></div>');
+            var VhallOption;
+            if (recordStatus === 'RECORDING') {
+                VhallOption = {
+                    roomId: roomId,
+                    type: 'live',
+                    videoNode: 'myVideo',
+                    complete: function () {
+                        VhallPlayer.play();
+                    }
+                }
+
+            } else if (recordStatus === 'FINISHED') {
+                VhallOption = {
+                    recordId: recordId,
+                    type: 'vod',
+                    videoNode: 'myVideo',
+                    complete: function () {
+                        // VhallPlayer.play();
+                    }
+                }
+            }
+            //注册ready事件
+            Vhall.ready(function () {
+                //播放器初始化
+                VhallPlayer.init(VhallOption);
+
+                vChat = new VhallChat({
+                    channelId: msgChannelId//频道Id，必填
+                });
+
+                vChat.on(function (res) {
+                    console.log(res);
+                    //在此收到聊天消息，消息内容为msg
+                    if(vuserId !== data.third_party_user_id){
+                        var msg = res.data.slice(res.data.indexOf('#*@#') + 4, res.data.length);
+                        chatRoomAddLeft(chatroom, data.avatar, data.nick_name, msg, 'append');
+                    }
+                });
+            });
+
+            // } else if (recordStatus === 'NOT_START') {
+        } else {
+            $screen.append('<div id="screen-msg">精彩即将开始，敬请期待</div>');
+            Vhall.ready(function () {
+                vChat = new VhallChat({
+                    channelId: msgChannelId//频道Id，必填
+                });
+
+                vChat.on(function (res) {
+
+                    //在此收到聊天消息，消息内容为msg
+                    if(vuserId !== data.third_party_user_id){
+                        var msg = res.data.slice(res.data.indexOf('#*@#') + 4, res.data.length);
+                        chatRoomAddLeft(chatroom, data.avatar, data.nick_name, msg, 'append');
+                    }
+                });
+            })
+        }
+    }
+
+    function getRoadShowDetail(data) {
+        $('.page-title').text(data.title);
+        $('.info-date').text(data.beginTime);
+        $('.info-count').text('次数：' + data.viewCount + '次');
+        $('.logo-pic').css({'background': 'url(' + data.logoUrl + ')', 'backgroundSize': 'cover'});
+        $('.logo-name').text(data.orgName);
+        $('.page-paragraph').html(data.intro);
+        scrollSwiper[0].update();
+    }
+
+    function getRoadShowList(organizationId) {
+        ajaxUtil(ip + '/api/v1/business/roadshow/new/queryOrgRoadShow',
+            'POST',
+            {
+                id: organizationId,
+                pageSize: 100,
+                open: 1
+            },
+            {
+                'Content-Type': 'application/json',
+                'appUserId': appUserId
+            },
+            function (data) {
+                var listBox = $('#list-box');
+                for (var i = 0; i < data.length; i++) {
+                    var item = data[i];
+                    var strHtml;
+                    if (item.rsId === roadShowId) {
+                        strHtml = '<div class="list-item list-item-checked" data-id="' + item.rsId + '">';
+                    } else {
+                        strHtml = '<div class="list-item" data-id="' + item.rsId + '">';
+                    }
+                    listBox.append(
+                        strHtml +
+                        '   <img class="item-pic" src="' + item.headImage + '" alt="">' +
+                        '   <div class="item-pic-type">' + recordStatus_enum[item.recordStatus] + '</div>' +
+                        '   <div class="item-pic-date">' + item.beginTime + '</div>' +
+                        '   <div class="item-name">' + item.title + '</div>' +
+                        '   <div class="item-tag">' + item.orgName + '</div>' +
+                        '</div>'
+                    );
+                }
+                scrollSwiper[2].update();
+            }
+        );
+    }
+
+    function getMsgByTime(strTime, fn) {
+        ajaxUtil(ip + '/api/v1/business/roadshow/new/getMsgHistory', 'POST',
+            {
+                "channelId": channelId,
+                "endTime": strTime
+            }, {
+                'Content-Type': 'application/json',
+                'userId': appUserId
+            },
+            function (data) {
+                console.log(data);
+                for (var i = 0; i < data.length; i++) {
+                    var item = data[i];
+                    if (appUserId == item.appUserId) {
+                        chatRoomAddRight(chatroom, item.picture, '', item.content, 'prepend');
+                    } else {
+                        chatRoomAddLeft(chatroom, item.picture, item.userName, item.content, 'prepend');
+                    }
+                    if (i === data.length - 1) {
+                        lastModifiedTime = item.lastModifiedTime;
+                        chatRoomAddDate(chatroom, new Date(item.lastModifiedTime.replace(/\-/g, "/")), 'prepend');
+                    }
+                }
+                scrollSwiper[1].update();
+                fn && fn();
+            }
+        );
+    }
+
+    //微吼
+    // function initDoc() {
+    //
+    //     $('body').append(
+    //         '<div id="pdf-btn"></div>' +
+    //         '<div id="pdf-box">' +
+    //         '    <div id="pdf-close"></div>' +
+    //         '    <div id="pdf-screen"></div>' +
+    //         '    <div id="pdf-last"></div>' +
+    //         '    <div id="pdf-page"></div>' +
+    //         '    <div id="pdf-next"></div>' +
+    //         '</div>'
+    //     );
+    //
+    //     $('#pdf-btn').click(function () {
+    //
+    //         $('#pdf-box').slideToggle(300, function () {
+    //
+    //             if (!doc) {
+    //
+    //                 /**
+    //                  * 初始化文档
+    //                  */
+    //                 doc = new VhallDoc({
+    //                     docNode: 'pdf-screen',//文档容器
+    //                     width: document.body.clientWidth,//文档显示的宽度,非必填
+    //                     height: document.getElementById('pdf-screen').clientHeight//文档显示的高度，非必填
+    //                 });
+    //
+    //                 /**
+    //                  * 加载文档
+    //                  */
+    //                 doc.loadDoc(docId, msgChannelId, function (docId) {
+    //                     console.info('load doc success,the docId is:', docId);
+    //                 }, function (reason) {
+    //                     console.error(reason);
+    //                 });
+    //
+    //                 //简单调用方式：
+    //                 // doc.loadDoc(docId, channelId);
+    //             }
+    //         });
+    //     });
+    //
+    //     $('#pdf-close').click(function () {
+    //         $('#pdf-box').slideToggle();
+    //     });
+    //
+    //     $('#pdf-last').click(function () {
+    //         doc.preSlide();
+    //     });
+    //
+    //     $('#pdf-next').click(function () {
+    //         doc.nextSlide();
+    //     });
+    //
+    //     Vhall.onBroadcast(function (docInfo) {
+    //         if (docInfo.currentPage === 1) {
+    //             $('#pdf-last').css({'background': 'url("img/pdf_last_disabled.png")', 'backgroundSize': 'cover'});
+    //         } else {
+    //             $('#pdf-last').css({'background': 'url("img/pdf_last_enable.png")', 'backgroundSize': 'cover'});
+    //         }
+    //         if (docInfo.currentPage === docInfo.page) {
+    //             $('#pdf-next').css({'background': 'url("img/pdf_next_disabled.png")', 'backgroundSize': 'cover'});
+    //         } else {
+    //             $('#pdf-next').css({'background': 'url("img/pdf_next_enable.png")', 'backgroundSize': 'cover'});
+    //         }
+    //         $('#pdf-page').text(docInfo.currentPage + '/' + docInfo.page);
+    //     });
+    // }
+
+    function initDoc(annexUrl) {
+        $('body').append(
+            '<div id="pdf-btn"></div>' +
+            '<div id="pdf-box">' +
+            '    <div id="pdf-close"></div>' +
+            '    <div id="pdf-screen"><iframe src="' + annexUrl + '" width="100%" height="100%" frameborder="0"></iframe></div>' +
+            // '    <div id="pdf-screen"><embed src="' + annexUrl + '" width="100%" height="100%"></div>' +
+            '</div>'
+        );
+
+        move($('#pdf-btn'));
+
+        $('#pdf-btn').click(function () {
+            $('#pdf-box').slideToggle();
+        });
+
+        $('#pdf-close').click(function () {
+            $('#pdf-box').slideToggle();
+        });
+    }
+
+    function chatRoomAddDate(ele, date, type) {
+        var month = date.getMonth() + 1;
+        var day = date.getDate();
+        var hours = date.getHours() > 9 ? date.getHours().toString() : '0' + date.getHours();
+        var minutes = date.getMinutes() > 9 ? date.getMinutes().toString() : '0' + date.getMinutes();
+        var strDate = month + '月' + day + '日 ' + hours + ':' + minutes;
+        if(type === 'append'){
+            ele.append('<div class="chat-date">' + strDate + '</div>');
+        }else if(type === 'prepend'){
+            ele.prepend('<div class="chat-date">' + strDate + '</div>');
+        }
+    }
+
+    function chatRoomAddLeft(ele, head, name, msg, type) {
+
+        var headImg = head || defaultPicture;
+        var clientWidth = document.body.clientWidth;
+        var proportion = clientWidth / 100 * 13.33;
+        var maxWidth = clientWidth * 0.6733;
+        var strHtml = '<div class="chat-left">' +
+            // '<div class="chat-user-header"></div>' +
+            '<img class="chat-user-header" src="' + headImg + '">' +
+            '<div class="chat-user-name">' + name + '</div>' +
+            '<div class="chat-user-tail"></div>' +
+            '<div class="chat-user-msg" style="max-width: ' + maxWidth + 'px;">' + msg + '</div>' +
+            '</div>';
+        var nowChat;
+        if(type === 'append'){
+            ele.append(strHtml);
+            nowChat = $('.chat-left').eq(-1);
+        }else if(type === 'prepend'){
+            ele.prepend(strHtml);
+            nowChat = $('.chat-left').eq(0);
+        }
+
+        // var nowName = nowChatLeft.find('.chat-user-name');
+        // var nameHeight = nowName[0].clientHeight;
+        var nowMsg = nowChat.find('.chat-user-msg');
+        var msgHeight = nowMsg[0].clientHeight;
+        var nameHeight = proportion * 0.33;
+        var spacing = proportion * 0.1;
+
+        nowChat.height(nameHeight + msgHeight + spacing);
+    }
+
+    function chatRoomAddRight(ele, head, name, msg, type) {
+
+        var headImg = head || defaultPicture;
+        var clientWidth = document.body.clientWidth;
+        var maxWidth = clientWidth * 0.6733;
+        var strHtml = '<div class="chat-right">' +
+            // '<div class="chat-user-header"></div>' +
+            '<img class="chat-user-header" src="' + headImg + '">' +
+            '<div class="chat-user-tail"></div>' +
+            '<div class="chat-user-msg" style="max-width: ' + maxWidth + 'px;">' + msg + '</div>' +
+            '</div>';
+        var nowChat;
+        if(type === 'append'){
+            ele.append(strHtml);
+            nowChat = $('.chat-right').eq(-1);
+        }else if(type === 'prepend'){
+            ele.prepend(strHtml);
+            nowChat = $('.chat-right').eq(0);
+        }
+        var nowMsg = nowChat.find('.chat-user-msg');
+        var msgHeight = nowMsg[0].clientHeight;
+
+        nowChat.height(msgHeight);
+    }
+
+    function setCookie(key, val, time) { //设置cookie方法 ，过期日期的时间
+        var strSec = getSec(time);
+        var exp = new Date();//获取当前时间
+        exp.setTime(exp.getTime() + strSec * 1);
+        document.cookie = key + "=" + val + ";expires=" + exp.toGMTString(); //设置cookie
+    }
+
+    function getSec(str) {
+        var str1 = str.substring(1, str.length) * 1;
+        var str2 = str.substring(0, 1);
+        if (str2 == "s") {
+            return str1 * 1000;
+        } else if (str2 == "h") {
+            return str1 * 60 * 60 * 1000;
+        } else if (str2 == "d") {
+            return str1 * 24 * 60 * 60 * 1000;
+        }
+    }
+
+    function getCookie(c_name) {
+        if (document.cookie.length > 0) {
+            var c_start = document.cookie.indexOf(c_name + "=")
+            if (c_start != -1) {
+                c_start = c_start + c_name.length + 1
+                var c_end = document.cookie.indexOf(";", c_start)
+                if (c_end == -1)
+                    c_end = document.cookie.length
+                return unescape(document.cookie.substring(c_start, c_end))
+            }
+        }
+        return ""
+    }
+
+    function ajaxUtil(url, type, data, headers, fn, errfn) {
+        $.ajax({
+            url: url,
+            data: JSON.stringify(data),
+            type: type,
+            dataType: 'JSON',
+            headers: headers,
+            success: function (data) {
+                if (data.success) {
+                    fn && fn(data.data);
+                } else {
+                    errfn ? errfn(data) : alert(data.errorMsg);
+                }
+            },
+            error: function (err) {
+                alert('服务器异常');
+            }
+        });
+    }
+
+    function GetRequest() {
+        var url = location.search;
+        var theRequest = {};
+        if (url.indexOf("?") !== -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for (var i = 0; i < strs.length; i++) {
+                theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+            }
+        }
+        return theRequest;
+    }
+
+    //登录
+    $('#login-btn').click(function () {
+
+        setCookie('appUserId', '1', '12h');
+        setCookie('accessToken', '111', '12h');
+
+        window.location.href = '';
     });
 
-    hammer.on('panmove', function (e) {
-        if (pos_x + e.deltaX >= 0 && pos_x + e.deltaX <= window.innerWidth - width) {
-            oBox.css("left", pos_x + e.deltaX);
-        }
-        if (pos_y + e.deltaY >= 0 && pos_y + e.deltaY <= window.innerHeight - height) {
-            oBox.css("top", pos_y + e.deltaY);
-        }
-
+    //注册
+    $('#register-btn').click(function () {
+        window.location.href = '';
     });
 
-    hammer.on('panend',function (e) {
-        // console.log(pos_x + e.deltaX);
-        let end_x=oBox.position().left;
-        let end_y=oBox.position().top;
-        // console.log(end_x);
-        // console.log(end_y);
-        if(window.innerWidth/2>end_x+width/2){
-            // oBox.css('left', 0);
-            oBox.animate({left: 0}, 100);
-        }else {
-            // oBox.css('left', window.innerWidth - width);
-            oBox.animate({left: window.innerWidth - width}, 100);
-        }
-    })
+    //下载
+    $('#open-btn').click(function () {
+        window.location.href = '';
+    });
 
+    $('#list-box').click(function (e) {
+        var ev = e || window.event;
+        var target = ev.target;
+        while(target.className.indexOf('list-item')){
+            target = target.parentNode;
+        }
+        // roadShowId = parseInt(target.dataset.id);
+        // createRoadshow();
+        window.location.href = window.location.origin + window.location.pathname + '?id=' + target.dataset.id;
+    });
+
+    scrollSwiper[1].on('touchEnd', function (swiper) {
+        if(scrollSwiper[1].translate>50){
+            // console.log('到顶啦');
+            setTimeout(function () {
+                getMsgByTime(lastModifiedTime);
+            }, 300);
+        }
+    });
+    
+    function move($dom) {
+        var hammer = new Hammer($dom[0]);
+
+        var width = $dom.width();
+        var height = $dom.height();
+        var pos_x=$dom.position().left;
+        var pos_y=$dom.position().top;
+        hammer.on('panstart', function (e) {
+            pos_x=$dom.position().left;
+            pos_y=$dom.position().top;
+        });
+
+        hammer.on('panmove', function (e) {
+            if (pos_x + e.deltaX >= 0 && pos_x + e.deltaX <= window.innerWidth - width) {
+                $dom.css("left", pos_x + e.deltaX);
+            }
+            if (pos_y + e.deltaY >= 0 && pos_y + e.deltaY <= window.innerHeight - height) {
+                $dom.css("top", pos_y + e.deltaY);
+            }
+
+        });
+
+        hammer.on('panend',function (e) {
+            var end_x=$dom.position().left;
+            var end_y=$dom.position().top;
+            if(window.innerWidth/2>end_x+width/2){
+                // $ele.css('left', 0);
+                $dom.animate({left: 0}, 100);
+            }else {
+                // $ele.css('left', window.innerWidth - width);
+                $dom.animate({left: window.innerWidth - width}, 100);
+            }
+        })
+    }
 </script>
 </body>
 </html>
