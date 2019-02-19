@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        #logo {
+            width: 270px;
+            height: 129px;
+            background: url("https://www.baidu.com/img/yuanxiao_839d9ad79c6283c40da24824a7ba945a.jpg") 0 0 no-repeat;
+            animation-timing-function: steps(1);
+            -webkit-animation: logo 4.4s steps(1) infinite;
+            -o-animation: logo 4.4s steps(1) infinite;
+            animation: logo 4.4s steps(1) infinite;
+        }
+
+        @keyframes logo {
+            2.27%{background-position-x: 0;}
+            4.54%{background-position-x: -270px;}
+            6.81%{background-position-x: -540px;}
+            9.08%{background-position-x: -810px;}
+            11.35%{background-position-x: -1080px;}
+            13.62%{background-position-x: -1350px;}
+            15.89%{background-position-x: -1620px;}
+            18.16%{background-position-x: -1890px;}
+            20.43%{background-position-x: -2160px;}
+            22.7%{background-position-x: -2430px;}
+            24.97%{background-position-x: -2700px;}
+            27.24%{background-position-x: -2970px;}
+            29.51%{background-position-x: -3240px;}
+            31.78%{background-position-x: -3510px;}
+            34.05%{background-position-x: -3780px;}
+            36.32%{background-position-x: -4050px;}
+            38.59%{background-position-x: -4320px;}
+            40.86%{background-position-x: -4590px;}
+            43.13%{background-position-x: -4860px;}
+            45.4%{background-position-x: -5130px;}
+            47.67%{background-position-x: -5400px;}
+            49.94%{background-position-x: -5670px;}
+            52.21%{background-position-x: -5940px;}
+            54.48%{background-position-x: -6210px;}
+            56.75%{background-position-x: -6480px;}
+            59.02%{background-position-x: -6750px;}
+            61.29%{background-position-x: -7020px;}
+            63.56%{background-position-x: -7290px;}
+            65.83%{background-position-x: -7560px;}
+            68.1%{background-position-x: -7830px;}
+            70.37%{background-position-x: -8100px;}
+            72.64%{background-position-x: -8370px;}
+            74.91%{background-position-x: -8640px;}
+            77.18%{background-position-x: -8910px;}
+            79.45%{background-position-x: -9180px;}
+            81.72%{background-position-x: -9450px;}
+            83.99%{background-position-x: -9720px;}
+            86.26%{background-position-x: -9990px;}
+            88.53%{background-position-x: -10260px;}
+            90.8%{background-position-x: -10530px;}
+            93.07%{background-position-x: -10800px;}
+            95.34%{background-position-x: -11070px;}
+            97.61%{background-position-x: -11340px;}
+            99.88%{background-position-x: -11610px;}
+            /*99.88%{background-position-x: -3240px;}*/
+        }
+
+    </style>
+</head>
+<body>
+<div id="logo"></div>
+<script>
+    // setInterval(function () {
+    //
+    // }, 100);
+    let logo = document.getElementById('logo');
+    let logoStyle = window.getComputedStyle(logo);
+    console.log(logoStyle);
+</script>
+</body>
+</html>
