@@ -1,2 +1,0 @@
-.slide-left-enter-active,.slide-left-leave-active,.slide-right-enter-active,.slide-right-leave-active{will-change:transform;transition:all .5s;position:absolute}.slide-right-enter{opacity:0;transform:translate3d(-100%,0,0)}.slide-left-enter,.slide-right-leave-active{opacity:0;transform:translate3d(100%,0,0)}.slide-left-leave-active{opacity:0;transform:translate3d(-100%,0,0)}
-/*# sourceMappingURL=app.1e78e45c8e5adf5a48f499ebd98a032c.css.map */
