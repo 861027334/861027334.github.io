@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>总额统计</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th,
+        td {
+            padding: 5px;
+            width: 25%;
+        }
+    </style>
+</head>
+<body>
+    <!-- 1.导入文件 -->
+    <input type="file" id="file01" onchange="importExcel()">
+    <!-- 2.导出文件 -->
+    <input type="button" value="导出文件" onclick="exportExcel()">
+    <!--table-->
+    <table id="demo01" class="table"></table>
+
+<!--    <script src="https://cdn.bootcss.com/xlsx/0.12.7/xlsx.core.min.js"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.17.0/dist/xlsx.mini.min.js"></script>
+
+    <script>
+        // 导入
+        let fileName;
+        function importExcel () {
+            var files = document.getElementById('file01').files[0];
+            fileName = files.name;
+            // 解析并提取excel数据
+            let reader = new FileReader();
+            reader.readAsBinaryString(files);
+            reader.onload = function(e) {
+                let data = e.target.result;
+                let workbook = XLSX.read(data, {type: 'binary'});
+                let sheetNames = workbook.SheetNames; // 工作表名称集合
+                let result = [];
+                sheetNames.forEach(sheetName => {
+                    result.push({
+                        sheetName: sheetName,
+                        sheet: XLSX.utils.sheet_to_json(workbook.Sheets[sheetNames],
+                            {
+                                head: 0,
+                                defval: " "
+                            })
+                    });
+                });
+                console.log(result);
+
+                // 合并金额
+                for (var i = 0; i < result[0].sheet.length; i++) {
+                    for (var j = i + 1; j < result[0].sheet.length; j++) {
+                        // 手机号相同合并金额
+                        if(result[0].sheet[i]['注册账号'] == result[0].sheet[j]['注册账号']) {
+                            result[0].sheet[i]['实际付款'] += result[0].sheet[j]['实际付款'];
+                            result[0].sheet.splice(j, 1);
+                            j--;
+                        }
+                    }  		
+                }
+
+                // 初始化表格
+                let table = document.getElementById("demo01");
+                let headRow = table.insertRow();
+                headRow.insertCell().innerText = '联系人';
+                headRow.insertCell().innerText = '注册账号';
+                headRow.insertCell().innerText = '实际付款';
+
+                let Sum = 0;
+                let coupon1 = [], coupon2 = [];
+                // 录入表格
+                for (const item of result[0].sheet) {
+                    let row = table.insertRow();
+                    row.insertCell().innerText = item['联系人'];
+                    row.insertCell().innerText = item['注册账号'];
+                    row.insertCell().innerText = item['实际付款'];
+                    Sum += item['实际付款'];
+                    if(item['实际付款'] > 70000) {
+                        coupon2.push(item['联系人']);
+                        row.className = 'table-success';
+                    } else if (item['实际付款'] > 50000) {
+                        coupon1.push(item['联系人']);
+                        row.className = 'table-danger';
+                    }
+                }
+
+                // 时间
+                let dateRow = table.insertRow();
+                let date = new Date();
+                dateRow.insertCell().innerText = '时间';
+                dateRow.insertCell().innerText = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+                dateRow.insertCell().innerText = Sum;
+
+                // 优惠券
+                table.insertRow();
+                let row = table.insertRow();
+                row.insertCell().innerText = 88;
+                row.insertCell().innerText = 188;
+                couponLength = coupon1.length > coupon2.length ? coupon1.length : coupon2.length;
+                for (let i = 0; i < couponLength; i++) {
+                    let row = table.insertRow();
+                    row.insertCell().innerText = coupon1[i] ? coupon1[i] : '';
+                    row.insertCell().innerText = coupon2[i] ? coupon2[i] : '';
+                }
+            }
+        }
+
+        // 导出
+        function exportExcel() {
+            var gridArr=[];
+            var headerData = [];
+            var obj=document.getElementById("demo01");
+            var rows=obj.rows;
+            console.log(gridArr.length);
+            for(var i=0;i<rows.length;i++){ //行
+                var griditem={};
+                for(var j=0;j<rows[i].cells.length;j++){
+                    if (i === 0) {
+                        headerData.push(rows[i].cells[j].innerHTML);
+                    } else {
+                        // griditem[rows[1].cells[j].cellIndex]=rows[i].cells[j].innerHTML;
+                        griditem[headerData[j]]=rows[i].cells[j].innerText;
+                    }
+                }
+                if (i !== 0) {
+                    gridArr.push(griditem);
+                }
+            }
+            console.log(headerData);
+            console.log(gridArr);
+
+
+            const wb = XLSX.utils.book_new();
+            const ws = XLSX.utils.json_to_sheet(gridArr, {header: headerData, skipHeader:false});
+            XLSX.utils.book_append_sheet(wb, ws, 'sheet1');
+            XLSX.writeFile(wb, fileName);
+        }
+
+    </script>
+
+</body>
+</html>
