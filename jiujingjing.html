@@ -33,7 +33,7 @@
     <label for="file" id="fileBtn"></label>
     <input type="file" id="file" multiple >
     <div id="box"></div>
-    <script src="worker.js"></script>
+    <!-- <script src="worker.js"></script> -->
     <script>
         let box = document.getElementById('box');
         let file = document.getElementById('file');
@@ -53,11 +53,12 @@
         }
 
 
-        // worker.postMessage('Hello World');
-        // worker.postMessage({method: 'echo', args: ['Work']})
-        // worker.onmessage = function (e) {
-        //     console.log(e.data);
-        // }
+        worker.postMessage('Hello World');
+        worker.postMessage({method: 'echo', args: ['Work']})
+        worker.onmessage = function (e) {
+            console.log(e.data);
+        }
+        
     </script>
 </body>
 </html>
