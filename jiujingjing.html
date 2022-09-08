@@ -48,15 +48,15 @@
                 //     console.log(this);
                 //     box.innerHTML += '<img src="'+this.result+'">';
                 // }
-                let frs = new FileReaderSync();
+                worker.postMessage(item);
             }
         }
 
 
-        worker.postMessage('Hello World');
-        worker.postMessage({method: 'echo', args: ['Work']})
+        
         worker.onmessage = function (e) {
             console.log(e.data);
+            box.innerHTML += '<img src="'+ e.data.result +'">';
         }
         
     </script>
