@@ -5,11 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="css/pdfh5.css">
+    <style>
+        #demo {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+    </style>
 </head>
 <body>
-    <a href="PDF.pdf">a链接</a><br>
-    <embed src="PDF.pdf" type=""><br>
-    <object data="PDF.pdf" type=""></object><br>
-    <iframe src="PDF.pdf" frameborder="0"></iframe><br>
+    <div id="demo"></div>
+    <script src="js/pdf.js"></script>
+    <script src="js/pdf.worker.js"></script>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/pdfh5.js"></script>
+    <script>
+        // let url = 'https://861027334.github.io/pdf/PDF.pdf';
+        // let url = './PDF.pdf';
+        let url = 'PDF.pdf';
+        new Pdfh5('#demo',{pdfurl:url});
+    </script>
 </body>
 </html>
