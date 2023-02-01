@@ -14,9 +14,18 @@
             display: flex;
             flex-wrap: wrap;
         }
-        img{
+        #box img{
             width: 25%;
+            height: 500px;
+            object-fit: cover;
         }
+        #box div {
+            width: 25%;
+            height: 500px;
+            background-position: center center;
+            background-size: cover;
+        }
+
         #file {
             display: none;
         }
@@ -32,31 +41,39 @@
 <body>
     <label for="file" id="fileBtn"></label>
     <input type="file" id="file" multiple >
+    <div id="haha"></div>
     <div id="box"></div>
     <!-- <script src="worker.js"></script> -->
     <script>
         let box = document.getElementById('box');
         let file = document.getElementById('file');
-        var worker = new Worker('worker.js');
-        console.log(worker);
+
+        // 同步 多线程
+        // var worker = new Worker('worker.js');
+        // console.log(worker);
         
+        // file.onchange = function() {
+        //     for (const item of file.files) {
+        //         worker.postMessage(item);
+        //     }
+        // }
+
+        // worker.onmessage = function (e) {
+        //     console.log(e.data);
+        //     box.innerHTML += '<img src="'+ e.data +'">';
+        // }
+        
+        // 异步
         file.onchange = function() {
             for (const item of file.files) {
-                // let fr = new FileReader();
-                // fr.readAsDataURL(item);
-                // fr.onload = function(e) {
-                //     console.log(this);
-                //     box.innerHTML += '<img src="'+this.result+'">';
-                // }
-                worker.postMessage(item);
+                let fr = new FileReader();
+                fr.readAsDataURL(item);
+                fr.onload = function(e) {
+                    console.log(this);
+                    box.innerHTML += '<img src="'+this.result+'">';
+                    // box.innerHTML += '<div style="background-image:url(\''+ this.result +'\')"></div>';
+                }
             }
-        }
-
-
-        
-        worker.onmessage = function (e) {
-            console.log(e.data);
-            box.innerHTML += '<img src="'+ e.data +'">';
         }
         
     </script>
