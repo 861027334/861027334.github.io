@@ -22,7 +22,7 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/axios/1.2.5/axios.min.js"></script>
     <script>
         axios({
-            url: 'http://storage.xuetangx.com/public_assets/xuetangx/PDF/PlayerAPI_v1.0.6.pdf',
+            url: 'https://861027334.github.io/pdfh5/static/git.pdf',
             method: 'get',
             responseType: 'blob',
             header: {
@@ -30,11 +30,11 @@
                 'X-Requested-With': 'XMLHttpRequest'
             }
         }).then(res=>{
-            // 方法一 移动端无法显示
+            // 方法一 移动端不能显示
             // document.getElementById('iframe').src = URL.createObjectURL(res.data);
 
             // 方法二 移动端正常显示
-            var src = `./PDFJS/web/viewer.html?file=${URL.createObjectURL(res.data)}`
+            var src = `./pdfjs/web/viewer.html?file=${URL.createObjectURL(res.data)}`
             document.getElementById('iframe').src = src;
         })
     </script>
