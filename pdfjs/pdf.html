@@ -18,9 +18,16 @@
     </style>
 </head>
 <body>
-    <iframe id="iframe" src="./pdfjs/web/viewer.html?file=git.pdf" frameborder="0"></iframe>
+    <!-- <iframe id="iframe" src="./pdfjs/web/viewer.html?file=git.pdf" frameborder="0"></iframe> -->
+    <iframe id="iframe" src="" frameborder="0"></iframe>
     <script>
         // window.open('./pdfjs/web/viewer.html?file=git.pdf')
+
+        let iframe = document.getElementById('iframe');
+        let url = 'http://www.scsx2016.org/public/uploads/files/2020/07/20200714144950101.pdf';
+        let fileUrl = encodeURIComponent(url);
+        let lastUrl = './pdfjs/web/viewer.html?file=' + fileUrl;
+        iframe.src = lastUrl;
     </script>
 </body>
 </html>
