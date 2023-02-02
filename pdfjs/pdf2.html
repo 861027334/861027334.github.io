@@ -21,9 +21,17 @@
     <iframe id="iframe" src="" frameborder="0"></iframe>
     <script src="https://cdn.bootcdn.net/ajax/libs/axios/1.2.5/axios.min.js"></script>
     <script>
-        let url = 'git.pdf';
-        var src = `./pdfjs/web/viewer.html?file=${encodeURIComponent(url)}`
-        document.getElementById('iframe').src = src;
+        axios.request({
+            url: 'https://861027334.github.io/pdfjs/pdfjs/web/git.pdf',
+            method: 'get',
+            responseType: 'blob',
+            header: {
+                'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        }).then(res=>{
+            document.getElementById('iframe').src = URL.createObjectURL(res.data);
+        })
     </script>
 </body>
 </html>
