@@ -18,19 +18,13 @@
     </style>
 </head>
 <body>
-    <!-- <iframe id="iframe" src="./pdfjs/web/viewer.html?file=git.pdf" frameborder="0"></iframe> -->
     <iframe id="iframe" src="" frameborder="0"></iframe>
-    
-    <!-- <script src="https://cdn.bootcdn.net/ajax/libs/axios/1.2.5/axios.js"></script> -->
     <script>
-        // window.open('./pdfjs/web/viewer.html?file=git.pdf')
-
-        let iframe = document.getElementById('iframe');
-        let url = 'http://www.scsx2016.org/public/uploads/files/2020/07/20200714144950101.pdf';
-        let fileUrl = encodeURIComponent(url);
-        // let lastUrl = './pdfjs/web/viewer.html?file=' + fileUrl;
-        let lastUrl = './pdfjs/web/viewer.html?url=' + fileUrl;
+        let url = 'git.pdf';
+        // let url = 'http://www.scsx2016.org/public/uploads/files/2020/07/20200714144950101.pdf';
+        var src = `./pdfjs/web/viewer.html?file=${encodeURIComponent(url)}`
         iframe.src = lastUrl;
+        document.getElementById('iframe').src = src;
     </script>
 </body>
 </html>
