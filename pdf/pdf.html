@@ -5,28 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/pdfh5.css">
-    <style>
-        #demo {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            margin: auto;
-        }
-    </style>
 </head>
 <body>
-    <div id="demo"></div>
-    <script src="js/pdf.js"></script>
-    <script src="js/pdf.worker.js"></script>
-    <script src="js/jquery-3.6.0.min.js"></script>
-    <script src="js/pdfh5.js"></script>
     <script>
-        // let url = 'https://861027334.github.io/pdf/static/PDF.pdf';
-        let url = './static/PDF.pdf';
-        new Pdfh5('#demo',{pdfurl:url});
+        window.open('./pdfjs/web/viewer.html?file=compressed.tracemonkey-pldi-09.pdf')
     </script>
 </body>
 </html>
