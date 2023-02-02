@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        #iframe {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <iframe id="iframe" src="" frameborder="0"></iframe>
+    <script>
+        // 不支持跨域
+
+        // 相对路径
+        // let url = '../../static/1.pdf';
+
+        // 绝对路径
+        // let url = '/PDFJS/static/1.pdf';
+        let url = `${location.origin}/PDFJS/static/1.pdf`;
+
+        var src = `./PDFJS/web/viewer.html?file=${encodeURIComponent(url)}`
+        document.getElementById('iframe').src = src;
+    </script>
+</body>
+</html>
