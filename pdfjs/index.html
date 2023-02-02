@@ -21,20 +21,10 @@
     <iframe id="iframe" src="" frameborder="0"></iframe>
     <script src="https://cdn.bootcdn.net/ajax/libs/axios/1.2.5/axios.min.js"></script>
     <script>
-        axios({
-            url: 'https://861027334.github.io/pdfjs/pdfjs/web/1.pdf',
-            method: 'get',
-            responseType: 'blob',
-            header: {
-                'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
-                'X-Requested-With': 'XMLHttpRequest'
-            }
-        }).then(res=>{
-            // document.getElementById('iframe').src = URL.createObjectURL(res.data);
-
-            var src = `./pdfjs/web/viewer.html?file=${URL.createObjectURL(res.data)}`
-            document.getElementById('iframe').src = src;
-        })
+        // let url = 'compressed.tracemonkey-pldi-09.pdf';
+        let url = 'http://storage.xuetangx.com/public_assets/xuetangx/PDF/PlayerAPI_v1.0.6.pdf';
+        var src = `./PDFJs/web/viewer.html?file=${encodeURIComponent(url)}`
+        document.getElementById('iframe').src = src;
     </script>
 </body>
 </html>
