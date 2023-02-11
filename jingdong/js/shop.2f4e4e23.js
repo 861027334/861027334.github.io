@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkjingdong"]=self["webpackChunkjingdong"]||[]).push([[523],{1535:function(n,e,r){r.r(e),r.d(e,{default:function(){return c}});var u=r(3396);function i(n,e,r,i,t,o){return(0,u.wg)(),(0,u.iD)("div",null,"shop")}var t={name:"ShopView"},o=r(89);const a=(0,o.Z)(t,[["render",i]]);var c=a}}]);
+//# sourceMappingURL=shop.2f4e4e23.js.map
