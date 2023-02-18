@@ -1,0 +1,1 @@
+"use strict";(self["webpackChunkjingdong"]=self["webpackChunkjingdong"]||[]).push([[844],{3489:function(n,r,e){e.r(r),e.d(r,{default:function(){return a}});var t=e(3396);function u(n,r,e,u,i,d){return(0,t.wg)(),(0,t.iD)("div",null,"OrderList")}var i={name:"OrderList"},d=e(89);const s=(0,d.Z)(i,[["render",u]]);var a=s}}]);
